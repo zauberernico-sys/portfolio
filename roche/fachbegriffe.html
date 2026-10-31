@@ -19,13 +19,14 @@ h1{font-family:"Bricolage Grotesque",sans-serif;font-size:28px;margin:0 0 4px;le
 .bar{height:8px;background:#E3E8ED;border-radius:99px;overflow:hidden;margin-bottom:16px}
 .bar i{display:block;height:100%;background:var(--signal);width:0;transition:width .3s}
 .card{background:var(--white);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(21,40,58,.06),0 8px 24px rgba(21,40,58,.08)}
-.stage{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.stage{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
 .term{font-family:"Bricolage Grotesque",sans-serif;font-size:34px;line-height:1.1;margin:0 0 8px;letter-spacing:-.02em;overflow-wrap:anywhere;outline:none}
 .hint{color:var(--muted);font-size:16px;margin:0 0 18px}
 .opts{display:grid;gap:10px}
 button{font:inherit}
 .opt{text-align:left;padding:12px 16px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;font-weight:600}
-.opt:hover:not(:disabled){border-color:var(--ink)}
+@media (hover:hover){.opt:hover:not(:disabled){border-color:var(--ink)}}
+.stage .left{text-transform:none;letter-spacing:0;font-weight:600}
 .opt:disabled{cursor:default;color:var(--ink)}
 .opt:disabled:not(.ok):not(.bad){opacity:.5}
 .opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
@@ -60,52 +61,52 @@ input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
   </div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <div class="card" id="card" aria-live="polite"></div>
-  <p class="note">Beispielinhalt für die Idee. Die Begriffe würde ich gemeinsam mit den Berufsbildnerinnen und Berufsbildnern auswählen. Am besten mit Ton.</p>
+  <p class="note">Unabhängiger Prototyp mit Beispielinhalt, nicht von Roche. Die Begriffe würde ich gemeinsam mit den Berufsbildnerinnen und Berufsbildnern auswählen. Am besten mit Ton.</p>
 </div>
 <script>
 (function(){
   if(location.search.indexOf('embed')>-1)document.documentElement.classList.add('embed');
   var SETS={
     it:[
-      ["requirement","Anforderung","The customer added a new requirement for the login page."],
-      ["bug","Programmfehler","We found a bug in the payment form."],
-      ["to deploy","eine Anwendung bereitstellen","We deploy the new version every Monday."],
-      ["repository","zentrale Ablage für Code und seine Versionen","The code is stored in a shared repository."],
-      ["user story","Wunsch aus Sicht der Nutzenden","Each user story describes what a user needs."],
-      ["to troubleshoot","einen Fehler eingrenzen und beheben","First, try to troubleshoot the network connection."],
-      ["backup","Datensicherung","We make a backup every night."],
-      ["password reset","Passwort zurücksetzen","The user asked for a password reset."]
+      ["requirement","Anforderung","The customer added a new requirement for the login page.",[],"req"],
+      ["bug","Programmfehler","We found a bug in the payment form.",[],"err"],
+      ["to deploy","eine Anwendung bereitstellen","We deploy the new version every Monday.",[]],
+      ["repository","zentrale Ablage für Code und seine Versionen","The code is stored in a shared repository.",["repo"]],
+      ["user story","Wunsch aus Sicht der Nutzenden","Each user story describes what a user needs.",[],"req"],
+      ["to troubleshoot","einen Fehler eingrenzen und beheben","First, try to troubleshoot the network connection.",[],"err"],
+      ["backup","Datensicherung","We make a backup every night.",[]],
+      ["password reset","Passwort zurücksetzen","The user asked for a password reset.",["reset password"]]
     ],
     lab:[
-      ["sample","Probe","Please label each sample before you store it."],
-      ["fume hood","Abzug (Kapelle)","Work with solvents only under the fume hood."],
-      ["deviation","Abweichung","Report every deviation to your supervisor."],
-      ["batch record","Chargenprotokoll","All steps are documented in the batch record."],
-      ["SOP","Standardarbeitsanweisung","Follow the SOP step by step."],
-      ["safety data sheet","Sicherheitsdatenblatt","Check the safety data sheet before you start."],
-      ["PPE","persönliche Schutzausrüstung","Put on your PPE before you enter the lab."],
-      ["label","Etikett","The label shows the date and your initials."]
+      ["sample","Probe","Please label each sample before you store it.",["specimen"]],
+      ["fume hood","Abzug (Kapelle)","Work with solvents only in the fume hood.",[]],
+      ["deviation","Abweichung","Report every deviation to your supervisor.",[]],
+      ["lab notebook","Laborjournal","Write every result in your lab notebook.",["laboratory notebook","lab journal"]],
+      ["SOP","Standardarbeitsanweisung","Follow the SOP step by step.",["standard operating procedure"]],
+      ["safety data sheet","Sicherheitsdatenblatt","Check the safety data sheet before you start.",["sds"]],
+      ["PPE","persönliche Schutzausrüstung","Put on your PPE before you enter the lab.",["personal protective equipment"]],
+      ["label","Etikett","The label shows the date and your initials.",[]]
     ],
     kv:[
-      ["invoice","Rechnung","The invoice is due in 30 days."],
-      ["purchase order","Bestellung","Please create a purchase order for the new chairs."],
-      ["meeting minutes","Sitzungsprotokoll","Please send the meeting minutes to the team."],
-      ["deadline","Frist","The deadline for the report is Friday."],
-      ["approval","Freigabe","The order needs approval from the team lead."],
-      ["supplier","Lieferant","We compared offers from three suppliers."],
-      ["cost centre","Kostenstelle","Which cost centre should I book this on?","cost center"],
-      ["attachment","Anhang","You will find the offer in the attachment."]
+      ["invoice","Rechnung","The invoice is due in 30 days.",["bill"]],
+      ["purchase order","Bestellung","Please create a purchase order for the new chairs.",["order","po"]],
+      ["meeting minutes","Sitzungsprotokoll","Please send the meeting minutes to the team.",["minutes"]],
+      ["deadline","Frist","The deadline for the report is Friday.",[]],
+      ["approval","Freigabe","The order needs approval from the team lead.",[]],
+      ["supplier","Lieferant","We compared offers from three suppliers.",["vendor"]],
+      ["cost centre","Kostenstelle","Which cost centre should I charge this to?",["cost center"]],
+      ["attachment","Anhang","You will find the offer in the attachment.",[]]
     ]
   };
   var STAGES=["Karte","Auswahl","Schreiben"];
   var card=document.getElementById('card'),bar=document.getElementById('bar');
-  var job='it',deck=[],current=null,lastId=-1,set=[];
+  var job='',decks={},deck=[],current=null,lastId=-1,set=[],shownAt=0;
   function say(t){try{var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.95;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
-  function norm(s){return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/^to /,'').replace(/-/g,' ')}
+  function norm(s){return s.trim().toLowerCase().replace(/^to\s+/,'').replace(/[^a-z0-9äöü]/g,'')}
   function dist(a,b){var m=[],i,j;for(i=0;i<=a.length;i++){m[i]=[i]}for(j=0;j<=b.length;j++){m[0][j]=j}for(i=1;i<=a.length;i++)for(j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return m[a.length][b.length]}
   function stems(s){return s.toLowerCase().split(/[^a-zäöüé]+/).filter(function(w){return w.length>=5}).map(function(w){return w.slice(0,5)})}
   function shuffle(a){return a.map(function(x){return [Math.random(),x]}).sort(function(p,q){return p[0]-q[0]}).map(function(p){return p[1]})}
-  function start(j){job=j;set=SETS[j];deck=set.map(function(w,i){return {en:w[0],de:w[1],ex:w[2],alt:w[3],lvl:0,id:i}});lastId=-1;next(true)}
+  function start(j,fresh){if(j===job&&!fresh)return;job=j;set=SETS[j];if(fresh||!decks[j])decks[j]=set.map(function(w,i){return {en:w[0],de:w[1],ex:w[2],alt:w[3]||[],grp:w[4]||null,lvl:0,id:i}});deck=decks[j];lastId=-1;next(true)}
   function progress(){var s=deck.reduce(function(a,c){return a+c.lvl},0);bar.style.width=Math.round(s/(deck.length*3)*100)+'%'}
   function pick(){
     var open=deck.filter(function(c){return c.lvl<3});if(!open.length)return null;
@@ -115,8 +116,9 @@ input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
     return pool[Math.floor(Math.random()*pool.length)];
   }
   function next(noFocus){progress();current=pick();if(!current)return done();lastId=current.id;[showCard,showChoice,showWrite][current.lvl]();if(!noFocus){var t=card.querySelector('.term');if(t&&current.lvl<2)t.focus()}post()}
-  function head(){return '<div class="stage">Stufe '+(current.lvl+1)+' von 3: '+STAGES[current.lvl]+'</div>'}
+  function head(){var open=deck.filter(function(c){return c.lvl<3}).length;return '<div class="stage"><span>Stufe '+(current.lvl+1)+' von 3: '+STAGES[current.lvl]+'</span><span class="left">noch '+open+' von '+deck.length+' offen</span></div>'}
   function later(id){setTimeout(function(){var el=document.getElementById(id);if(el)el.focus()},0)}
+  function onNext(){var b=document.getElementById('nx');shownAt=Date.now();b.onclick=function(){if(Date.now()-shownAt<450)return;next()}}
   function showCard(){
     card.innerHTML=head()+'<p class="term" tabindex="-1">'+current.en+'</p><p class="hint">'+current.ex+'</p><div class="row"><button class="btn ghost" id="sp">Anhören</button><button class="btn" id="rv">Bedeutung zeigen</button></div><div class="feedback" id="fb"></div>';
     document.getElementById('sp').onclick=function(){say(current.en)};
@@ -124,37 +126,41 @@ input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
   }
   function showChoice(){
     var own=stems(current.de);
-    var others=shuffle(set.map(function(w){return w[1]}).filter(function(d){return d!==current.de&&!stems(d).some(function(s){return own.indexOf(s)>-1})})).slice(0,3);
+    var others=shuffle(set.filter(function(w){return w[1]!==current.de&&!(current.grp&&w[4]===current.grp)&&!stems(w[1]).some(function(s){return own.indexOf(s)>-1})}).map(function(w){return w[1]})).slice(0,3);
     var opts=shuffle(others.concat([current.de]));
     card.innerHTML=head()+'<p class="term" tabindex="-1">'+current.en+'</p><p class="hint">Was bedeutet das?</p><div class="opts">'+opts.map(function(o){return '<button class="opt">'+o+'</button>'}).join('')+'</div><div class="feedback" id="fb"></div>';
     [].forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){
       var ok=b.textContent===current.de;[].forEach.call(card.querySelectorAll('.opt'),function(x){x.disabled=true;if(x.textContent===current.de)x.classList.add('ok')});
       if(!ok)b.classList.add('bad');
       var fb=document.getElementById('fb');fb.className='feedback '+(ok?'ok':'bad');fb.innerHTML=(ok?'Richtig.':'Noch nicht. Richtig ist: '+current.de)+'<div class="ex">'+current.ex+'</div><div class="row"><button class="btn" id="nx">Weiter</button></div>';
-      current.lvl=ok?2:0;document.getElementById('nx').onclick=function(){next()};later('nx');post();
+      current.lvl=ok?2:0;onNext();later('nx');post();
     }});
   }
   function showWrite(){
-    card.innerHTML=head()+'<p class="term">'+current.de+'</p><p class="hint">Schreib den englischen Begriff.</p><input type="text" id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Englischer Begriff"><div class="row"><button class="btn" id="ck">Prüfen</button><button class="btn ghost" id="tip">Tipp</button></div><div class="feedback" id="fb"></div>';
+    var tries=0;
+    card.innerHTML=head()+'<p class="term">'+current.de+'</p><p class="hint" id="wh">Schreib den englischen Begriff.</p><input type="text" id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Englischer Begriff" aria-describedby="wh"><div class="row"><button class="btn" id="ck">Prüfen</button><button class="btn ghost" id="tip">Tipp</button></div><div class="feedback" id="fb"></div>';
     var inp=document.getElementById('in');later('in');
-    document.getElementById('tip').onclick=function(){var w=norm(current.en);inp.placeholder=w.charAt(0)+'… ('+w.length+' Zeichen)';inp.focus()};
+    document.getElementById('tip').onclick=function(){var w=current.en.replace(/^to /,'');var n=w.replace(/[^A-Za-z]/g,'').length;document.getElementById('wh').textContent='Tipp: beginnt mit «'+w.charAt(0)+'», '+n+' Buchstaben'+(/ /.test(w)?', zwei Wörter':'')+'.';inp.focus()};
     function check(){
       if(inp.disabled)return;
-      var v=norm(inp.value),target=norm(current.en),alt=current.alt?norm(current.alt):null;
-      var ok=v===target||v===alt,d=dist(v,target),near=!ok&&v.length>2&&d<=2;
-      var fb=document.getElementById('fb');fb.className='feedback '+(ok?'ok':near?'mid':'bad');
-      fb.innerHTML=(ok?'Richtig.':near?'Fast. Richtig geschrieben: '+current.en:'Noch nicht. Richtig ist: '+current.en)+'<div class="ex">'+current.ex+'</div><div class="row"><button class="btn" id="nx">Weiter</button></div>';
-      say(current.en);current.lvl=ok?3:1;inp.disabled=true;document.getElementById('ck').disabled=true;
-      document.getElementById('nx').onclick=function(){next()};later('nx');post();
+      var v=norm(inp.value);if(!v){inp.focus();return}
+      var target=norm(current.en),ok=v===target||current.alt.some(function(a){return norm(a)===v});
+      var limit=target.length<=5?1:2,near=!ok&&dist(v,target)<=limit;
+      var fb=document.getElementById('fb');
+      if(near&&tries===0){tries++;fb.className='feedback mid';fb.textContent='Fast. Schau die Schreibweise nochmals an.';inp.select();post();return}
+      fb.className='feedback '+(ok?'ok':'bad');
+      fb.innerHTML=(ok?'Richtig.':'Noch nicht. Richtig ist: '+current.en)+'<div class="ex">'+current.ex+'</div><div class="row"><button class="btn" id="nx">Weiter</button></div>';
+      say(current.en);current.lvl=ok?3:1;inp.disabled=true;document.getElementById('ck').disabled=true;document.getElementById('tip').disabled=true;
+      onNext();later('nx');post();
     }
     document.getElementById('ck').onclick=check;
     inp.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();check()}};
   }
-  function done(){progress();card.innerHTML='<div class="done"><h2 tabindex="-1" id="dh">Runde geschafft</h2><p>Alle acht Begriffe sitzen. In der echten Version kämen sie nach einigen Tagen zur Wiederholung zurück, und die Lernenden sähen ihren Fortschritt über mehrere Wochen.</p><div class="row"><button class="btn" id="again">Neue Runde</button></div></div>';document.getElementById('again').onclick=function(){start(job)};later('dh');post()}
+  function done(){progress();card.innerHTML='<div class="done"><h2 tabindex="-1" id="dh">Runde geschafft</h2><p>Alle acht Begriffe sitzen. In der echten Version kämen sie nach einigen Tagen zur Wiederholung zurück, und die Lernenden sähen ihren Fortschritt über mehrere Wochen.</p><div class="row"><button class="btn" id="again">Neue Runde</button></div></div>';document.getElementById('again').onclick=function(){start(job,true)};later('dh');post()}
   [].forEach.call(document.querySelectorAll('.job'),function(b){b.onclick=function(){[].forEach.call(document.querySelectorAll('.job'),function(x){x.setAttribute('aria-pressed',String(x===b))});start(b.dataset.job)}});
   function post(){try{parent.postMessage({protoH:Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height)},'*')}catch(e){}}
   if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
-  start('it');
+  start('it',true);
 })();
 </script>
 </body>

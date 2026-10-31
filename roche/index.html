@@ -275,10 +275,12 @@ footer p{max-width:none;margin:0}
 }
 @media (max-width:600px){.pair-row .wie{padding:22px 20px}}
 #prototypen .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
-#prototypen .screen{aspect-ratio:auto;height:600px;background:#F3F5F7;transition:height .2s}
+#proto-stage{scroll-margin-top:84px}
+#prototypen .screen iframe[hidden]{display:none}
+#prototypen .screen{aspect-ratio:auto;height:560px;background:#F3F5F7;transition:height .2s}
 #prototypen .stage-foot p{min-height:0}
 @media (max-width:900px){#prototypen .tabs{display:grid}#prototypen .tab{min-width:0}}
-@media (max-width:600px){#prototypen .screen{height:620px}}
+
 </style>
 </head>
 <body>
@@ -327,8 +329,8 @@ footer p{max-width:none;margin:0}
           <p class="lab">Für Roche</p>
           <h2>Fachbegriff-Trainer für Lernende</h2>
           <p>Fachbegriffe und Englisch, die Lernende im Betrieb täglich brauchen, in fünf Minuten auf dem Handy. Jeder Beruf hat seine eigene Liste. Welche Begriffe hineinkommen, entscheiden die Berufsbildnerinnen und Berufsbildner.</p>
-          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage zum Begriff fume hood" loading="lazy"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Was heisst «fume hood»?</figcaption></figure>
-          <a class="btn primary" href="#screen" data-proto="fach">Prototyp ausprobieren</a>
+          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz" loading="lazy"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt.</figcaption></figure>
+          <a class="btn primary" href="#proto-stage" data-proto="fach">Prototyp ausprobieren</a>
         </div>
       </article>
 
@@ -347,7 +349,7 @@ footer p{max-width:none;margin:0}
           <h2>Ein KI-Führerschein für Lernende</h2>
           <p>Zuerst würde ich mit den Verantwortlichen klären, was Lernende mit KI dürfen. Daraus wird eine kurze Einheit mit Fällen aus der Lehre, vom Code bis zum Laborjournal. Zum Abschluss löst jede und jeder eine eigene Aufgabe mit KI und erklärt das Vorgehen.</p>
           <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe" loading="lazy"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, und die Begründung steht gleich darunter.</figcaption></figure>
-          <a class="btn primary" href="#screen" data-proto="ki">Prototyp ausprobieren</a>
+          <a class="btn primary" href="#proto-stage" data-proto="ki">Prototyp ausprobieren</a>
         </div>
       </article>
 
@@ -389,7 +391,7 @@ footer p{max-width:none;margin:0}
         <h2>Selbst ausprobieren</h2>
         <p>Zwei der Ideen als unabhängige Prototypen mit Beispielinhalten, nicht von Roche. Die Lernenden werden darin geduzt.</p>
       </div>
-      <div class="stage">
+      <div class="stage" id="proto-stage">
         <div class="tabs" role="tablist" aria-label="Prototypen">
           <button class="tab" role="tab" id="tab-fach" aria-selected="true" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Informatik, Labor, KV</small></button>
           <button class="tab" role="tab" id="tab-ki" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
@@ -423,21 +425,24 @@ footer p{max-width:none;margin:0}
 
 <script>
 (function(){
-  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Beruf. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Sieben Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.'}};
+  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Beruf. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.'}};
   var tabs=[].slice.call(document.querySelectorAll('#prototypen .tab'));
-  var frame=document.getElementById('pframe'),screen=document.getElementById('screen'),cur='fach';
+  var screen=document.getElementById('screen'),frames={fach:document.getElementById('pframe')},hs={},cur='fach';
+  function size(){if(hs[cur])screen.style.height=Math.max(320,Math.min(1100,hs[cur]+8))+'px'}
   function show(k,focusTab){
     tabs.forEach(function(t){var on=t.dataset.p===k;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&focusTab)t.focus()});
-    if(k!==cur){frame.src=P[k].src+'?embed';frame.title=P[k].title;cur=k}
+    if(!frames[k]){var f=document.createElement('iframe');f.src=P[k].src+'?embed';f.title=P[k].title;screen.appendChild(f);frames[k]=f}
+    Object.keys(frames).forEach(function(n){frames[n].hidden=n!==k});
+    cur=k;size();
     screen.setAttribute('aria-labelledby','tab-'+k);
     document.getElementById('phint').textContent=P[k].hint;document.getElementById('popen').href=P[k].src;
   }
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){show(t.dataset.p)});
-    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];show(n.dataset.p,true)}});
+    t.addEventListener('keydown',function(e){var n=null;if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];else if(e.key==='ArrowLeft')n=tabs[(i+tabs.length-1)%tabs.length];else if(e.key==='Home')n=tabs[0];else if(e.key==='End')n=tabs[tabs.length-1];if(n){e.preventDefault();show(n.dataset.p,true)}});
   });
   document.querySelectorAll('[data-proto]').forEach(function(a){a.addEventListener('click',function(){show(a.dataset.proto)})});
-  window.addEventListener('message',function(e){if(e.source===frame.contentWindow&&e.data&&e.data.protoH){screen.style.height=Math.max(600,Math.min(1100,e.data.protoH+8))+'px'}});
+  window.addEventListener('message',function(e){if(!e.data||!e.data.protoH)return;Object.keys(frames).forEach(function(n){if(frames[n].contentWindow===e.source)hs[n]=e.data.protoH});size()});
 })();
 </script>
 </body>

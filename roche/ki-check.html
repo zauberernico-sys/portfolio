@@ -21,7 +21,7 @@ h1{font-family:"Bricolage Grotesque",sans-serif;font-size:28px;margin:0 0 4px;le
 button{font:inherit}
 .opt{padding:14px 12px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;font-weight:700;text-align:center}
 .opt small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
-.opt:hover:not(:disabled){border-color:var(--ink)}
+@media (hover:hover){.opt:hover:not(:disabled){border-color:var(--ink)}}
 .opt:disabled{cursor:default;color:var(--ink)}
 .opt:disabled:not(.ok):not(.bad){opacity:.5}
 .opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
@@ -40,23 +40,24 @@ button{font:inherit}
 <body>
 <div class="wrap">
   <h1>KI-Check für Lernende</h1>
-  <p class="sub">Prototyp: Darf ich hier KI nutzen? Sieben Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.</p>
+  <p class="sub">Prototyp: Darf ich hier KI nutzen? Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.</p>
   <div class="card" id="card" aria-live="polite"></div>
-  <p class="note">Beispielinhalt für die Idee. Die verbindlichen Regeln würden aus den Richtlinien des Betriebs übernommen.</p>
+  <p class="note">Unabhängiger Prototyp mit Beispielinhalt, nicht von Roche. Die verbindlichen Regeln würden aus den Richtlinien des Betriebs übernommen.</p>
 </div>
 <script>
 (function(){
   if(location.search.indexOf('embed')>-1)document.documentElement.classList.add('embed');
   var C=[
-    ["Du sollst einen Fehler in deinem Code finden. Du lässt dir von der KI erklären, was die Fehlermeldung bedeutet.","ja","Gute Nutzung. Du lässt dir etwas erklären und behebst den Fehler danach selbst. So lernst du dabei."],
-    ["Du kopierst eine Liste mit Namen und Personalnummern von Mitarbeitenden in einen öffentlichen KI-Chat, um sie sortieren zu lassen.","nein","Personendaten und interne Daten gehören nicht in öffentliche KI-Werkzeuge. Für solche Aufgaben gibt es die Werkzeuge, die der Betrieb freigegeben hat."],
-    ["Die KI berechnet dir eine Verdünnungsreihe. Du überträgst die Werte direkt ins Laborjournal.","teil","Die KI kann dir den Rechenweg zeigen. Die Werte rechnest du aber selbst nach, bevor sie ins Journal kommen. Für das, was im Laborjournal steht, bist du verantwortlich."],
+    ["Du lässt dir von der KI erklären, was eine Fehlermeldung allgemein bedeutet. Deinen Code kopierst du nicht hinein.","ja","Gute Nutzung. Du verstehst die Meldung und behebst den Fehler danach selbst. So lernst du dabei."],
+    ["Du kopierst eine Liste mit Namen und Personalnummern von Mitarbeitenden in einen öffentlichen KI-Chat, um sie sortieren zu lassen.","nein","Personaldaten bearbeitest du nur mit Berechtigung, und in einen öffentlichen KI-Chat gehören sie nie. Zum Sortieren reicht eine Tabelle."],
+    ["Du willst dir einen Abschnitt aus dem Code deines Teams erklären lassen. Der Betrieb hat dafür ein KI-Werkzeug freigegeben.","teil","Das freigegebene Werkzeug ist der richtige Ort. Kläre aber zuerst, ob dieser Code dort verwendet werden darf. Im Zweifel fragst du nach."],
+    ["Du lässt dir von der KI eine Verdünnungsreihe berechnen und willst die Werte ins Laborjournal eintragen.","nein","Im Laborjournal steht nur, was du nach SOP selbst gerechnet und gemessen hast. Die KI darf dir vorher erklären, wie eine Verdünnungsreihe funktioniert."],
+    ["Du übst für eine Prüfung in der Berufsfachschule und lässt dir von der KI zehn Übungsfragen stellen.","ja","Sehr gut. Die KI als Übungspartnerin hilft beim Lernen. Prüf aber die Antworten, auch KI macht Fehler."],
     ["Für die Lerndokumentation schreibt die KI deinen ganzen Wochenbericht.","nein","Die Lerndokumentation zeigt, was du gelernt hast. Wenn die KI sie schreibt, zeigt sie das nicht mehr. Ideen sammeln oder die Rechtschreibung prüfen lassen ist in Ordnung."],
-    ["Du übst für eine Prüfung in der Berufsfachschule und lässt dir von der KI zehn Übungsfragen stellen.","ja","Sehr gut. Die KI als Übungspartnerin hilft beim Lernen. Prüfe aber die Antworten, auch KI macht Fehler."],
-    ["Die KI schlägt eine Lösung vor, die du nicht verstehst. Du gibst sie trotzdem ab, weil sie funktioniert.","nein","Funktionieren reicht nicht. Lass dir die Lösung Schritt für Schritt erklären, bis du sie selbst erklären kannst. Erst dann gibst du sie ab."],
-    ["Du schreibst eine E-Mail an ein Projektteam im Ausland. Mit dem KI-Werkzeug, das der Betrieb freigegeben hat, übersetzt du sie ins Englische und liest sie vor dem Senden durch.","ja","In Ordnung. Du nutzt ein freigegebenes Werkzeug und bleibst für den Inhalt verantwortlich. Darum ist das Durchlesen vor dem Senden wichtig."]
+    ["Du schreibst eine E-Mail an ein Projektteam im Ausland. Mit dem KI-Werkzeug, das der Betrieb freigegeben hat, übersetzt du sie ins Englische und liest sie vor dem Senden durch.","ja","In Ordnung. Du nutzt ein freigegebenes Werkzeug und bleibst für den Inhalt verantwortlich. Darum ist das Durchlesen vor dem Senden wichtig."],
+    ["Die KI schlägt eine Lösung vor, die du nicht verstehst. Du gibst sie trotzdem ab, weil sie funktioniert.","nein","Funktionieren reicht nicht. Lass dir die Lösung Schritt für Schritt erklären, bis du sie selbst erklären kannst. Erst dann gibst du sie ab."]
   ];
-  var L={ja:["Ja","sinnvoll"],teil:["Mit Vorsicht","nur teilweise"],nein:["Nein","nicht erlaubt"]};
+  var L={ja:["Ja","passt so"],teil:["Mit Vorsicht","nur unter Bedingungen"],nein:["Nein","so nicht"]};
   var i=0,score=0,card=document.getElementById('card');
   function later(id){setTimeout(function(){var el=document.getElementById(id);if(el)el.focus()},0)}
   function show(focus){
@@ -68,7 +69,7 @@ button{font:inherit}
       [].forEach.call(card.querySelectorAll('.opt'),function(x){x.disabled=true;if(x.dataset.k===c[1])x.classList.add('ok')});
       if(!ok)b.classList.add('bad');
       document.getElementById('fb').innerHTML='<b>'+(ok?'Richtig eingeschätzt.':'Besser: '+L[c[1]][0]+'.')+'</b>'+c[2]+'<br><button class="btn" id="nx">Weiter</button>';
-      document.getElementById('nx').onclick=function(){i++;show(true)};later('nx');post();
+      var t0=Date.now();document.getElementById('nx').onclick=function(){if(Date.now()-t0<450)return;i++;show(true)};later('nx');post();
     }});
     if(focus)later('cs');post();
   }
