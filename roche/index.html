@@ -245,8 +245,7 @@ footer p{max-width:none;margin:0}
 .pairs{display:grid;gap:56px;margin-bottom:24px}
 .pair-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 56px;position:relative;padding-top:32px;border-top:2px solid var(--ink);scroll-margin-top:96px}
 .pair-row .was{display:flex;flex-direction:column;gap:10px;padding-right:8px}
-.pair-row .wie{background:var(--white);border-radius:var(--r-l);border-left:5px solid var(--signal);box-shadow:var(--shadow);padding:30px 32px;display:flex;flex-direction:column;gap:12px}
-.pair-row .arrow{position:absolute;left:calc((100% - 56px) * 5 / 12 + 8px);top:calc(50% + 16px);width:40px;height:40px;border-radius:50%;background:var(--signal);color:var(--ink);display:grid;place-items:center;font-size:20px;font-weight:700;translate:0 -50%;z-index:1}
+.pair-row .wie{background:var(--white);border-radius:var(--r-l);border-left:5px solid var(--signal);box-shadow:var(--shadow);padding:30px 32px;align-self:start;display:flex;flex-direction:column;gap:12px}
 .pair-row .lab{margin:0;font-size:14px;font-weight:700;color:var(--muted)}
 .pair-row .wie .lab{color:var(--ink-2)}
 .pair-row .was h3{font-size:22px;color:var(--ink-2)}
@@ -265,13 +264,14 @@ footer p{max-width:none;margin:0}
 .facts dt{color:var(--muted)}
 .facts dd{margin:0;color:var(--ink);font-weight:600}
 .wie .btn{align-self:flex-start;margin-top:4px}
+.pair-row:not(.proto) .wie{background:none;box-shadow:none;border-left:0;border-radius:0;padding:0}
+@media (max-width:900px){.pair-row .wie{margin-top:20px}}
 .wie .status{align-self:flex-start}
 @media (max-width:900px){
   .pairs{gap:44px}
   .pair-row{grid-template-columns:1fr;padding-top:24px}
   .pair-row .was{padding:0 0 4px}
-  .pair-row .arrow{position:static;translate:none;transform:rotate(90deg);margin:8px 0 12px 12px}
-  .pair-row .was img{margin-top:8px}
+    .pair-row .was img{margin-top:8px}
 }
 @media (max-width:600px){.pair-row .wie{padding:22px 20px}}
 #prototypen .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -299,7 +299,7 @@ footer p{max-width:none;margin:0}
     <div class="r-intro">
       <div>
         <h1>Was ich gemacht habe und wie es bei Roche aussehen könnte</h1>
-        <p class="lead">Auf meiner <a href="../">Portfolio-Seite</a> zeige ich, was ich in der Schule und in Weiterbildungen entwickelt habe. Hier übertrage ich fünf dieser Projekte auf die Berufsbildung (Informatik, Labor, KV) und die Weiterbildung von Mitarbeitenden bei Roche. Es sind Ideen von aussen, ohne Einblick in interne Abläufe. Zwei davon können Sie als Prototyp ausprobieren.</p>
+        <p class="lead">Ich suche eine Stelle in der Berufsbildung oder im Learning &amp; Development, spätestens ab August 2027. Auf meiner <a href="../">Portfolio-Seite</a> zeige ich, was ich in der Schule und in Weiterbildungen entwickelt habe. Hier übertrage ich vier dieser Projekte auf die Lehre in Informatik, Labor und KV und auf die Fachleute, die Lernende begleiten. Es sind Ideen von aussen, ohne Einblick in interne Abläufe. Zwei davon können Sie als Prototyp ausprobieren.</p>
       </div>
       <aside>
         <img src="../img/portrait.jpg" alt="Porträt Nico Andreani" width="64" height="64">
@@ -307,54 +307,46 @@ footer p{max-width:none;margin:0}
       </aside>
     </div>
 
-    <nav class="focus five" aria-label="Die fünf Ideen">
+    <nav class="focus" aria-label="Die vier Ideen">
       <a href="#idee-fach"><b>Fachbegriff-Trainer</b><span>Englisch für Informatik, Labor und KV</span></a>
-      <a href="#idee-ki"><b>KI-Führerschein</b><span>Klare Regeln, im Alltag geübt</span></a>
-      <a href="#idee-fachleute"><b>Fachleute, die gut weitergeben</b><span>Kurze Workshops für Berufsbildende</span></a>
-      <a href="#idee-start"><b>Start in die Lehre</b><span>Die ersten Wochen als Missionen</span></a>
-      <a href="#idee-auftraege"><b>Üben mit Aufträgen</b><span>Realistische Aufgaben mit Stufen</span></a>
+      <a href="#idee-ki"><b>Was Lernende mit KI dürfen</b><span>Fälle aus der Lehre, vom Code bis zum Laborjournal</span></a>
+      <a href="#idee-fachleute"><b>Praxisbildende stärken</b><span>Kurze Workshops ergänzend zum Berufsbildnerkurs</span></a>
+      <a href="#idee-auftraege"><b>Aufträge wie im Betrieb</b><span>Üben mit Aufgaben, die schwieriger werden</span></a>
     </nav>
 
     <div class="pairs">
 
-      <article class="pair-row" id="idee-fach">
+      <article class="pair-row proto" id="idee-fach">
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Wörter-Trainer auf unsereklasse.ch</h3>
           <p>Meine Klassen üben Wörter in sechs Stufen, von der Karte bis zum Schreiben ohne Hilfe. Was sitzt, kommt seltener, Fehler kommen öfter.</p>
           <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch" loading="lazy">
         </div>
-        <div class="arrow" aria-hidden="true">→</div>
         <div class="wie">
           <p class="lab">Für Roche</p>
           <h2>Fachbegriff-Trainer für Lernende</h2>
-          <p>Fachbegriffe und Englisch, die Lernende im Betrieb täglich brauchen, in fünf Minuten auf dem Handy. Pro Beruf eine eigene Liste, ausgewählt mit den Berufsbildnerinnen und Berufsbildnern.</p>
-          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage zum Begriff fume hood" loading="lazy"><figcaption><b>Prototyp.</b> Stufe 2 von 3 im Labor: «fume hood» richtig zugeordnet.</figcaption></figure>
+          <p>Fachbegriffe und Englisch, die Lernende im Betrieb täglich brauchen, in fünf Minuten auf dem Handy. Jeder Beruf hat seine eigene Liste. Welche Begriffe hineinkommen, entscheiden die Berufsbildnerinnen und Berufsbildner.</p>
+          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage zum Begriff fume hood" loading="lazy"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Was heisst «fume hood»?</figcaption></figure>
           <a class="btn primary" href="#screen" data-proto="fach">Prototyp ausprobieren</a>
         </div>
       </article>
 
-      <article class="pair-row" id="idee-ki">
+      <article class="pair-row proto" id="idee-ki">
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Pädagogischer ICT-Support</h3>
-          <p>An der Sekundarschule Frenkendorf habe ich im Zweierteam das Digitalisierungskonzept erarbeitet: digitale Grundkompetenzen für alle Lehrpersonen festgelegt, das Kollegium geschult und die Kompetenzen überprüft.</p>
+          <p>An der Sekundarschule Frenkendorf habe ich im Zweierteam das Digitalisierungskonzept erarbeitet. Wir haben festgelegt, was alle Lehrpersonen digital können sollen, das Kollegium geschult und am Schluss überprüft, ob es sitzt.</p>
           <dl class="facts">
             <div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div>
             <div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div>
-            <div><dt>Ergebnis</dt><dd>Kompetenzraster, Schulungen, Überprüfung</dd></div>
           </dl>
         </div>
-        <div class="arrow" aria-hidden="true">→</div>
         <div class="wie">
           <p class="lab">Für Roche</p>
           <h2>Ein KI-Führerschein für Lernende</h2>
-          <ul>
-            <li>klar beschrieben, was Lernende im Umgang mit KI können sollen, abgestimmt auf die Richtlinien des Betriebs</li>
-            <li>eine kurze Einheit mit Situationen aus dem Alltag in der Lehre, vom Code bis zum Laborjournal</li>
-            <li>zum Abschluss eine eigene Aufgabe mit KI lösen und das Vorgehen begründen</li>
-          </ul>
-          <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe" loading="lazy"><figcaption><b>Prototyp.</b> Situation 3 von 7: Werte aus der KI direkt ins Laborjournal?</figcaption></figure>
+          <p>Zuerst würde ich mit den Verantwortlichen klären, was Lernende mit KI dürfen. Daraus wird eine kurze Einheit mit Fällen aus der Lehre, vom Code bis zum Laborjournal. Zum Abschluss löst jede und jeder eine eigene Aufgabe mit KI und erklärt das Vorgehen.</p>
+          <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe" loading="lazy"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, und die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#screen" data-proto="ki">Prototyp ausprobieren</a>
         </div>
       </article>
@@ -366,32 +358,11 @@ footer p{max-width:none;margin:0}
           <p>Seit 2022 habe ich über zehn Kurse konzipiert und geleitet, etwa zu digitalem Prüfen, Gamification und Auftreten vor Gruppen. Die Tafel-Werkzeuge aus meiner App Lektoplan habe ich an einem Teamanlass mit dem Kollegium eingesetzt.</p>
           <img class="shot" src="../img/lk-tafel.jpg" alt="Digitale Tafel aus Lektoplan" loading="lazy">
         </div>
-        <div class="arrow" aria-hidden="true">→</div>
         <div class="wie">
           <p class="lab">Für Roche</p>
-          <h2>Fachleute, die gut weitergeben</h2>
-          <p>Viele Mitarbeitende geben ihr Wissen an Lernende oder neue Kolleginnen und Kollegen weiter. Kurze Workshops können dabei helfen: wie man eine Arbeit in Schritten zeigt, wie man prüft, ob etwas sitzt, und wie man Rückmeldung gibt. Umfragen und Wortwolken laufen auf den freigegebenen Plattformen des Betriebs.</p>
-          <figure><img class="shot" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage" loading="lazy"><figcaption><b>Skizze.</b> Einstieg in einen Workshop: Was hat dir am Anfang geholfen?</figcaption></figure>
-        </div>
-      </article>
-
-      <article class="pair-row" id="idee-start">
-        <div class="was">
-          <p class="lab">Bisher</p>
-          <h3>Das Logbuch</h3>
-          <p>Ein Lernspiel mit Dossier: Die Klasse erlebt die Zeit um 1500 als Reise durch neun Stationen. Spiel und Papier wechseln sich ab, ein Handbuch mit Minutenplan begleitet die Lehrperson.</p>
-          <img class="shot" src="../img/lb-lissabon.jpg" alt="Spielszene aus dem Logbuch" loading="lazy">
-        </div>
-        <div class="arrow" aria-hidden="true">→</div>
-        <div class="wie">
-          <p class="lab">Für Roche</p>
-          <h2>Der Start in die Lehre als Mission</h2>
-          <ul>
-            <li>die ersten Wochen als Folge kleiner Missionen: Sicherheit im Labor, Standort, Ansprechpersonen, erste Aufgaben</li>
-            <li>Fortschritt auf dem Handy, dazu ein gedrucktes Begleitheft</li>
-            <li>ein kurzer Leitfaden für Berufsbildnerinnen und Berufsbildner mit Ablauf und Material</li>
-          </ul>
-          <figure><img class="shot" src="../img/roche-start.jpg" alt="Skizze: Missionen der ersten Lehrwoche auf dem Handy und ein Begleitheft" loading="lazy"><figcaption><b>Skizze.</b> Woche 1: zwei Missionen erledigt, die dritte läuft.</figcaption></figure>
+          <h2>Praxisbildende stärken</h2>
+          <p>In den Abteilungen geben viele Fachleute ihr Wissen an Lernende weiter. Ergänzend zum Berufsbildnerkurs würde ich mit kurzen Workshops anfangen: wie man eine Arbeit vorzeigt und danach merkt, ob sie sitzt. Für Umfragen und Wortwolken nehme ich, was bei Roche schon freigegeben ist.</p>
+          <figure><img class="shot" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage" loading="lazy"><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
         </div>
       </article>
 
@@ -399,15 +370,14 @@ footer p{max-width:none;margin:0}
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Netzbau AG</h3>
-          <p>Eine Informatik-Einheit, in der Jugendliche für eine erfundene Firma Netzwerke planen: acht Stufen, eine Profi-Liga für Schnelle und ein Live-Duell am Beamer. Erstmals im Herbst 2026 mit einer 7. Klasse durchgeführt.</p>
+          <p>Eine Informatik-Einheit, in der Jugendliche für eine erfundene Firma Netzwerke planen, mit acht Stufen und einem Live-Duell am Beamer. Erstmals im Herbst 2026 mit einer 7. Klasse durchgeführt.</p>
           <img class="shot" src="../img/nb_live.jpg" alt="Prim-Trainer der Netzbau AG" loading="lazy">
         </div>
-        <div class="arrow" aria-hidden="true">→</div>
         <div class="wie">
           <p class="lab">Für Roche</p>
-          <h2>Üben mit realistischen Aufträgen</h2>
-          <p>Grundlagen wie Netzwerke, Datenbanken oder Abläufe als Folge von Aufträgen aus einem realistischen Betrieb, zum Beispiel in überbetrieblichen Kursen. Hilfen fallen Stufe um Stufe weg, wer schneller ist, wechselt in die Profi-Liga. Ein kurzes Team-Duell schliesst den Kurstag ab.</p>
-          <figure><img class="shot" src="../img/roche-kurstag.jpg" alt="Skizze: Auftragsliste eines Kurstags mit vier Aufträgen" loading="lazy"><figcaption><b>Skizze.</b> Auftrag 2 von 4, das Team-Duell folgt nach dem Mittag.</figcaption></figure>
+          <h2>Aufträge wie im Betrieb</h2>
+          <p>Grundlagen wie Netzwerke, Datenbanken oder Abläufe als Folge von Aufträgen aus einem erfundenen, aber typischen Betrieb, zum Beispiel in überbetrieblichen Kursen. Die Hilfen fallen nach und nach weg. Wer schneller ist, bekommt schwierigere Aufträge, und am Ende des Kurstags treten die Teams gegeneinander an.</p>
+          <figure><img class="shot" src="../img/roche-kurstag.jpg" alt="Skizze: Auftragsliste eines Kurstags mit vier Aufträgen" loading="lazy"><figcaption><b>Skizze.</b> Der Morgen eines Kurstags. Das Duell kommt nach dem Mittag.</figcaption></figure>
         </div>
       </article>
     </div>
@@ -417,7 +387,7 @@ footer p{max-width:none;margin:0}
     <div class="wrap">
       <div class="sec-head">
         <h2>Selbst ausprobieren</h2>
-        <p>Zwei der Ideen als Prototyp mit Beispielinhalten. Die Lernenden werden darin geduzt.</p>
+        <p>Zwei der Ideen als unabhängige Prototypen mit Beispielinhalten, nicht von Roche. Die Lernenden werden darin geduzt.</p>
       </div>
       <div class="stage">
         <div class="tabs" role="tablist" aria-label="Prototypen">
@@ -434,7 +404,7 @@ footer p{max-width:none;margin:0}
     <div class="contact-box">
       <div>
         <h2>Gerne bespreche ich das mit Ihnen</h2>
-        <p>Diese Ideen sind ein Anfang. Wie sie bei Roche tatsächlich aussehen müssten, würde ich gerne gemeinsam mit den Berufsbildnerinnen, Berufsbildnern und Lernenden herausfinden.</p>
+        <p>Ob das zu Ihren Lehrgängen passt, möchte ich mit Ihren Berufsbildnerinnen, Berufsbildnern und Lernenden herausfinden. Die Prototypen zeige ich Ihnen gerne in zwanzig Minuten, in Basel oder online.</p>
       </div>
       <div>
         <dl>
