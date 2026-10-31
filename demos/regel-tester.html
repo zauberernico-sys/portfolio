@@ -1,0 +1,196 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Regel-Tester Smart Home</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: links das Haus im Schnitt als Bühne, rechts zwei Karten (Sensoren, Regel); unter 860px gestapelt. Ein fester heller Bauplan-Look, passend zum Dossier. */
+
+:root{--ink:#131A33;--paper:#F1F4FB;--grid:#D5DEF5;--card:#FFFFFF;--blue:#2447F5;--blue-ink:#1D3BD6;--orange:#FF7A1A;--warn:#FFE2C7;--night:#101633;--room:#FFFFFF;--room-dark:#B9C2DE;--glow:#FFE08A;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;color:var(--ink);font-family:'Instrument Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:18px;line-height:1.4}
+.wrap{max-width:1360px;margin:0 auto;padding-block:14px 20px;padding-inline:20px;display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-family:'Bricolage Grotesque','Arial Black','Segoe UI',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,40px);line-height:1;letter-spacing:-.012em;text-wrap:balance}
+.mono{font-family:'DM Mono','Consolas','Courier New',monospace;letter-spacing:.05em;text-transform:uppercase;font-size:13px}
+.lbl{color:var(--blue-ink)}
+.main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{position:relative;border:2px solid var(--ink);background:#DCE8FF;min-width:0;transition:background .4s}
+.stage.night{background:var(--night)}
+.stage svg{display:block;width:100%;height:auto}
+.status{display:flex;flex-wrap:wrap;gap:8px;padding:10px 12px;border-top:2px solid var(--ink);background:var(--card);min-height:54px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);padding:4px 10px;background:var(--card);font-weight:600;font-size:16px}
+.chip.on{background:var(--ink);color:#fff}
+.chip.warn{background:var(--warn);border-style:dashed}
+.side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.left{display:flex;flex-direction:column;gap:12px;min-width:0}
+.pre{display:flex;flex-direction:column;gap:8px}
+.card{position:relative;background:var(--card);border:2px solid var(--ink);padding:12px 16px 14px;display:flex;flex-direction:column;gap:8px}
+.card>.mono.lbl{position:absolute;left:-2px;top:-24px}
+.side .card{margin-top:22px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px}
+.row>span{font-weight:600}
+.seg{display:inline-flex;border:2px solid var(--ink)}
+.seg button{font:inherit;font-weight:600;min-width:74px;min-height:40px;padding:4px 12px;border:0;background:var(--card);color:var(--ink);cursor:pointer}
+.seg button+button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+input[type=range]{width:150px;accent-color:var(--ink)}
+.temp{display:flex;align-items:center;gap:10px}
+.temp output{font-family:'DM Mono','Consolas',monospace;min-width:58px;text-align:right}
+.rule{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center}
+.rule .k{font-family:'DM Mono','Consolas','Courier New',monospace;font-weight:500;font-size:18px}
+select{font:inherit;font-weight:600;width:100%;min-height:44px;padding:6px 10px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:0}
+.verdict{font-family:'DM Mono','Consolas','Courier New',monospace;font-size:16px;padding:10px 12px;border:2px solid var(--ink);background:var(--paper)}
+.verdict.yes{background:var(--blue);color:#fff;border-color:var(--blue)}
+.presets{display:flex;flex-wrap:wrap;gap:8px}
+.presets button{font:inherit;font-family:'DM Mono','Consolas','Courier New',monospace;font-size:14px;min-height:40px;padding:6px 9px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;text-align:left}
+.presets button:hover{background:var(--paper)}
+.hint{font-size:15px}
+/* Haus */
+.ln{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.room{fill:var(--room);transition:fill .35s}
+.night .room{fill:var(--room-dark)}
+.night .room.lit,.room.lit{fill:var(--glow)}
+.night .sky-ln{stroke:#E8EDFF}
+.hide{display:none}
+@media (prefers-reduced-motion:no-preference){.blink{animation:bl .7s steps(2,end) infinite}}
+@keyframes bl{50%{opacity:.25}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Regel-Tester</h1>
+  <div class="hint" style="max-width:640px">Schalte die Sensoren um und beobachte das Haus. Wann tut die Regel etwas Unsinniges? Repariere sie mit einer zweiten Bedingung.</div>
+</header>
+
+<div class="main">
+  <div class="left">
+  <div class="stage" id="stage">
+    <svg viewBox="0 0 520 330" role="img" aria-labelledby="hausTitel">
+      <title id="hausTitel">Haus im Schnitt. Lampe, Heizung, Storen und Sirene reagieren auf die Regel.</title>
+      <!-- Himmel -->
+      <g id="sun"><circle cx="62" cy="58" r="20" fill="#FFB020"/><path class="ln" stroke="#FFB020" d="M62 24v-10M62 102v-10M28 58H18M106 58H96M38 34l-7-7M93 89l-7-7M38 82l-7 7M93 27l-7 7" style="stroke:#FFB020"/></g>
+      <g id="moon" class="hide"><path d="M74 38a24 24 0 1 0 12 40a20 20 0 0 1-12-40z" fill="#E8EDFF"/><circle cx="30" cy="30" r="1.8" fill="#E8EDFF"/><circle cx="110" cy="96" r="1.8" fill="#E8EDFF"/><circle cx="470" cy="44" r="1.8" fill="#E8EDFF"/><circle cx="430" cy="90" r="1.5" fill="#E8EDFF"/></g>
+      <!-- Zimmer (Flächen) -->
+      <path class="room" d="M110 112V96L260 36l150 60v16z"/>
+      <rect class="room" id="rBad" x="110" y="112" width="140" height="92"/>
+      <rect class="room" id="rZimmer" x="250" y="112" width="160" height="92"/>
+      <rect class="room" id="rGang" x="110" y="204" width="120" height="92"/>
+      <rect class="room" id="rWohnen" x="230" y="204" width="180" height="92"/>
+      <!-- Linien -->
+      <path class="ln sky-ln" d="M24 296H496"/>
+      <path class="ln" d="M90 104L260 36l170 68"/>
+      <path class="ln" d="M110 96V296M410 96V296M110 112H410M110 204H410M250 112V204M230 204V296"/>
+      <path class="ln" d="M322 61V30h26v41"/>
+      <!-- Fenster mit Storen (Zimmer oben links) -->
+      <rect class="ln" x="140" y="132" width="62" height="46" fill="#DCE8FF" id="pane"/>
+      <path class="ln" d="M171 132v46" id="paneBar"/>
+      <path class="ln hide" id="winOpen" d="M202 132l22 8v38l-22 0" fill="#fff"/>
+      <g id="storen" class="hide"><rect x="140" y="132" width="62" height="46" fill="#131A33"/><path d="M140 141h62M140 150h62M140 159h62M140 168h62" stroke="#fff" stroke-width="1.6"/></g>
+      <!-- Heizung -->
+      <g id="heizung"><rect class="ln" x="146" y="184" width="50" height="16" rx="3" id="heizBox" fill="#fff"/><path class="ln" d="M156 184v16M166 184v16M176 184v16M186 184v16"/></g>
+      <g id="waerme" class="hide"><path d="M152 178c-4-6 4-8 0-14M171 178c-4-6 4-8 0-14M190 178c-4-6 4-8 0-14" fill="none" stroke="#FF7A1A" stroke-width="2.6" stroke-linecap="round"/></g>
+      <!-- Bett -->
+      <path class="ln" d="M276 204v-36M276 186h100v18M276 178h22a6 6 0 0 1 6 6v2"/>
+      <!-- Rauch -->
+      <g id="rauch" class="hide"><circle cx="350" cy="140" r="12" fill="#8C93A8"/><circle cx="366" cy="132" r="15" fill="#8C93A8"/><circle cx="384" cy="142" r="11" fill="#8C93A8"/></g>
+      <circle cx="330" cy="118" r="5" fill="#fff" class="ln"/>
+      <!-- Tür, Treppe -->
+      <path class="ln" d="M128 296V242h34v54"/><circle cx="154" cy="270" r="2" fill="#131A33"/>
+      <path class="ln" d="M176 296v-18h18v-18h18v-18h18v-18"/>
+      <!-- Lampe, Sofa -->
+      <path class="ln" d="M330 204v16"/>
+      <path id="lampe" class="ln" d="M316 236l14-16 14 16z" fill="#fff"/>
+      <path id="strahlen" class="hide" d="M312 246l-8 12M330 250v14M348 246l8 12" fill="none" stroke="#FF7A1A" stroke-width="2.6" stroke-linecap="round"/>
+      <rect class="ln" x="346" y="262" width="54" height="14" rx="3" fill="#fff"/><rect class="ln" x="340" y="272" width="66" height="14" rx="4" fill="#fff"/><path class="ln" d="M346 286v10M400 286v10"/>
+      <!-- Person -->
+      <g id="person" class="hide"><circle cx="270" cy="246" r="9" fill="#2447F5"/><path d="M270 256v22M270 262l-12 10M270 262l12 8M270 278l-9 18M270 278l9 18" fill="none" stroke="#2447F5" stroke-width="4" stroke-linecap="round"/></g>
+      <!-- Sirene -->
+      <g id="sirene"><path class="ln" d="M248 66v-10a12 12 0 0 1 24 0v10z" fill="#fff" id="sirBox"/><path class="ln" d="M242 66h36"/></g>
+      <g id="alarm" class="hide blink"><path d="M236 46l-10-6M284 46l10-6M260 34V22" fill="none" stroke="#FF7A1A" stroke-width="3.2" stroke-linecap="round"/></g>
+    </svg>
+    <div class="status" id="status" aria-live="polite"></div>
+  </div>
+  <div class="pre">
+      <div class="mono">Regeln mit einem Fehler zum Ausprobieren</div>
+      <div class="presets">
+        <button type="button" id="p1" data-p="bew,,licht">WENN Bewegung DANN Licht an</button>
+        <button type="button" id="p2" data-p="kalt,,heiz">WENN Temperatur &lt; 20 °C DANN Heizung an</button>
+        <button type="button" id="p3" data-p="dunkel,,licht">WENN dunkel DANN Licht an</button>
+      </div>
+  </div>
+  </div>
+
+  <div class="side">
+    <section class="card" aria-labelledby="sTitel">
+      <div class="mono lbl" id="sTitel">Eingabe: die Sensoren</div>
+      <div class="row"><span>Bewegung im Wohnzimmer</span><div class="seg" role="group" aria-label="Bewegung"><button type="button" id="bewNein" data-k="bew" data-v="0">nein</button><button type="button" id="bewJa" data-k="bew" data-v="1">ja</button></div></div>
+      <div class="row"><span>Helligkeit draussen</span><div class="seg" role="group" aria-label="Helligkeit"><button type="button" id="hellJa" data-k="hell" data-v="1">hell</button><button type="button" id="hellNein" data-k="hell" data-v="0">dunkel</button></div></div>
+      <div class="row"><label for="temp"><span style="font-weight:600">Temperatur im Zimmer</span></label><div class="temp"><input type="range" id="temp" min="12" max="28" step="1" value="21"><output id="tempOut" for="temp">21 °C</output></div></div>
+      <div class="row"><span>Fenster</span><div class="seg" role="group" aria-label="Fenster"><button type="button" id="fenZu" data-k="fen" data-v="0">zu</button><button type="button" id="fenOffen" data-k="fen" data-v="1">offen</button></div></div>
+      <div class="row"><span>Rauch</span><div class="seg" role="group" aria-label="Rauch"><button type="button" id="rauchNein" data-k="rauch" data-v="0">nein</button><button type="button" id="rauchJa" data-k="rauch" data-v="1">ja</button></div></div>
+    </section>
+
+    <section class="card" aria-labelledby="rTitel">
+      <div class="mono lbl" id="rTitel">Verarbeitung: die Regel</div>
+      <div class="rule">
+        <label class="k" for="c1">WENN</label><select id="c1"></select>
+        <label class="k" for="c2">UND</label><select id="c2"></select>
+        <label class="k" for="act">DANN</label><select id="act"></select>
+      </div>
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+    </section>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var S={bew:0,hell:1,temp:21,fen:0,rauch:0};
+  var R={c1:'bew',c2:'',act:'licht'};
+  var CONDS=[['bew','Bewegung',function(){return S.bew}],['nbew','keine Bewegung',function(){return !S.bew}],['dunkel','dunkel',function(){return !S.hell}],['hell','hell',function(){return !!S.hell}],['kalt','Temperatur < 20 °C',function(){return S.temp<20}],['warm','Temperatur > 24 °C',function(){return S.temp>24}],['fzu','Fenster zu',function(){return !S.fen}],['foffen','Fenster offen',function(){return !!S.fen}],['rauch','Rauch',function(){return !!S.rauch}]];
+  var ACTS=[['licht','Licht an'],['heiz','Heizung an'],['storen','Storen runter'],['sirene','Sirene an']];
+  var $=function(id){return document.getElementById(id)};
+  function fill(sel,list,empty){sel.innerHTML='';if(empty){var o=document.createElement('option');o.value='';o.textContent='(keine zweite Bedingung)';sel.appendChild(o)}list.forEach(function(c){var o=document.createElement('option');o.value=c[0];o.textContent=c[1];sel.appendChild(o)})}
+  function cond(k){for(var i=0;i<CONDS.length;i++)if(CONDS[i][0]===k)return CONDS[i];return null}
+  function show(id,on){$(id).classList.toggle('hide',!on)}
+  function render(){
+    document.querySelectorAll('.seg button').forEach(function(b){b.setAttribute('aria-pressed',String(S[b.dataset.k]==+b.dataset.v))});
+    $('tempOut').textContent=S.temp+' °C';
+    $('c1').value=R.c1;$('c2').value=R.c2;$('act').value=R.act;
+    var a=cond(R.c1),b=R.c2?cond(R.c2):null;
+    var ok=!!a[2]()&&(!b||!!b[2]());
+    var on={licht:ok&&R.act==='licht',heiz:ok&&R.act==='heiz',storen:ok&&R.act==='storen',sirene:ok&&R.act==='sirene'};
+    $('stage').classList.toggle('night',!S.hell);
+    show('sun',S.hell);show('moon',!S.hell);show('person',S.bew);show('rauch',S.rauch);show('winOpen',S.fen);
+    show('strahlen',on.licht);$('lampe').setAttribute('fill',on.licht?'#FFB020':'#fff');$('rWohnen').classList.toggle('lit',on.licht);
+    show('waerme',on.heiz);$('heizBox').setAttribute('fill',on.heiz?'#FF7A1A':'#fff');
+    show('storen',on.storen);show('alarm',on.sirene);$('sirBox').setAttribute('fill',on.sirene?'#FF7A1A':'#fff');
+    var actName=ACTS.filter(function(x){return x[0]===R.act})[0][1];
+    var txt='WENN '+a[1]+(b?' UND '+b[1]:'')+' DANN '+actName;
+    var v=$('verdict');v.classList.toggle('yes',ok);
+    v.textContent=(ok?'Regel erfüllt: ':'Regel nicht erfüllt: ')+txt;
+    var chips=[];
+    chips.push(['Licht '+(on.licht?'an':'aus'),on.licht]);chips.push(['Heizung '+(on.heiz?'an':'aus'),on.heiz]);chips.push(['Storen '+(on.storen?'unten':'oben'),on.storen]);chips.push(['Sirene '+(on.sirene?'an':'aus'),on.sirene]);
+    var warn=[];
+    if(on.licht&&S.hell)warn.push('Das Licht brennt, obwohl es hell ist.');
+    if(on.licht&&!S.bew)warn.push('Das Licht brennt, obwohl niemand im Zimmer ist.');
+    if(on.heiz&&S.fen)warn.push('Die Heizung läuft bei offenem Fenster.');
+    if(on.storen&&!S.hell)warn.push('Die Storen sind unten, obwohl es dunkel ist.');
+    if(R.act==='sirene'&&S.rauch&&!on.sirene)warn.push('Es raucht, aber keine Sirene warnt.');
+    if(on.sirene&&!S.rauch)warn.push('Die Sirene heult ohne Rauch.');
+    var st=$('status');st.innerHTML='';
+    chips.forEach(function(c){var d=document.createElement('span');d.className='chip'+(c[1]?' on':'');d.textContent=c[0];st.appendChild(d)});
+    warn.forEach(function(w){var d=document.createElement('span');d.className='chip warn';d.textContent=w;st.appendChild(d)});
+  }
+  fill($('c1'),CONDS,false);fill($('c2'),CONDS,true);fill($('act'),ACTS,false);
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){S[b.dataset.k]=+b.dataset.v;render()})});
+  $('temp').addEventListener('input',function(e){S.temp=+e.target.value;render()});
+  ['c1','c2','act'].forEach(function(id){$(id).addEventListener('change',function(e){R[id]=e.target.value;render()})});
+  document.querySelectorAll('.presets button').forEach(function(b){b.addEventListener('click',function(){var p=b.dataset.p.split(',');R.c1=p[0];R.c2=p[1];R.act=p[2];render()})});
+  render();
+})();
+</script>
+
+</body></html>

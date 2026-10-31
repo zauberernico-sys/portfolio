@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projektportfolio Nico Andreani</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Lernangebote für Jugendliche und Erwachsene: Unterrichtsreihen, Lernspiele, Weiterbildungen und digitale Werkzeuge von Nico Andreani, Basel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: ruhige, linksbündige Seite. Laut ist nur die dunkle Demo-Bühne; Material (Dossiers, Handbücher) wird gezeigt statt aufgezählt. */
+:root{
+  --ink:#15283A;
+  --ink-2:#2E4A62;
+  --muted:#566778;
+  --paper:#F3F5F7;
+  --white:#FFFFFF;
+  --line:#D6DDE4;
+  --tint:#E8EDF2;
+  --signal:#F4C542;
+  --live-bg:#DDEFE2; --live-fg:#1D6234;
+  --soon-bg:#E8EDF2; --soon-fg:#3C556C;
+  --stage:#0F1C2A;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-s:6px; --r-m:12px; --r-l:20px;
+  --shadow:0 1px 2px rgba(21,40,58,.06),0 8px 24px rgba(21,40,58,.09);
+  --paper-shadow:0 1px 2px rgba(21,40,58,.10),0 12px 32px rgba(21,40,58,.16);
+  --maxw:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink-2);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--signal);border-radius:4px}
+.stage :focus-visible{outline-color:var(--signal);box-shadow:none}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h4{font-family:var(--body);font-weight:700;margin:0;font-size:17px}
+p{margin:0 0 1em;max-width:66ch}
+ul{margin:0;padding-left:20px}
+li+li{margin-top:5px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}body{font-size:18px}}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(243,245,247,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+.brand{text-decoration:none;color:var(--ink);line-height:1.15}
+.brand b{display:block;font-family:var(--display);font-size:19px}
+.brand span{font-size:14px;color:var(--muted)}
+.top nav{display:flex;gap:24px}
+.top nav a{color:var(--ink);text-decoration:none;font-size:16px;font-weight:600;padding:6px 0}
+.top nav a:hover{box-shadow:inset 0 -3px var(--signal)}
+@media (max-width:860px){.top nav a:not(.keep){display:none}}
+
+.intro{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;padding:64px 0 48px;align-items:center}
+@media (max-width:900px){.intro{grid-template-columns:1fr;gap:28px;padding:40px 0 32px}}
+.intro h1{font-size:clamp(36px,4.6vw,60px);max-width:16ch}
+.hero-actions{margin-top:26px}
+.lead{font-size:clamp(19px,1.8vw,21px);margin:24px 0 0;max-width:52ch}
+.who{margin:24px 0 0;font-size:16px;color:var(--muted);display:flex;gap:16px;align-items:center}
+.who img{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:0 0 auto;background:#fff;box-shadow:var(--shadow)}
+.who p{margin:0;max-width:52ch}
+.who b{color:var(--ink)}
+.covers{position:relative;height:440px}
+.covers img{position:absolute;width:40%;border-radius:4px;box-shadow:var(--paper-shadow);background:#fff}
+.covers img:nth-child(1){left:0;top:70px;transform:rotate(-6deg)}
+.covers img:nth-child(2){left:19%;top:22px;transform:rotate(-2deg);z-index:2}
+.covers img:nth-child(3){left:38%;top:42px;transform:rotate(2deg);z-index:3}
+.covers img:nth-child(4){left:57%;top:82px;transform:rotate(6deg);z-index:4}
+@media (max-width:900px){.covers{height:380px;max-width:560px;margin-left:14px}}
+@media (max-width:600px){.covers{height:280px;margin-bottom:12px}}
+
+.focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);margin-bottom:56px}
+.focus a{display:block;padding:16px 20px 18px 0;text-decoration:none;color:var(--ink)}
+.focus a+a{padding-left:20px;border-left:1px solid var(--line)}
+.focus b{display:block;font-size:18px;margin-bottom:4px}
+.focus span{display:block;font-size:15px;color:var(--muted);line-height:1.4}
+.focus a:hover b{text-decoration:underline;text-decoration-color:var(--signal);text-decoration-thickness:3px}
+@media (max-width:900px){.focus{grid-template-columns:1fr 1fr}.focus a:nth-child(3){padding-left:0;border-left:0}.focus a:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.focus span{display:none}.focus a{padding:12px 12px 12px 0}.focus a+a{padding-left:12px}}
+
+#ausprobieren{scroll-margin-top:76px}
+.stage{background:var(--stage);color:#E7EDF3;border-radius:var(--r-l);overflow:hidden}
+.stage-head{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;padding:28px 32px 0}
+.stage-head h2{font-size:28px;color:#fff}
+.stage-head p{margin:0;font-size:16px;color:#A3B5C6}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:18px 32px}
+.tab{font:inherit;font-size:16px;font-weight:600;color:#E7EDF3;background:#16283A;border:1.5px solid #2B4258;border-radius:var(--r-m);padding:11px 14px;cursor:pointer;text-align:left;line-height:1.25}
+.tab small{display:block;font-size:13px;font-weight:400;color:#9FB2C4;margin-top:2px}
+.tab:hover{border-color:#5D7891}
+.tab[aria-selected="true"]{background:var(--signal);border-color:var(--signal);color:var(--ink)}
+.tab[aria-selected="true"] small{color:#4A4020}
+.screen{position:relative;aspect-ratio:16/10;max-width:100%;background:#08121C;margin:0 32px;border-radius:var(--r-m);overflow:hidden}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(8,18,28,.15),rgba(8,18,28,.6));border:0;cursor:pointer;padding:0}
+.play span{font:700 19px var(--body);background:var(--signal);color:var(--ink);padding:14px 28px;border-radius:var(--r-s);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.play:hover span{background:#FFD866}
+.stage-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:start;padding:18px 32px 28px;font-size:16px;color:#C3D0DC}
+.stage-foot p{margin:0;max-width:74ch;min-height:3lh}
+.stage-foot a{color:#fff;white-space:nowrap;font-weight:600}
+kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:#1E3044;color:#fff;padding:2px 6px;border-radius:4px}
+@media (max-width:900px){.tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px}.tab{flex:0 0 auto;min-width:150px;scroll-snap-align:start}}
+@media (max-width:720px){.stage-foot{grid-template-columns:1fr}}
+@media (max-width:600px){.screen img{object-fit:contain;object-position:center;background:#08121C}.stage-head{padding:22px 16px 0}.tabs{padding:14px 16px}.screen{margin:0 12px;aspect-ratio:auto;height:min(78svh,620px)}.screen img{object-position:left top}.stage-foot{padding:14px 16px 22px}}
+
+.sec{padding-top:112px}
+.sec-head{margin-bottom:40px}
+.sec-head::before{content:"";display:block;width:48px;height:4px;background:var(--signal);margin-bottom:18px}
+.sec-head h2{font-size:clamp(34px,4.4vw,56px)}
+.sec-head p{color:var(--muted);font-size:20px;margin:14px 0 0;max-width:60ch}
+
+.status{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;padding:3px 11px;border-radius:999px;white-space:nowrap;background:var(--tint);color:var(--ink-2);align-self:flex-start}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.status.live{background:var(--live-bg);color:var(--live-fg)}
+.status.soon{background:var(--soon-bg);color:var(--soon-fg)}
+.meta-line{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+
+.shot{border-radius:var(--r-m);box-shadow:var(--shadow);background:#fff;width:100%}
+.page{border-radius:4px;box-shadow:var(--paper-shadow);background:#fff;width:100%}
+
+.adult{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media (max-width:900px){.adult{grid-template-columns:1fr}}
+.card{background:var(--white);border-radius:var(--r-l);padding:30px;display:flex;flex-direction:column;gap:12px;min-width:0;box-shadow:0 1px 2px rgba(21,40,58,.05)}
+@media (max-width:600px){.card{padding:22px}}
+.card h3{font-size:27px}
+.card .subject{color:var(--muted);font-size:16px;margin:0}
+.card p{margin:0}
+.card ul{font-size:17px}
+.card.feature{grid-column:1/-1;border-left:5px solid var(--signal);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:16px 48px}
+.card.feature h3{font-size:32px;margin-top:12px}
+.card.feature .subject{margin-top:8px}
+.card.feature .more-text{margin-top:12px}
+@media (max-width:900px){.card.feature{grid-template-columns:1fr}}
+.card.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px 48px;align-items:center}
+.card.wide .text{display:flex;flex-direction:column;gap:12px}
+@media (max-width:900px){.card.wide{grid-template-columns:1fr}}
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.phones img{aspect-ratio:1/1;object-fit:cover;object-position:top}
+.small{font-size:15px;color:var(--muted)}
+.card .split{border-top:1px solid var(--line);padding-top:14px;margin-top:8px}
+.card .split h4{margin-bottom:6px}
+
+.case{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:"media head" "media body" "mat mat";gap:0 48px;padding:56px 0;border-top:2px solid var(--ink);align-items:start}
+.case.flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"head media" "body media" "mat mat"}
+.case .head{grid-area:head}
+.case .body{grid-area:body}
+.case .media{grid-area:media}
+.case .materials{grid-area:mat}
+.case h3{font-size:clamp(30px,3vw,40px);margin-top:14px}
+.case .subject{color:var(--muted);margin:6px 0 20px;font-size:17px}
+.case .body ul{font-size:17px;margin-bottom:22px}
+.case .body .small{margin-bottom:20px}
+.case figure{margin:0}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.4}
+.materials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.materials img{aspect-ratio:4/3;object-fit:cover;object-position:top}
+.materials figcaption b{color:var(--ink);font-weight:700}
+@media (max-width:900px){
+  .case,.case.flip{grid-template-columns:1fr;grid-template-areas:"head" "media" "body" "mat";gap:0}
+  .case .media{margin:4px 0 24px}
+  .materials{margin-top:28px}
+}
+@media (max-width:600px){.materials{grid-template-columns:1fr 1fr;gap:14px}.materials figure:nth-child(3){grid-column:1/-1}}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:700 16px var(--body);text-decoration:none;padding:11px 18px;border-radius:var(--r-s);border:2px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.primary{background:var(--ink);color:#fff}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--ink-2);border-color:var(--ink-2)}
+@media (max-width:600px){.actions .btn{flex:1 1 100%}}
+
+.units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+@media (max-width:900px){.units{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.units{grid-template-columns:1fr}}
+.unit{display:flex;flex-direction:column;gap:10px}
+.unit img{aspect-ratio:4/5;object-fit:cover;object-position:top;margin-bottom:8px}
+.unit h3{font-size:24px}
+.unit .subject{color:var(--muted);font-size:16px;margin:0}
+.unit p{font-size:17px;margin:0}
+.unit .meta{font-size:15px;color:var(--muted)}
+
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+@media (max-width:1100px) and (min-width:901px){.tools{grid-template-columns:1fr 1fr}.tools .card:last-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:12px 32px;align-items:start}.tools .card:last-child img{grid-row:1/span 5}}
+@media (max-width:900px){.tools{grid-template-columns:1fr}}
+.tools .card img{aspect-ratio:16/10;object-fit:cover;object-position:top}
+
+.process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;position:relative}
+.process::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--ink)}
+.process li{position:relative;padding-top:36px;margin:0}
+.process{counter-reset:s}.process li{counter-increment:s}
+.process li::before{content:counter(s);position:absolute;left:0;top:-4px;width:28px;height:28px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:grid;place-items:center;font:700 13px var(--body);color:var(--ink)}
+.process b{display:block;font-size:18px;margin-bottom:4px}
+.process span{display:block;font-size:15px;color:var(--muted);line-height:1.4}
+@media (max-width:900px){.process{grid-template-columns:1fr;row-gap:18px;margin-left:14px;border-left:2px solid var(--ink);padding-left:30px}.process::before{display:none}.process li{padding-top:0}.process li::before{left:-46px;top:-2px}}
+.example{margin-top:40px;background:var(--white);border-radius:var(--r-l);padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:baseline;box-shadow:0 1px 2px rgba(21,40,58,.05)}
+.example b{font-family:var(--display);font-size:20px}
+.example p{margin:0;font-size:17px}
+@media (max-width:600px){.example{grid-template-columns:1fr}}
+.principles{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px;border-top:2px solid var(--ink);padding-top:28px}
+@media (max-width:900px){.principles{grid-template-columns:1fr;gap:28px}}
+.principles h3{font-size:26px;margin-bottom:12px}
+.principles h3::before{content:"";display:inline-block;width:12px;height:12px;background:var(--signal);margin-right:12px;vertical-align:middle}
+.principles p{font-size:18px;margin:0 0 .8em}
+.toolline{margin-top:28px;font-size:17px;color:var(--muted);max-width:none}
+.toolline b{color:var(--ink)}
+
+.magic{background:var(--stage);color:#E7EDF3;border-radius:var(--r-l);padding:56px 64px;display:grid;gap:18px}
+.magic-label{margin:0;font-size:15px;font-weight:700;color:var(--signal)}
+.magic blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(26px,3.2vw,40px);line-height:1.18;color:#fff;max-width:28ch;letter-spacing:-.015em}
+.magic p:last-child{margin:0;font-size:18px;color:#C3D0DC;max-width:62ch}
+@media (max-width:600px){.magic{padding:32px 22px}}
+.contact{padding-top:112px;padding-bottom:72px}
+.contact-box{background:var(--white);border-radius:var(--r-l);padding:48px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+@media (max-width:900px){.contact-box{grid-template-columns:1fr;padding:28px 22px}}
+.contact h2{font-size:clamp(34px,4.4vw,52px)}
+.contact h2+p{margin-top:16px}
+.contact dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 22px;font-size:19px}
+.contact dt{color:var(--muted)}
+.contact dd{margin:0}
+footer{font-size:14px;color:var(--muted);padding:24px 0 40px;border-top:1px solid var(--line)}
+footer p{max-width:none;margin:0}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start"><b>Nico Andreani</b><span>Lerndesign und Weiterbildung</span></a>
+    <nav aria-label="Seitennavigation">
+      <a class="keep" href="#ausprobieren">Ausprobieren</a>
+      <a href="#erwachsene">Erwachsenenbildung</a>
+      <a href="#projekte">Unterricht</a>
+      <a href="#arbeitsweise">Arbeitsweise</a>
+      <a class="keep" href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <h1>Ich entwickle Unterricht und Weiterbildungen für Jugendliche und Erwachsene.</h1>
+        <p class="lead">Seit 2012 unterrichte ich auf der Sekundarstufe&nbsp;I, unter anderem Medien und Informatik. Viele meiner Schülerinnen und Schüler beginnen nach der 9. Klasse eine Berufslehre. Seit 2022 konzipiere und leite ich zudem Weiterbildungen für Lehrpersonen. Hier zeige ich Material, Handbücher und Demos. Einiges können Sie direkt ausprobieren.</p>
+        <div class="actions hero-actions"><a class="btn primary" href="#ausprobieren">Demos ausprobieren</a><a class="btn" href="#kontakt">Kontakt</a></div>
+        <div class="who"><img src="img/portrait.jpg" alt="Porträt Nico Andreani" width="72" height="72"><p><b>Nico Andreani</b>, Sekundarlehrer (MA, PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich), Englisch C2, Sekundarschule Bäumlihof Basel</p></div>
+      </div>
+      <div class="covers" aria-hidden="true">
+        <img src="img/aa-titel.jpg" alt="">
+        <img src="img/lb-titel.jpg" alt="">
+        <img src="img/sh-titel.jpg" alt="">
+        <img src="img/pe-titel.jpg" alt="">
+      </div>
+    </div>
+
+    <nav class="focus" aria-label="Schwerpunkte">
+      <a href="#netzbau"><b>Informatik unterrichten</b><span>Medien und Informatik, Unterricht auf allen drei Leistungsniveaus</span></a>
+      <a href="#projekte"><b>Lernmaterial entwickeln</b><span>Lernziele, Dossier, Übungen und Prüfung aufeinander abgestimmt</span></a>
+      <a href="#erwachsene"><b>Erwachsene schulen</b><span>Über zehn Weiterbildungen seit 2022, ICT-Support 2022 bis 2026</span></a>
+      <a href="#ki"><b>KI gezielt einsetzen</b><span>Als Werkzeug nutzen und Ergebnisse kritisch prüfen</span></a>
+    </nav>
+
+    <div class="stage" id="ausprobieren">
+      <div class="stage-head"><h2>Selbst ausprobieren</h2><p>Fünf Ausschnitte aus meinem Unterricht, ohne Anmeldung</p></div>
+      <div class="tabs" role="tablist" aria-label="Demos">
+        <button class="tab" role="tab" aria-controls="screen" aria-selected="true" data-demo="netzbau">Prim-Trainer<small>Informatik, im Einsatz</small></button>
+        <button class="tab" role="tab" aria-controls="screen" aria-selected="false" data-demo="woerter">Wörter-Trainer<small>Englisch</small></button>
+        <button class="tab" role="tab" aria-controls="screen" aria-selected="false" data-demo="jahreszeiten">Jahreszeiten<small>Geografie</small></button>
+        <button class="tab" role="tab" aria-controls="screen" aria-selected="false" data-demo="regel">Regel-Tester<small>Informatik</small></button>
+        <button class="tab" role="tab" aria-controls="screen" aria-selected="false" data-demo="logbuch">Das Logbuch<small>Geschichte, Lernspiel</small></button>
+      </div>
+      <div class="screen" id="screen" role="tabpanel" aria-live="polite"></div>
+      <div class="stage-foot">
+        <p id="demo-hint"></p>
+        <a id="demo-open" href="#" target="_blank" rel="noopener">In neuem Fenster öffnen</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="erwachsene">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Erwachsenenbildung</h2>
+        <p>Neben dem Unterricht bilde ich Lehrpersonen weiter und führe Teams in neue Werkzeuge ein.</p>
+      </div>
+      <div class="adult">
+        <article class="card feature">
+          <div>
+            <span class="meta-line">Seit 2022</span>
+            <h3>Weiterbildungen für Lehrpersonen</h3>
+            <p class="subject">Kursleiter in Liestal und Olten, unter anderem für das Amt für Volksschulen Basel-Landschaft</p>
+          </div>
+          <div>
+            <p>Seit 2022 habe ich über zehn Kurse konzipiert und geleitet, dazu interne Weiterbildungen an meiner Schule. Themen waren unter anderem:</p>
+            <ul>
+              <li>digitale Arbeitsblätter und digitales Prüfen</li>
+              <li>Gamification im Unterricht</li>
+              <li>vor Gruppen auftreten, mit Techniken aus meiner Bühnenerfahrung als Zauberkünstler</li>
+            </ul>
+            <p class="more-text">Ich habe digitale Prüfungswerkzeuge getestet und verglichen und den Kanton Basel-Landschaft bei der Auswahl von Lehrmitteln unterstützt. Ich bin BookWidgets Ambassador.</p>
+          </div>
+        </article>
+        <article class="card">
+          <span class="meta-line">2022 bis 2026</span>
+          <h3>Pädagogischer ICT-Support</h3>
+          <p class="subject">Sekundarschule Frenkendorf</p>
+          <ul>
+            <li>Digitalisierungskonzept der Schule im Zweierteam erarbeitet</li>
+            <li>digitale Grundkompetenzen für alle Lehrpersonen festgelegt, das Kollegium geschult und die Kompetenzen überprüft</li>
+            <li>Tutorials erstellt und Lehrpersonen bei digitalen Unterrichtseinheiten beraten</li>
+            <li>technischen Support mitgetragen, zeitweise offiziell als technischer ICT-Verantwortlicher</li>
+            <li>ab 2024 die neue Schulwebseite aufgebaut und betreut</li>
+          </ul>
+          <div class="split">
+            <h4>Studierende begleiten</h4>
+            <p>Ich habe Studierende der Pädagogischen Hochschule in ihren Praktika betreut.</p>
+          </div>
+        </article>
+        <article class="card">
+          <span class="status live">Im Einsatz</span>
+          <h3>Eigene App für 14 Tanzlehrpersonen</h3>
+          <p class="subject">Tanzschule Bachata Basel, Geschäftsführer seit 2024</p>
+          <p>Für unsere Tanzschule mit rund 200 Tanzschülerinnen und Tanzschülern habe ich eine App für Stundenplan, Anwesenheiten und Aufgaben entwickelt. Für das Team habe ich Anleitungen und Spickzettel geschrieben. Alle 14 Tanzlehrpersonen arbeiten heute damit.</p>
+          <div class="phones">
+            <img class="shot" src="img/c_baba_stundenplan.jpg" alt="Baba App: Stundenplan auf dem Handy">
+            <img class="shot" src="img/c_baba_games.jpg" alt="Baba Games: kleine Lernspiele zur Musikalität">
+          </div>
+          <p class="small">Mit den «Baba Games» üben die Tanzenden Takt und Musikalität. <a href="https://www.bachata-basel.ch" target="_blank" rel="noopener">bachata-basel.ch</a></p>
+        </article>
+        <article class="card wide">
+          <div class="text">
+            <span class="status live">Am Teamanlass erprobt</span>
+            <h3>Werkzeuge für Workshops</h3>
+            <p class="subject">Digitale Tafel aus Lektoplan</p>
+            <p>Mit Umfrage, Wortwolke, Quiz oder Fragenbox machen die Teilnehmenden per QR-Code mit dem eigenen Handy mit, ohne Konto und ohne App. Die Ergebnisse erscheinen live an der Tafel. An einem Teamanlass meiner Schule habe ich die Werkzeuge mit dem Kollegium eingesetzt.</p>
+          </div>
+          <img class="shot" src="img/lk-tafel.jpg" alt="Digitale Tafel aus Lektoplan">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projekte">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Drei Unterrichtsreihen</h2>
+        <p>Zu jeder Reihe gehören ein gedrucktes Dossier, digitale Übungen und Unterlagen für die Lehrperson.</p>
+      </div>
+
+      <article class="case" id="netzbau">
+        <div class="head">
+          <span class="status live">Im Einsatz seit Oktober 2026</span>
+          <h3>Netzbau AG</h3>
+          <p class="subject">Algorithmus von Prim, Medien und Informatik, 7. Klasse</p>
+        </div>
+        <figure class="media"><img class="shot" src="img/nb-duell.jpg" alt="Beamer-Ansicht des Klassenduells: Spielnummer, Top 3 der Klasse und 14 von 22 Firmen fertig"><figcaption>Klassenduell am Beamer: Alle Teams lösen gleichzeitig dasselbe Netz. Die Firmennamen sind erfunden.</figcaption></figure>
+        <div class="body">
+          <p>Die Klasse arbeitet für eine erfundene Firma und soll für ihre Kunden, vom Kiosk am Rhein bis zum Flughafen, die Geräte möglichst günstig vernetzen. Im Dossier lernen die Jugendlichen die Regel von Prim kennen, im Prim-Trainer üben sie im eigenen Tempo.</p>
+          <ul>
+            <li>Kampagne mit 8 Stufen, Hilfen fallen schrittweise weg</li>
+            <li>Profi-Liga mit 8 weiteren Stufen für Schnelle</li>
+            <li>Live-Klassenduell, Firma gegen Firma</li>
+          </ul>
+          <div class="actions"><button class="btn primary" data-goto="netzbau">Trainer ausprobieren</button><a class="btn" href="https://netzbau.unsereklasse.ch" target="_blank" rel="noopener">netzbau.unsereklasse.ch</a></div>
+        </div>
+        <div class="materials">
+          <figure><img class="page" src="img/nb-dossier.jpg" alt="Dossierseite: Das Firmengeheimnis, der Algorithmus von Prim"><figcaption><b>Dossier</b>, 13 Seiten, mit Lösungen</figcaption></figure>
+          <figure><img class="shot" style="object-position:left top" src="img/nb-folie.jpg" alt="Folie: Welche Leitung jetzt? Prim Schritt für Schritt"><figcaption><b>Präsentation</b>, 59 Folien, und Handbuch</figcaption></figure>
+          <figure><img class="shot" src="img/nb_live.jpg" alt="Prim-Trainer mit Netz und Kampagne"><figcaption><b>Prim-Trainer</b>, 16 Stufen</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case flip" id="logbuch">
+        <div class="head">
+          <span class="status soon">Ab Januar 2027</span>
+          <h3>Das Logbuch</h3>
+          <p class="subject">Entdeckungen und Kolonialismus um 1500, Geschichte, 7. Klasse</p>
+        </div>
+        <figure class="media"><img class="shot" src="img/lb-lissabon.jpg" alt="Spielszene Lissabon 1490 mit Hinweis auf Dossier Seite 3 bis 5"><figcaption>Station Lissabon 1490. Oben links steht, welche Dossierseiten jetzt dran sind.</figcaption></figure>
+        <div class="body">
+          <p>Viele Jugendliche lernen über Geschichten und Spiele leichter als über lange Texte. Darum erleben sie die Zeit um 1500 als Reise: Ein Kind findet im Estrich seiner Grossmutter in Basel ein altes Logbuch. Jede Seite führt an einen anderen Ort, von Lissabon 1490 bis nach Basel heute. Erst das Lösungswort aus dem Dossier öffnet die nächste Station.</p>
+          <ul>
+            <li>9 Stationen mit Gesprächen, Quizfragen und historischen Bildquellen</li>
+            <li>die Begegnung von 1492 aus Sicht der Taíno und der Europäer</li>
+            <li>schwierige Wörter werden erklärt und vorgelesen</li>
+          </ul>
+          <div class="actions"><button class="btn primary" data-goto="logbuch">Spiel ausprobieren</button></div>
+        </div>
+        <div class="materials">
+          <figure><img class="page" src="img/lb-dossier.jpg" alt="Dossierseite Hafen von Lissabon"><figcaption><b>Dossier</b>, 32 Seiten, mit Lösungen</figcaption></figure>
+          <figure><img class="page" src="img/lb-handbuch.jpg" alt="Handbuch: Lektionsblatt Hafen von Lissabon mit Minutenplan"><figcaption><b>Handbuch</b>, 38 Seiten, mit Minutenplan pro Lektion</figcaption></figure>
+          <figure><img class="shot" src="img/lb-basel.jpg" alt="Vorspann des Spiels: Basel bei Nacht"><figcaption><b>Spiel</b> mit 9 Stationen. Die ganze Reihe umfasst 30 Lektionen.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="case" id="planet-erde">
+        <div class="head">
+          <span class="status soon">Ab November 2026</span>
+          <h3>Planet Erde</h3>
+          <p class="subject">Missionslogbuch, Geografie, 7. Klasse</p>
+        </div>
+        <figure class="media"><img class="shot" style="aspect-ratio:16/10;object-fit:cover;object-position:center 30%" src="img/tag-nacht.jpg" alt="Interaktives Element Tag und Nacht mit Weltkarte und Vorhersage-Frage"><figcaption>Interaktives Element «Tag und Nacht»: zuerst eine Vorhersage, dann ausprobieren</figcaption></figure>
+        <div class="body">
+          <p>Eine Unterrichtsreihe für meine beiden 7. Klassen, erzählt als Weltraummission mit 14 Missionen. QR-Codes im gedruckten Dossier führen direkt zur passenden Mission, zum Erklärvideo oder zum Training auf meiner Lernplattform. Jede Seite hat wenig Text und denselben Aufbau.</p>
+          <ul>
+            <li>7 interaktive Elemente mit Tipp nach 20 Sekunden</li>
+            <li>13 Übungen mit sofortiger Erklärung</li>
+            <li>eigene Erklärvideos, Fachbegriffe mit Vorlesefunktion</li>
+          </ul>
+          <p class="small">Grundlage war das Dossier eines Kollegen, das ich fachlich überarbeitet und neu gestaltet habe.</p>
+          <div class="actions"><button class="btn primary" data-goto="jahreszeiten">Element ausprobieren</button></div>
+        </div>
+        <div class="materials">
+          <figure><img class="page" src="img/pe-dossier.jpg" alt="Dossierseite Mission 10: Heiss am Äquator, kalt am Pol"><figcaption><b>Dossier</b>, 48 Seiten, mit Lösungen</figcaption></figure>
+          <figure><img class="shot" src="img/pe-laptop.jpg" alt="Themenseite Planet Erde auf der Lernplattform"><figcaption><b>Themenseite</b> auf unsereklasse.ch</figcaption></figure>
+          <figure><img class="shot" src="img/jahreszeiten.jpg" alt="Interaktives Element Jahreszeiten"><figcaption><b>Interaktives Element</b> «Jahreszeiten», dazu 17 Lektionspräsentationen</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="grundlagen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Weitere Einheiten</h2>
+        <p>Kürzere Einheiten, zwei in Medien und Informatik, eine in Englisch.</p>
+      </div>
+      <div class="units">
+        <article class="unit">
+          <img class="page" src="img/sh-titel.jpg" alt="Titelblatt des Dossiers Smart Home Bäumlihof">
+          <span class="status soon">Ab Dezember 2026</span>
+          <h3>Smart Home</h3>
+          <p class="subject">Medien und Informatik, 7. Klasse</p>
+          <p>Teams gründen ein Startup, planen ein Haus mit Sensoren und WENN-DANN-Regeln, bauen einen App-Prototyp in Canva und präsentieren ihn vor einer Jury.</p>
+          <p class="meta">4 Lektionen in Teams. <a href="#ausprobieren" data-goto="regel">Regel-Tester ausprobieren</a></p>
+        </article>
+        <article class="unit">
+          <img class="page" src="img/aa-titel.jpg" alt="Titelblatt des Dossiers Agentenakademie">
+          <span class="status soon">Ab November 2026</span>
+          <h3>Agentenakademie</h3>
+          <p class="subject">Medien und Informatik, 7. Klasse</p>
+          <p>Dateien ordnen, Tastaturkürzel nutzen, Screenshots machen und Dokumente gestalten, verpackt als Ausbildung zur Agentin oder zum Agenten. Jeden Schritt habe ich vorher am Schulgerät getestet.</p>
+          <p class="meta">4 Lektionen, praktische Prüfung am Gerät</p>
+        </article>
+        <article class="unit">
+          <img class="shot" src="img/uk-handy.jpg" alt="Themenseite Vlog your day auf der Lernplattform">
+          <span class="status soon">Ab November 2026</span>
+          <h3>Vlog your day!</h3>
+          <p class="subject">Englisch, 7. Klasse</p>
+          <p>Zehn Episoden mit gleicher Abfolge: Dossier, Audio, Übung, Wörter. Zum Schluss stellen die Jugendlichen ihren Tag in einem kurzen Vlog vor.</p>
+          <p class="meta">Zum Lehrmittel Life Vision. <a href="#ausprobieren" data-goto="woerter">Wörter-Trainer ausprobieren</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="werkzeuge">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selbst gebaute Werkzeuge</h2>
+        <p>Eine Lernplattform und zwei Apps für den Schulalltag. Personendaten speichere ich so wenig wie möglich.</p>
+      </div>
+      <div class="tools">
+        <article class="card" id="plattform">
+          <img class="shot" src="img/uk-laptop.jpg" alt="Lernplattform unsereklasse.ch, Themenseite Vlog your day">
+          <span class="status live">Im Einsatz</span>
+          <h3>unsereklasse.ch</h3>
+          <p class="subject">Lernplattform für meine Klassen</p>
+          <p>Pro Thema eine Seite mit Audios, Videos, Übungen, Wörter-Trainer und Lösungen. Themen schalte ich über eine eigene Lehrerseite zeitgesteuert frei. Keine Konten, kein Tracking.</p>
+        </article>
+        <article class="card" id="notenrechner">
+          <img class="shot" style="object-position:center 75%" src="img/nr-crop.jpg" alt="Notenrechner, Ansicht einer erfundenen Schülerin mit Schnitt und Prüfungen">
+          <span class="status live">Pilotklasse</span>
+          <h3>Notenrechner</h3>
+          <p class="subject">Lernwerkzeug für die eigene Klasse</p>
+          <p>Die Jugendlichen führen ihre Noten selbst und sehen, wie jede Note den Schnitt verändert. Eingeführt habe ich ihn zusammen mit der Schulleitung und mit Einwilligung der Eltern.</p>
+        </article>
+        <article class="card" id="lektoplan">
+          <img class="shot" src="img/lk-woche.jpg" alt="Lektoplan: Wochenplanung mit erfundenen Beispieldaten">
+          <span class="status soon">Testphase</span>
+          <h3>Lektoplan</h3>
+          <p class="subject">App für Lehrpersonen</p>
+          <p>Planung, Klassenadministration und eine digitale Tafel in einer App. Ich bin Product Owner: Ich lege fest, was die App aus Sicht des Schulalltags können muss, und teste jede neue Version selbst auf iPad, iPhone und Mac.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="arbeitsweise">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>So arbeite ich</h2>
+        <p>Meine Projekte beginnen bei einem Problem, das ich in der Klasse sehe. Nach dem Einsatz überarbeite ich sie.</p>
+      </div>
+      <ol class="process">
+        <li><b>Bedarf klären</b><span>Was soll die Gruppe danach können, und was hindert sie heute?</span></li>
+        <li><b>Lernziele</b><span>Überprüfbare «Ich kann»-Sätze, Bezug zum Lehrplan 21</span></li>
+        <li><b>Konzept</b><span>Ablauf, Methoden und Medien als Skizze</span></li>
+        <li><b>Prüfen</b><span>Gegenlesen lassen, am Gerät testen</span></li>
+        <li><b>Durchführen</b><span>Einsetzen und beobachten, wo es hängt</span></li>
+        <li><b>Auswerten</b><span>Lernerfolg prüfen, Rückmeldungen einarbeiten</span></li>
+      </ol>
+      <div class="example">
+        <b>Beispiel Netzbau AG</b>
+        <p>Die schnellen Jugendlichen waren unterfordert. Darum habe ich den Trainer um eine Profi-Liga mit acht schwierigeren Stufen ergänzt. Fragen im Dossier, die sich nicht beantworten liessen, habe ich überarbeitet.</p>
+      </div>
+      <div class="principles">
+        <div id="ki">
+          <h3>KI als Werkzeug</h3>
+          <p>Code und einen grossen Teil des Materials setze ich mit Claude von Anthropic um. Lernziele, Geschichte, Aufbau und Anforderungen lege ich fest. Jede grössere Fassung lasse ich zusätzlich von einer zweiten KI kritisch prüfen. Danach prüfe ich sie selbst fachlich und didaktisch und teste sie am Schulgerät und am Handy. Was in den Unterricht kommt, entscheide ich.</p>
+          <p>So möchte ich es auch Lernenden beibringen, wenn sie mit KI arbeiten.</p>
+        </div>
+        <div>
+          <h3>Datenschutz</h3>
+          <p>Meine Lernangebote kommen ohne Konten und ohne Tracking aus, der Lernstand bleibt im Browser. Wo Personendaten nötig sind, wie beim Notenrechner, werden die Namen verschlüsselt gespeichert, und die Einwilligung der Eltern liegt vor.</p>
+          <p>Alle Namen von Schülerinnen, Schülern und Firmen in den Bildern sind erfunden.</p>
+        </div>
+      </div>
+      <p class="toolline"><b>Werkzeuge, mit denen ich arbeite:</b> Microsoft 365, BookWidgets (Ambassador), Blooket, Canva, ElevenLabs für Audio, GitHub und Vercel.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="zauberkunst">
+    <div class="wrap">
+      <div class="magic">
+        <p class="magic-label">Zauberkunst und Lernen</p>
+        <blockquote>In der Zauberkunst geht es darum, Menschen für etwas zu begeistern, das sie nicht verstehen. Beim Lernen ist es dasselbe, nur sollen sie es am Ende verstehen.</blockquote>
+        <p>Seit 2008 trete ich als Zauberkünstler auf, unter anderem in Las Vegas und auf einer Asien-Tournee mit Schweiz Tourismus. An der Zauberweltmeisterschaft 2025 wurde ich Zehnter. Auf der Bühne lerne ich, Aufmerksamkeit zu gewinnen und eine Gruppe mitzunehmen. Das nehme ich in jede Lektion und jeden Kurs mit.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap contact" id="kontakt">
+    <div class="contact-box">
+      <div>
+        <h2>Kontakt</h2>
+        <p>Gerne zeige ich die Projekte auch persönlich, mit Dossiers und Handbüchern zum Durchblättern. Lebenslauf und Zeugnisse sende ich auf Anfrage.</p>
+      </div>
+      <div>
+        <dl>
+          <dt>E-Mail</dt><dd><a href="mailto:nicoandreani92@gmail.com">nicoandreani92@gmail.com</a></dd>
+          <dt>Telefon</dt><dd><a href="tel:+41795948820">079 594 88 20</a></dd>
+          <dt>Ort</dt><dd>Basel</dd>
+        </dl>
+        <div class="actions"><a class="btn primary" href="mailto:nicoandreani92@gmail.com">E-Mail schreiben</a></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><p>Nico Andreani, Basel, 2026. Konzept, Didaktik und Qualitätsprüfung: Nico Andreani. Code und Material sind grossteils mit KI-Unterstützung umgesetzt. Bildquellen im Spiel «Das Logbuch» sind gemeinfrei oder unter CC-Lizenz und im Spiel ausgewiesen.</p></div>
+</footer>
+
+<script>
+(function(){
+  var DEMOS={
+    netzbau:{name:"Prim-Trainer",src:"https://netzbau.unsereklasse.ch",poster:"img/nb_live.jpg",label:"Trainer starten",
+      hint:"«Einführung überspringen» wählen und mit der ersten Stufe beginnen: einen Startknoten wählen, dann immer die günstigste Leitung bauen, die das Netz erweitert. Dauert etwa eine Minute."},
+    woerter:{name:"Wörter-Trainer",src:"demos/woerter-trainer.html",poster:"img/wt.jpg",label:"Trainer starten",
+      hint:"Acht Wörter pro Runde, in sechs Stufen von der Karte bis zum Schreiben ohne Hilfe. Was sitzt, kommt seltener, Fehler kommen öfter. Am besten mit Ton."},
+    jahreszeiten:{name:"Jahreszeiten",src:"demos/jahreszeiten.html",poster:"img/jahreszeiten.jpg",label:"Element starten",
+      hint:"Zuerst eine Vorhersage treffen, dann die Erde um die Sonne ziehen. Nach 20 Sekunden ohne Antwort erscheint ein Tipp."},
+    regel:{name:"Regel-Tester",src:"demos/regel-tester.html",poster:"img/regel-tester.jpg",label:"Regel-Tester starten",
+      hint:"Eine Regel mit Fehler auswählen, die Sensoren umschalten und die Regel mit einer zweiten Bedingung reparieren."},
+    logbuch:{name:"Das Logbuch",ratio:"16/11",src:"demos/logbuch.html",poster:"img/lb-figuren.jpg",label:"Spiel starten",
+      hint:"Am Computer mit Pfeiltasten und Leertaste, am Handy quer halten. Das Spiel lädt einige Sekunden. Direkt zur Station Guanahani 1492: «Spielstand-Code eingeben» und <kbd>U9B8CK</kbd> tippen."}
+  };
+  var screen=document.getElementById('screen'),hint=document.getElementById('demo-hint'),open=document.getElementById('demo-open');
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function show(key){
+    var d=DEMOS[key];
+    tabs.forEach(function(t){var on=t.dataset.demo===key;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&t.scrollIntoView&&window.innerWidth<900)t.parentNode.scrollLeft=t.offsetLeft-16});
+    screen.style.aspectRatio=(window.innerWidth>600&&d.ratio)?d.ratio:'';
+    hint.innerHTML=d.hint;open.href=d.src;
+    screen.innerHTML='';
+    var img=new Image();img.src=d.poster;img.alt='';screen.appendChild(img);
+    var b=document.createElement('button');b.className='play';b.innerHTML='<span>'+d.label+'</span>';
+    b.addEventListener('click',function(){start(d)});screen.appendChild(b);
+  }
+  function start(d){
+    screen.innerHTML='';
+    var f=document.createElement('iframe');f.src=d.src;f.title='Demo: '+d.name;f.allow='autoplay; fullscreen';
+    screen.appendChild(f);f.focus();
+  }
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){show(t.dataset.demo)});t.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!k)return;var n=tabs[(i+k+tabs.length)%tabs.length];n.focus();show(n.dataset.demo)})});
+  document.querySelectorAll('[data-goto]').forEach(function(b){b.addEventListener('click',function(e){
+    e.preventDefault();show(b.dataset.goto);
+    document.getElementById('ausprobieren').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  })});
+  var h=(location.hash||'').replace('#demo-','');
+  if(DEMOS[h]){show(h);window.addEventListener('load',function(){document.getElementById('ausprobieren').scrollIntoView()})}else show('netzbau');
+})();
+</script>
+</body>
+</html>

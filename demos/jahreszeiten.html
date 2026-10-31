@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="de-CH"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jahreszeiten</title>
+<style>
+@font-face{font-family:Bric;src:url(../media/planet-erde/training/fonts/bricolage-grotesque-latin-800-normal.woff2) format('woff2');font-weight:800}
+@font-face{font-family:Bric;src:url(../media/planet-erde/training/fonts/bricolage-grotesque-latin-700-normal.woff2) format('woff2');font-weight:700}
+@font-face{font-family:Atk;src:url(../media/planet-erde/training/fonts/atkinson-hyperlegible-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:Atk;src:url(../media/planet-erde/training/fonts/atkinson-hyperlegible-latin-700-normal.woff2) format('woff2');font-weight:700}
+:root{--navy:#0B1426;--panel:#14233D;--panel2:#1C2F52;--line:#2E4570;--amb:#FFB627;--cy:#5BC8F5;--gr:#7BE0A1;--red:#FF6B5E;--tx:#EAF2FF;--mu:#9FB2D0;--sea:#1F4F86;--land:#3F9B6A}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--navy);color:var(--tx);font:400 17px/1.4 Atk,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+body{padding:14px}
+h1,h2,.big{font-family:Bric,system-ui,sans-serif;font-weight:800;line-height:1.15;margin:0}
+h1{font-size:clamp(20px,4.6vw,28px)}
+.kick{font:700 12px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--amb);text-transform:uppercase;margin-bottom:4px}
+.sub{color:var(--mu);margin:4px 0 10px;font-size:16px}
+.hl{color:var(--amb)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:8px 16px;border-radius:12px;border:0;background:var(--amb);color:var(--navy);font:700 17px Atk,sans-serif;cursor:pointer;touch-action:manipulation}
+.btn.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,button:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap}
+.tabs button{min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--tx);font:700 15px Atk,sans-serif;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--cy);color:var(--navy);border-color:var(--cy)}
+.card{background:var(--panel);border:1px solid #23395F;border-radius:18px;padding:14px}
+.fb{margin:10px 0 0;padding:10px 12px;border-radius:12px;font-size:17px;min-height:46px}
+.fb b{font-family:Bric;font-size:19px}
+.fb.ok{background:#143A2B;border:2px solid var(--gr)}.fb.no{background:#3D1E1E;border:2px solid var(--red)}.fb.info{background:var(--panel2);border:1px solid var(--line)}
+svg{display:block;max-width:100%}
+.tiny{font-size:14px;color:var(--mu)}
+input[type=range]{width:100%;height:44px;accent-color:var(--amb);touch-action:pan-y}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+[hidden]{display:none!important}
+.mis{background:#1E2A44;border:2px solid var(--amb);border-radius:16px;padding:8px 12px 10px;margin:0 0 10px}
+.mtop{display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--amb);text-transform:uppercase}
+.mtask{font:800 clamp(18px,4.4vw,22px)/1.25 Bric,system-ui,sans-serif;margin:2px 0 6px}
+.mopts{display:grid;gap:6px}
+.mopts button{min-height:48px;text-align:left;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--panel2);color:var(--tx);font:700 16px Atk,sans-serif;cursor:pointer;touch-action:manipulation}
+.mopts button.sel{border-color:var(--cy)}.mopts button.ok{background:#163D2E;border-color:var(--gr)}.mopts button.no{background:#45201F;border-color:var(--red)}
+.mopts button:disabled{cursor:default;opacity:1}
+.mfb{font-size:16px;color:var(--mu)}.mfb:empty{display:none}
+.mfb.ok,.mfb.no{margin-top:6px;padding:8px 10px;border-radius:12px;color:var(--tx)}.mfb.ok{background:#143A2B;border:2px solid var(--gr)}.mfb.no{background:#3D1E1E;border:2px solid var(--red)}
+.mfb b{font-family:Bric}
+.mfb.tip{margin-top:6px;padding:8px 10px;border-radius:12px;color:var(--tx);background:#3A2F0E;border:2px solid var(--amb)}
+.mis .row{margin-top:6px}
+.mlink{background:none;border:0;color:var(--mu);text-decoration:underline;font:400 14px Atk,sans-serif;min-height:44px;padding:0 4px;cursor:pointer;letter-spacing:0;text-transform:none}
+
+.vis{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#081022;touch-action:pan-y}
+.vis svg{width:100%;height:auto;cursor:grab}
+.date{font:800 clamp(24px,6vw,32px) Bric;color:var(--amb)}
+.g2{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;align-items:start}
+@media (max-width:600px){.g2{grid-template-columns:1fr}#hor{display:none}.hideM{font-size:15px}}
+@media (max-width:400px){.hideM{display:none}.tabs button{padding:6px 10px;font-size:14px}.seas b{font-size:18px}}
+.seas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.seas div{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.seas b{display:block;font:800 20px Bric}
+.stat{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:16px;margin:6px 0}
+.stat b{font:800 18px Bric;text-align:right}
+
+@media (max-width:400px){.tabs{flex-wrap:nowrap;gap:4px}.tabs button{flex:1;padding:6px 2px;font-size:13px;white-space:nowrap}}
+</style></head><body>
+<div class="kick">Mission 11–12 · Jahreszeiten</div>
+<h1>Schick die Erde um die Sonne</h1>
+<p class="sub hideM">Zieh die Erde oder tippe ein Datum.</p>
+<div class="mis" id="mis"><div class="mtop"><span id="mstep"></span><button class="mlink" id="mskip">Ohne Auftrag erkunden</button></div><div class="mtask" id="mtask"></div><div class="mopts" id="mopts"></div><div class="mfb" id="mfb" aria-live="polite"></div><div class="row"><button class="btn sec" id="mhelp" hidden>💡 Tipp</button><button class="btn" id="mnext" hidden>Weiter</button><button class="btn sec" id="mredo" hidden>Mission nochmals</button></div></div>
+<button class="mlink" id="mback" hidden>Auftrag wieder zeigen</button>
+
+<div class="tabs" role="group" aria-label="Datum" id="dates"></div>
+<div class="g2">
+  <div><div class="vis"><svg id="svg" viewBox="0 0 360 240" role="img" aria-label="Die Erde auf ihrer Bahn um die Sonne"></svg></div>
+    <div class="tiny">Bahn schräg von oben gesehen. In Wirklichkeit ist sie fast ein Kreis.</div>
+    <input type="range" id="n" min="0" max="364" value="79" aria-label="Tag im Jahr"></div>
+  <div><div class="date" id="date" aria-live="polite"></div>
+    <div class="seas"><div>Bei uns in Basel<b id="sBasel"></b></div><div>In Australien<b id="sAus"></b></div></div>
+    <div class="stat" id="stat"></div>
+    <svg id="hor" viewBox="0 0 220 80" style="width:100%;max-width:260px" role="img" aria-label="Sonnenstand am Mittag in Basel"></svg>
+  </div>
+</div>
+<div class="fb info" id="info"></div>
+<script>
+'use strict';
+// Auftrags-Box: Vorhersage -> ausprobieren -> Rueckmeldung -> Abschlussfrage
+// Hilfe: nach 20 s ein Tipp, nach weiteren 20 s «Lösung zeigen». Was mit Hilfe oder falsch gelöst wurde, kommt am Schluss nochmals.
+const Mis = (() => {
+  let S = [], base = 0, i = 0, done = false, wait = false, fin = '', ans = {}, again = [], t1 = null, t2 = null, helped = false;
+  const q = s => document.querySelector(s);
+  const TIP = 20000, SOL = 20000;
+  function show(on) { q('#mis').hidden = !on; q('#mback').hidden = on; if (on) setTimeout(check, 0); }
+  function timers(st) {
+    clearTimeout(t1); clearTimeout(t2); q('#mhelp').hidden = true;
+    if (!st.check || (!st.tip && !st.solve)) return;
+    t1 = setTimeout(() => { if (wait) return; q('#mhelp').hidden = false; q('#mhelp').textContent = st.tip ? '💡 Tipp' : 'Lösung zeigen'; q('#mhelp').dataset.k = st.tip ? 'tip' : 'sol'; }, TIP);
+  }
+  function render() {
+    const st = S[i]; wait = false; helped = false;
+    const rep = i >= base;
+    q('#mstep').textContent = rep ? `Nochmal zur Kontrolle · ${i - base + 1} von ${S.length - base}` : `Auftrag ${i + 1} von ${base}`;
+    q('#mtask').innerHTML = st.text;
+    q('#mopts').innerHTML = st.opts ? st.opts.map((o, k) => `<button data-mo="${k}">${o}</button>`).join('') : '';
+    q('#mfb').className = 'mfb'; q('#mfb').innerHTML = st.hint || '';
+    q('#mnext').hidden = true; q('#mredo').hidden = true;
+    timers(st);
+    if (!rep) setTimeout(check, 0);
+  }
+  function good(html, cls) { wait = true; clearTimeout(t1); clearTimeout(t2); q('#mhelp').hidden = true; q('#mfb').className = 'mfb ' + (cls || 'ok'); q('#mfb').innerHTML = html; q('#mnext').hidden = false; q('#mnext').textContent = 'Weiter'; q('#mopts').querySelectorAll('button').forEach(b => b.disabled = true); }
+  function mark() { const st = S[i]; if (i < base && !again.includes(st)) again.push(st); }
+  function check() { if (done || wait || q('#mis').hidden) return; const st = S[i]; if (st.check && st.check()) good((helped ? '<b>So geht es.</b> ' : '') + (typeof st.ok === 'function' ? st.ok() : st.ok).replace(helped ? /^<b>[^<]*<\/b>\s*/ : /$^/, '')); }
+  function next() {
+    i++;
+    if (i === base && again.length) { S = S.slice(0, base).concat(again); again = []; }
+    if (i < S.length) return render();
+    done = true; clearTimeout(t1); clearTimeout(t2); q('#mhelp').hidden = true;
+    q('#mstep').textContent = 'Mission erfüllt'; q('#mtask').innerHTML = fin; q('#mopts').innerHTML = ''; q('#mfb').className = 'mfb'; q('#mfb').innerHTML = ''; q('#mnext').hidden = true; q('#mredo').hidden = false; if (Mis.onDone) Mis.onDone();
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.mo !== undefined) { if (wait) return; const st = S[i], k = +b.dataset.mo; ans[st.id || i] = k;
+      const r = st.answer(k); b.classList.add(r.right === false ? 'no' : r.right === true ? 'ok' : 'sel');
+      if (r.right === false && st.right !== undefined) { q(`#mopts [data-mo="${st.right}"]`).classList.add('ok'); mark(); }
+      good(r.html, r.right === false ? 'no' : 'ok'); return; }
+    if (b.id === 'mhelp') { const st = S[i];
+      if (b.dataset.k === 'tip') { q('#mfb').className = 'mfb tip'; q('#mfb').innerHTML = '💡 ' + st.tip; b.hidden = true;
+        if (st.solve) t2 = setTimeout(() => { if (wait) return; b.hidden = false; b.textContent = 'Lösung zeigen'; b.dataset.k = 'sol'; }, SOL); }
+      else { helped = true; mark(); b.hidden = true; st.solve(); setTimeout(check, 30); }
+      return; }
+    if (b.id === 'mnext') next(); else if (b.id === 'mskip') show(false); else if (b.id === 'mback') show(true);
+    else if (b.id === 'mredo') { S = S.slice(0, base); again = []; i = 0; done = false; ans = {}; if (Mis.onRestart) Mis.onRestart(); render(); }
+  });
+  return { init(steps, final) { S = steps; base = steps.length; fin = final; i = 0; done = false; again = []; render(); }, check, ans: () => ans, onRestart: null, onDone: null };
+})();
+
+const $ = s => document.querySelector(s); const rad = Math.PI / 180;
+const MON = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const ML = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const DATES = [['21. März', 79], ['21. Juni', 171], ['23. Sept.', 265], ['21. Dez.', 354]];
+$('#dates').innerHTML = DATES.map(d => `<button data-n="${d[1]}">${d[0]}</button>`).join('');
+// 21.3. (79) bis 23.9. (265): 186 Tage Nordsommer-Hälfte, danach 179 Tage; so gilt genau 0° am 21.3./23.9. und 23.5° am 21.6./21.12.
+const decl = n => n >= 79 && n < 265 ? 23.5 * Math.sin(Math.PI * (n - 79) / 186) : -23.5 * Math.sin(Math.PI * ((n - 265 + 365) % 365) / 179);
+function dm(n) { let m = 0; while (n >= ML[m]) { n -= ML[m]; m++; } return [n + 1, m]; }
+function season(n, north) {
+  const s = n >= 79 && n < 171 ? 0 : n >= 171 && n < 265 ? 1 : n >= 265 && n < 354 ? 2 : 3; // ab 21.3, 21.6, 23.9, 21.12
+  const N = ['Frühling', 'Sommer', 'Herbst', 'Winter'], S = ['Herbst', 'Winter', 'Frühling', 'Sommer'];
+  return north ? N[s] : S[s];
+}
+const CX = 180, CY = 122, A = 140, B = 84, TILT = 23.5;
+const dist = n => (149.6 - 2.5 * Math.cos(2 * Math.PI * (n - 3) / 365)).toFixed(1);
+const pos = n => { const p = (180 + (n - 171) / 365 * 360) * rad; return [CX + A * Math.cos(p), CY - B * Math.sin(p)]; };
+function earth(x, y, r, n, big) {
+  // Achse zeigt immer nach rechts oben (zur Sonne, wenn die Erde links steht = 21. Juni)
+  const ax = Math.sin(TILT * rad), ay = -Math.cos(TILT * rad); const sunLeft = x > CX;
+  let s = `<g><circle cx="${x}" cy="${y}" r="${r}" fill="#2D6FB8"/><ellipse cx="${x - r * .2}" cy="${y - r * .1}" rx="${r * .45}" ry="${r * .3}" fill="#3F9B6A"/>`;
+  const an = Math.atan2(y - CY, x - CX), qx = -Math.sin(an) * r, qy = Math.cos(an) * r; // Nachthälfte zeigt von der Sonne weg
+  s += `<path d="M${x + qx},${y + qy} A${r},${r} 0 0 0 ${x - qx},${y - qy}Z" fill="#050A16" opacity=".6"/>`;
+  // Äquator senkrecht zur Achse
+  s += `<line x1="${x - r * Math.cos(TILT * rad)}" y1="${y - r * Math.sin(TILT * rad)}" x2="${x + r * Math.cos(TILT * rad)}" y2="${y + r * Math.sin(TILT * rad)}" stroke="#FFB627" stroke-width="${big ? 1.6 : 1}"/>`;
+  s += `<line x1="${x - ax * r * 1.5}" y1="${y - ay * r * 1.5}" x2="${x + ax * r * 1.5}" y2="${y + ay * r * 1.5}" stroke="#EAF2FF" stroke-width="${big ? 2 : 1.4}"/>`;
+  if (big) s += `<text x="${x + ax * r * 1.5 + 3}" y="${y + ay * r * 1.5 - 2}" font-size="11" font-weight="700" fill="#EAF2FF" font-family="Atk">N</text>`;
+  return s + '</g>';
+}
+function draw() {
+  const n = +$('#n').value; const [x, y] = pos(n); const d = decl(n);
+  let s = '';
+  for (let k = 0; k < 30; k++) s += `<circle cx="${(k * 97) % 360}" cy="${(k * 53) % 230}" r=".9" fill="#fff" opacity=".5"/>`;
+  s += `<ellipse cx="${CX}" cy="${CY}" rx="${A}" ry="${B}" fill="none" stroke="#2E4570" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+  for (const [t, nn] of DATES) { const [px, py] = pos(nn); if (Math.hypot(px - x, py - y) < 50) continue; const side = Math.abs(py - CY) > 40; s += `<text x="${side ? px + 26 : px}" y="${side ? py + 4 : py + 38}" text-anchor="${side ? 'start' : 'middle'}" font-size="12" font-weight="700" fill="#9FB2D0" font-family="Atk">${t}</text>`; }
+  const sun = `<circle cx="${CX}" cy="${CY}" r="24" fill="#FFD27A" stroke="#FFB627" stroke-width="4"/>`;
+  const e = earth(x, y, 19 - 3 * (CY - y) / B, n, true);
+  s += y < CY ? e + sun : sun + e;
+  $('#svg').innerHTML = s;
+  const [day, m] = dm(n); $('#date').textContent = `${day}. ${MON[m]}`;
+  $('#sBasel').textContent = season(n, true); $('#sAus').textContent = season(n, false);
+  const phi = 47.5, H = Math.acos(Math.max(-1, Math.min(1, (Math.sin(-0.833 * rad) - Math.sin(phi * rad) * Math.sin(d * rad)) / (Math.cos(phi * rad) * Math.cos(d * rad))))) / rad, tl = Math.round(2 * H / 15 * 2) / 2; // mit Lichtbrechung am Horizont
+  const alt = 90 - phi + d;
+  $('#stat').innerHTML = `<span>Tageslänge Basel</span><b>rund ${(tl % 1 ? Math.floor(tl) + '½' : tl)} Std.</b><span>Mittagssonne Basel</span><b>${alt.toFixed(1).replace(/\.0$/, '')}°</b><span>Abstand zur Sonne</span><b>${dist(n)} Mio. km</b>`;
+  // kleiner Horizont: Sonnenhöhe
+  const hx = 30, hy = 70, L = 60, sx = hx + L * Math.cos(alt * rad), sy = hy - L * Math.sin(alt * rad);
+  $('#hor').innerHTML = `<rect x="0" y="${hy}" width="220" height="10" fill="#3F9B6A"/><line x1="${hx}" y1="${hy}" x2="${sx}" y2="${sy}" stroke="#FFB627" stroke-width="2" stroke-dasharray="4 3"/><path d="M${hx + 22},${hy} A22,22 0 0 0 ${hx + 22 * Math.cos(alt * rad)},${hy - 22 * Math.sin(alt * rad)}" fill="none" stroke="#EAF2FF" stroke-width="1.5"/><circle cx="${sx}" cy="${sy}" r="8" fill="#FFD27A"/><text x="${hx + 30}" y="${hy - 6}" font-size="12" font-weight="700" fill="#EAF2FF" font-family="Atk">${alt.toFixed(1).replace(/\.0$/, '')}°</text><text x="${hx - 6}" y="${hy + 10}" font-size="10" fill="#0B1426" font-family="Atk" font-weight="700">Basel</text>`;
+  let t;
+  if (Math.abs(n - 171) <= 6) t = '<b>Um den 21. Juni:</b> Die Nordhalbkugel ist der Sonne zugewandt. Die Strahlen treffen steiler auf, die Tage sind lang: Sommer im Norden, Winter im Süden.';
+  else if (Math.abs(n - 354) <= 6) t = '<b>Um den 21. Dezember:</b> Die Südhalbkugel ist der Sonne zugewandt. Sommer im Süden, Winter im Norden. Bei uns ist der kürzeste Tag.';
+  else if (Math.abs(n - 79) <= 6 || Math.abs(n - 265) <= 6) t = '<b>Tagundnachtgleiche:</b> Beide Halbkugeln werden gleich bestrahlt. Tag und Nacht sind fast gleich lang.';
+  else if (n <= 8) t = '<b>Anfang Januar</b> ist die Erde der Sonne am nächsten. Trotzdem ist bei uns Winter. Der Grund ist allein die schiefe Erdachse.';
+  else t = 'Die Erdachse ist um 23.5° geneigt und zeigt immer in die gleiche Richtung. Schau, wie sich die Jahreszeiten ändern.';
+  $('#info').innerHTML = t;
+  document.querySelectorAll('#dates button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.n === n));
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { $('#n').value = b.dataset.n; draw(); Mis.check(); } });
+$('#n').addEventListener('input', () => { draw(); Mis.check(); });
+// Erde ziehen
+let drag = false; const svg = $('#svg');
+function fromEvent(ev) { const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+  let ang = Math.atan2(-(p.y - CY) / B, (p.x - CX) / A) / rad; let n = Math.round(((ang - 180) / 360 * 365 + 171 + 730) % 365); $('#n').value = n; draw(); }
+svg.addEventListener('pointerdown', e => { const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; const q = pt.matrixTransform(svg.getScreenCTM().inverse()); const [ex, ey] = pos(+$('#n').value); if (Math.hypot(q.x - ex, q.y - ey) > 40) return; drag = true; svg.setPointerCapture(e.pointerId); e.preventDefault(); });
+svg.addEventListener('pointermove', e => { if (drag) fromEvent(e); });
+svg.addEventListener('pointerup', () => { if (drag) Mis.check(); drag = false; });
+svg.addEventListener('pointercancel', () => { drag = false; });
+svg.addEventListener('touchstart', e => { const t = e.touches[0], pt = svg.createSVGPoint(); pt.x = t.clientX; pt.y = t.clientY;
+  const q = pt.matrixTransform(svg.getScreenCTM().inverse()), [ex, ey] = pos(+$('#n').value);
+  if (Math.hypot(q.x - ex, q.y - ey) <= 40) e.preventDefault(); }, { passive: false });
+const W2 = ['Die Erde ist dann näher bei der Sonne.', 'Die Sonne scheint steiler und die Tage sind länger.'];
+const nn = () => +$('#n').value, setN = v => { $('#n').value = v; draw(); };
+Mis.init([
+  { id: 'vor', text: 'Was glaubst du: Warum ist es im Sommer warm?', opts: W2, answer: () => ({ right: null, html: 'Gut. Finde jetzt heraus, ob du recht hast.' }) },
+  { text: 'Zieh die Erde so, dass in Basel <span class="hl">Sommer</span> ist.', tip: 'Sommer ist, wenn die Nordhalbkugel zur Sonne geneigt ist. Tippe oben auf ein Datum.', solve: () => setN(171), check: () => season(nn(), true) === 'Sommer', ok: () => `<b>Richtig!</b> Die Nordhalbkugel ist zur Sonne geneigt. Die Sonne steht hoch, der Tag dauert ${$('#stat b').textContent.replace(' Std.', ' Stunden')}.` },
+  { text: 'Jetzt soll in <span class="hl">Australien</span> Sommer sein.', tip: 'In Australien ist Sommer, wenn bei uns Winter ist.', solve: () => setN(354), check: () => season(nn(), false) === 'Sommer', ok: '<b>Richtig!</b> Jetzt ist die Südhalbkugel zur Sonne geneigt. Bei uns ist Winter.' },
+  { text: 'Wann ist die Erde der Sonne <span class="hl">am nächsten</span>? Schau auf «Abstand zur Sonne».', tip: 'Zieh die Erde langsam. Such die kleinste Zahl bei «Abstand zur Sonne».', solve: () => setN(3), check: () => nn() <= 20, ok: '<b>Richtig! Anfang Januar.</b> Dann ist die Erde am nächsten bei der Sonne. Und trotzdem ist bei uns Winter.' },
+  { id: 'nach', text: 'Und jetzt: Warum ist es im Sommer warm?', opts: W2, right: 1, answer: k => { const vor = Mis.ans().vor === 0 && k === 1 ? 'Am Anfang hast du «näher bei der Sonne» gewählt. Das denken viele. ' : '';
+    return k === 1 ? { right: true, html: `<b>Richtig!</b> ${vor}Im Sommer treffen die Strahlen steiler auf und die Tage sind länger. Der Abstand ändert sich fast nicht.` }
+      : { right: false, html: '<b>Nicht ganz.</b> Im Januar ist die Erde am nächsten bei der Sonne, und trotzdem ist bei uns Winter. Der Grund ist die schiefe Erdachse.' }; } }
+], '<span class="hl">Mission erfüllt!</span> Die Jahreszeiten gibt es, weil die Erdachse schief ist und immer in die gleiche Richtung zeigt.');
+draw();
+</script></body></html>
