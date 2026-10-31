@@ -245,7 +245,7 @@ footer p{max-width:none;margin:0}
 .pairs{display:grid;gap:56px;margin-bottom:24px}
 .pair-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 56px;position:relative;padding-top:32px;border-top:2px solid var(--ink);scroll-margin-top:96px}
 .pair-row .was{display:flex;flex-direction:column;gap:10px;padding-right:8px}
-.pair-row .wie{background:var(--white);border-radius:var(--r-l);border-left:5px solid var(--signal);box-shadow:var(--shadow);padding:30px 32px;align-self:start;display:flex;flex-direction:column;gap:12px}
+.pair-row .wie{background:var(--white);border-radius:var(--r-l);border-top:3px solid var(--signal);padding:28px 32px;align-self:start;display:flex;flex-direction:column;gap:12px}
 .pair-row .lab{margin:0;font-size:14px;font-weight:700;color:var(--muted)}
 .pair-row .wie .lab{color:var(--ink-2)}
 .pair-row .was h3{font-size:22px;color:var(--ink-2)}
@@ -264,7 +264,9 @@ footer p{max-width:none;margin:0}
 .facts dt{color:var(--muted)}
 .facts dd{margin:0;color:var(--ink);font-weight:600}
 .wie .btn{align-self:flex-start;margin-top:4px}
-.pair-row:not(.proto) .wie{background:none;box-shadow:none;border-left:0;border-radius:0;padding:0}
+.pair-row:not(.proto) .wie{background:none;box-shadow:none;border-top:0;border-radius:0;padding:0}
+@media (min-width:901px){.pair-row+.pair-row .lab{display:none}}
+#prototypen .sec-head::before{display:none}
 @media (max-width:900px){.pair-row .wie{margin-top:20px}}
 .wie .status{align-self:flex-start}
 @media (max-width:900px){
@@ -326,7 +328,7 @@ footer p{max-width:none;margin:0}
           <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch" loading="lazy">
         </div>
         <div class="wie">
-          <p class="lab">Für Roche</p>
+          <p class="lab">Für Roche, als Prototyp spielbar</p>
           <h2>Fachbegriff-Trainer für Lernende</h2>
           <p>Fachbegriffe und Englisch, die Lernende im Betrieb täglich brauchen, in fünf Minuten auf dem Handy. Jeder Beruf hat seine eigene Liste. Welche Begriffe hineinkommen, entscheiden die Berufsbildnerinnen und Berufsbildner.</p>
           <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz" loading="lazy"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt.</figcaption></figure>
@@ -345,7 +347,7 @@ footer p{max-width:none;margin:0}
           </dl>
         </div>
         <div class="wie">
-          <p class="lab">Für Roche</p>
+          <p class="lab">Für Roche, als Prototyp spielbar</p>
           <h2>Ein KI-Führerschein für Lernende</h2>
           <p>Zuerst würde ich mit den Verantwortlichen klären, was Lernende mit KI dürfen. Daraus wird eine kurze Einheit mit Fällen aus der Lehre, vom Code bis zum Laborjournal. Zum Abschluss löst jede und jeder eine eigene Aufgabe mit KI und erklärt das Vorgehen.</p>
           <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe" loading="lazy"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, und die Begründung steht gleich darunter.</figcaption></figure>
@@ -379,7 +381,7 @@ footer p{max-width:none;margin:0}
           <p class="lab">Für Roche</p>
           <h2>Aufträge wie im Betrieb</h2>
           <p>Grundlagen wie Netzwerke, Datenbanken oder Abläufe als Folge von Aufträgen aus einem erfundenen, aber typischen Betrieb, zum Beispiel in überbetrieblichen Kursen. Die Hilfen fallen nach und nach weg. Wer schneller ist, bekommt schwierigere Aufträge, und am Ende des Kurstags treten die Teams gegeneinander an.</p>
-          <figure><img class="shot" src="../img/roche-kurstag.jpg" alt="Skizze: Auftragsliste eines Kurstags mit vier Aufträgen" loading="lazy"><figcaption><b>Skizze.</b> Der Morgen eines Kurstags. Das Duell kommt nach dem Mittag.</figcaption></figure>
+          <figure><img class="shot" src="../img/roche-kurstag.jpg" alt="Skizze: Auftragsliste eines Kurstags mit vier Aufträgen" loading="lazy"><figcaption>Kurstag am Vormittag, als Skizze. Das Duell folgt um 14 Uhr.</figcaption></figure>
         </div>
       </article>
     </div>
