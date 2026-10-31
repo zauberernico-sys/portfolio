@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KI-Check – Prototyp</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15283A;--muted:#566778;--paper:#F3F5F7;--white:#fff;--line:#D6DDE4;--signal:#F4C542;--ok:#1D6234;--ok-bg:#DDEFE2;--mid:#6A5310;--mid-bg:#FBEFC8;--bad:#9B2C2C;--bad-bg:#F8E1E1}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Source Sans 3",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.45}
+.wrap{max-width:720px;margin:0 auto;padding:24px 16px 40px}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-size:28px;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 18px;font-size:16px}
+.count{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.card{background:var(--white);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(21,40,58,.06),0 8px 24px rgba(21,40,58,.08)}
+.case{font-size:20px;font-weight:600;margin:0 0 18px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.opts{grid-template-columns:1fr}}
+button{font:inherit}
+.opt{padding:14px 12px;border-radius:10px;border:2px solid var(--line);background:var(--white);cursor:pointer;font-weight:700;text-align:center}
+.opt small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+.opt:hover{border-color:var(--ink)}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok)}
+.opt.bad{background:var(--bad-bg);border-color:var(--bad)}
+.fb{margin-top:16px;padding:14px 16px;border-radius:10px;display:none;font-size:17px}
+.fb.show{display:block;background:var(--paper)}
+.fb b{display:block;margin-bottom:4px}
+.btn{margin-top:14px;padding:11px 18px;border-radius:8px;border:2px solid var(--ink);background:var(--ink);color:#fff;font-weight:700;cursor:pointer}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>KI-Check für Lernende</h1>
+  <p class="sub">Prototyp: Darf ich hier KI nutzen? Sechs Situationen aus dem Lehralltag, jeweils mit kurzer Begründung.</p>
+  <div class="card" id="card"></div>
+  <p class="note">Beispielinhalt für die Idee. Die verbindlichen Regeln würden aus den Richtlinien des Betriebs übernommen.</p>
+</div>
+<script>
+(function(){
+  var C=[
+    ["Du sollst einen Fehler in deinem Code finden. Du lässt dir von der KI erklären, was die Fehlermeldung bedeutet.","ja","Gute Nutzung. Du lässt dir etwas erklären und behebst den Fehler danach selbst. So lernst du dabei."],
+    ["Für die Lerndokumentation schreibt die KI deinen ganzen Wochenbericht.","nein","Die Lerndokumentation zeigt, was du gelernt hast. Wenn die KI sie schreibt, zeigt sie das nicht mehr. Ideen sammeln oder Rechtschreibung prüfen lassen ist in Ordnung."],
+    ["Du kopierst eine Kundenliste mit Namen und E-Mail-Adressen in einen öffentlichen KI-Chat, um sie sortieren zu lassen.","nein","Personendaten und interne Daten gehören nicht in öffentliche KI-Werkzeuge. Nutze dafür die Werkzeuge, die der Betrieb freigegeben hat."],
+    ["Du übst für eine Prüfung und lässt dir von der KI zehn Übungsfragen zum Thema Netzwerke stellen.","ja","Sehr gut. Die KI als Übungspartner zu nutzen, hilft beim Lernen. Prüfe aber die Antworten, auch KI macht Fehler."],
+    ["Die KI schlägt eine Lösung vor, die du nicht verstehst. Du gibst sie trotzdem ab, weil sie funktioniert.","teil","Funktionieren reicht nicht. Lass dir die Lösung Schritt für Schritt erklären, bis du sie selbst erklären könntest. Erst dann gibst du sie ab."],
+    ["Du lässt eine E-Mail an deine Berufsbildnerin auf Englisch übersetzen und liest sie vor dem Senden durch.","ja","In Ordnung. Du bleibst verantwortlich für den Inhalt, darum ist das Durchlesen vor dem Senden wichtig."]
+  ];
+  var L={ja:["Ja","sinnvoll"],teil:["Mit Vorsicht","nur teilweise"],nein:["Nein","lieber nicht"]};
+  var i=0,score=0,card=document.getElementById('card');
+  function show(){
+    if(i>=C.length){card.innerHTML='<div class="count">Auswertung</div><p class="case">'+score+' von '+C.length+' Situationen richtig eingeschätzt.</p><p>In einer echten Einheit würden die Lernenden danach eigene Regeln für den Umgang mit KI formulieren und mit den Richtlinien des Betriebs vergleichen.</p><button class="btn" id="re">Nochmals</button>';document.getElementById('re').onclick=function(){i=0;score=0;show()};return}
+    var c=C[i];
+    card.innerHTML='<div class="count">Situation '+(i+1)+' von '+C.length+'</div><p class="case">'+c[0]+'</p><div class="opts">'+['ja','teil','nein'].map(function(k){return '<button class="opt" data-k="'+k+'">'+L[k][0]+'<small>'+L[k][1]+'</small></button>'}).join('')+'</div><div class="fb" id="fb"></div>';
+    [].forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){
+      var ok=b.dataset.k===c[1];if(ok)score++;
+      [].forEach.call(card.querySelectorAll('.opt'),function(x){x.disabled=true;if(x.dataset.k===c[1])x.classList.add('ok')});
+      if(!ok)b.classList.add('bad');
+      var fb=document.getElementById('fb');fb.className='fb show';fb.innerHTML='<b>'+(ok?'Richtig eingeschätzt.':'Besser: '+L[c[1]][0]+'.')+'</b>'+c[2]+'<br><button class="btn" id="nx">Weiter</button>';
+      document.getElementById('nx').onclick=function(){i++;show()};document.getElementById('nx').focus();
+    }});
+  }
+  show();
+})();
+</script>
+</body>
+</html>

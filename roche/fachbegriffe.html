@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fachbegriff-Trainer – Prototyp</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15283A;--muted:#566778;--paper:#F3F5F7;--white:#fff;--line:#D6DDE4;--signal:#F4C542;--ok:#1D6234;--ok-bg:#DDEFE2;--bad:#9B2C2C;--bad-bg:#F8E1E1}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Source Sans 3",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.45}
+.wrap{max-width:720px;margin:0 auto;padding:24px 16px 40px}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-size:28px;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 18px;font-size:16px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:var(--signal);width:0;transition:width .3s}
+.card{background:var(--white);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(21,40,58,.06),0 8px 24px rgba(21,40,58,.08)}
+.stage{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.term{font-family:"Bricolage Grotesque",sans-serif;font-size:36px;margin:0 0 6px;letter-spacing:-.02em}
+.hint{color:var(--muted);font-size:16px;margin:0 0 18px}
+.opts{display:grid;gap:10px}
+button{font:inherit}
+.opt{text-align:left;padding:12px 16px;border-radius:10px;border:2px solid var(--line);background:var(--white);cursor:pointer;font-weight:600}
+.opt:hover{border-color:var(--ink)}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+input[type=text]{width:100%;font:inherit;font-size:20px;padding:12px 14px;border:2px solid var(--line);border-radius:10px}
+input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.btn{padding:11px 18px;border-radius:8px;border:2px solid var(--ink);background:var(--ink);color:#fff;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.feedback{margin-top:14px;padding:12px 14px;border-radius:10px;font-weight:600;display:none}
+.feedback.ok{display:block;background:var(--ok-bg);color:var(--ok)}
+.feedback.bad{display:block;background:var(--bad-bg);color:var(--bad)}
+.ex{font-weight:400;color:var(--ink);margin-top:6px;font-size:16px}
+.done h2{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 8px}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Fachbegriff-Trainer</h1>
+  <p class="sub">Prototyp: Englisch im Informatik-Alltag. Acht Begriffe pro Runde, in drei Stufen. Was sitzt, kommt seltener.</p>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="card" id="card"></div>
+  <p class="note">Beispielinhalt für die Idee. Die Begriffe würde ich gemeinsam mit den Berufsbildnerinnen und Berufsbildnern auswählen.</p>
+</div>
+<script>
+(function(){
+  var WORDS=[
+    ["requirement","Anforderung","The customer added a new requirement for the login page."],
+    ["deadline","Abgabetermin","The deadline for the release is Friday."],
+    ["bug","Programmfehler","We found a bug in the payment form."],
+    ["to deploy","bereitstellen (eine Anwendung)","We deploy the new version every Monday."],
+    ["repository","Code-Ablage","The code is stored in a shared repository."],
+    ["user story","Anforderung aus Sicht der Nutzenden","Each user story describes what a user needs."],
+    ["meeting minutes","Sitzungsprotokoll","Please send the meeting minutes to the team."],
+    ["to troubleshoot","einen Fehler eingrenzen und beheben","First, try to troubleshoot the network connection."],
+    ["password reset","Passwort zurücksetzen","The user asked for a password reset."],
+    ["backup","Datensicherung","We make a backup every night."],
+    ["stakeholder","Beteiligte Person oder Gruppe","Talk to all stakeholders before you start."],
+    ["to update","aktualisieren","Please update the software on all laptops."]
+  ];
+  var deck=WORDS.slice(0,8).map(function(w,i){return {en:w[0],de:w[1],ex:w[2],lvl:0,id:i}});
+  var STAGES=["Karte","Auswahl","Schreiben"];
+  var card=document.getElementById('card'),bar=document.getElementById('bar');
+  var queue=[],current=null;
+  function say(t){try{var u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.95;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+  function refill(){queue=deck.filter(function(c){return c.lvl<3}).sort(function(a,b){return a.lvl-b.lvl||Math.random()-.5});}
+  function progress(){var s=deck.reduce(function(a,c){return a+c.lvl},0);bar.style.width=Math.round(s/(deck.length*3)*100)+'%'}
+  function next(){progress();refill();if(!queue.length)return done();current=queue[0];[showCard,showChoice,showWrite][current.lvl]();}
+  function head(){return '<div class="stage">Stufe '+(current.lvl+1)+' von 3: '+STAGES[current.lvl]+'</div>'}
+  function showCard(){
+    card.innerHTML=head()+'<p class="term">'+current.en+'</p><p class="hint">'+current.ex+'</p><div class="row"><button class="btn ghost" id="sp">Anhören</button><button class="btn" id="rv">Bedeutung zeigen</button></div><div class="feedback" id="fb"></div>';
+    document.getElementById('sp').onclick=function(){say(current.en)};
+    document.getElementById('rv').onclick=function(){var fb=document.getElementById('fb');fb.className='feedback ok';fb.innerHTML=current.de;this.textContent='Weiter';this.onclick=function(){current.lvl=1;next()};};
+    say(current.en);
+  }
+  function showChoice(){
+    var others=WORDS.map(function(w){return w[1]}).filter(function(d){return d!==current.de}).sort(function(){return Math.random()-.5}).slice(0,3);
+    var opts=others.concat([current.de]).sort(function(){return Math.random()-.5});
+    card.innerHTML=head()+'<p class="term">'+current.en+'</p><p class="hint">Was bedeutet das?</p><div class="opts">'+opts.map(function(o){return '<button class="opt">'+o+'</button>'}).join('')+'</div><div class="feedback" id="fb"></div>';
+    [].forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){
+      var ok=b.textContent===current.de;[].forEach.call(card.querySelectorAll('.opt'),function(x){x.disabled=true;if(x.textContent===current.de)x.classList.add('ok')});
+      if(!ok)b.classList.add('bad');
+      var fb=document.getElementById('fb');fb.className='feedback '+(ok?'ok':'bad');fb.innerHTML=(ok?'Richtig.':'Noch nicht. Richtig ist: '+current.de)+'<div class="ex">'+current.ex+'</div><div class="row"><button class="btn" id="nx">Weiter</button></div>';
+      current.lvl=ok?2:0;document.getElementById('nx').onclick=next;document.getElementById('nx').focus();
+    }});
+  }
+  function showWrite(){
+    card.innerHTML=head()+'<p class="term">'+current.de+'</p><p class="hint">Schreib den englischen Begriff.</p><input type="text" id="in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Englischer Begriff"><div class="row"><button class="btn" id="ck">Prüfen</button><button class="btn ghost" id="tip">Tipp</button></div><div class="feedback" id="fb"></div>';
+    var inp=document.getElementById('in');inp.focus();
+    document.getElementById('tip').onclick=function(){inp.placeholder=current.en.slice(0,2)+'…';inp.focus()};
+    function check(){
+      var v=inp.value.trim().toLowerCase(),ok=v===current.en.toLowerCase();
+      var fb=document.getElementById('fb');fb.className='feedback '+(ok?'ok':'bad');
+      fb.innerHTML=(ok?'Richtig.':'Fast. Richtig ist: '+current.en)+'<div class="row"><button class="btn" id="nx">Weiter</button></div>';
+      say(current.en);current.lvl=ok?3:1;document.getElementById('nx').onclick=next;document.getElementById('nx').focus();inp.disabled=true;
+    }
+    document.getElementById('ck').onclick=check;inp.onkeydown=function(e){if(e.key==='Enter')check()};
+  }
+  function done(){progress();card.innerHTML='<div class="done"><h2>Runde geschafft</h2><p>Alle acht Begriffe sitzen. In der echten Version kämen die Begriffe später zur Wiederholung zurück, und die Lernenden sähen ihren Fortschritt über mehrere Wochen.</p><div class="row"><button class="btn" id="again">Neue Runde</button></div></div>';document.getElementById('again').onclick=function(){deck.forEach(function(c){c.lvl=0});next()}}
+  next();
+})();
+</script>
+</body>
+</html>
