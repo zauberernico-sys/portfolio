@@ -430,7 +430,7 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">04 · Idee für Fachleute</p>
           <h2>Train-the-Trainer</h2>
-          <ul><li><b>Ausgangslage:</b> Viele Fachleute geben ihr Wissen weiter, ohne dafür ausgebildet zu sein.</li><li><b>Vorgehen:</b> Kurze Workshops: eine Arbeit gut vorzeigen und danach prüfen, ob sie sitzt.</li><li><b>Mein Beitrag:</b> Konzept und Moderation, mit den Werkzeugen, die bei Roche freigegeben sind.</li></ul>
+          <ul><li><b>Ausgangslage:</b> Viele Fachleute geben ihr Wissen weiter, ohne dafür ausgebildet zu sein.</li><li><b>Vorgehen:</b> Kurze Workshops: eine Arbeit gut vorzeigen und danach prüfen, ob sie sitzt.</li><li><b>Mein Beitrag:</b> Bedarf mit den Fachleuten klären, Konzept und Moderation, so wie bei meinen Weiterbildungen im Auftrag des Amts für Volksschulen. Dazu die Werkzeuge, die bei Roche freigegeben sind.</li></ul>
           <figure><picture><source media="(max-width:600px)" srcset="../img/tafel-workshop-m.jpg"><img class="shot m-auto" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage"></picture><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
           
         </div>
@@ -446,11 +446,11 @@ footer p{max-width:none;margin:0}
       </div>
       <div class="stage" id="proto-stage">
         <div class="tabs" role="tablist" aria-label="Prototypen">
-          <button class="tab" role="tab" id="tab-ki" aria-selected="true" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
-          <button class="tab" role="tab" id="tab-fach" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Labor, weitere Bereiche möglich</small></button>
+          <button class="tab" role="tab" id="tab-fach" aria-selected="true" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Labor, weitere Bereiche möglich</small></button>
+          <button class="tab" role="tab" id="tab-ki" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
         </div>
-        <div class="screen" id="screen" role="tabpanel" aria-labelledby="tab-ki" tabindex="-1"><iframe id="pframe" src="ki-check.html?embed" title="Prototyp KI-Check"></iframe></div>
-        <div class="stage-foot"><p id="phint">Acht Situationen aus dem Arbeitsalltag in Labor und Büro, jeweils mit kurzer Begründung.</p><a id="popen" href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
+        <div class="screen" id="screen" role="tabpanel" aria-labelledby="tab-fach" tabindex="-1"><iframe id="pframe" src="fachbegriffe.html?embed" title="Prototyp Fachbegriff-Trainer"></iframe></div>
+        <div class="stage-foot"><p id="phint">Acht Begriffe in drei Stufen, wählbar nach Bereich. Am besten mit Ton.</p><a id="popen" href="fachbegriffe.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
       </div>
     </div>
   </section>
@@ -480,7 +480,7 @@ footer p{max-width:none;margin:0}
 (function(){
   var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Bereich. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Arbeitsalltag in Labor und Büro, jeweils mit kurzer Begründung.'}};
   var tabs=[].slice.call(document.querySelectorAll('#prototypen .tab'));
-  var screen=document.getElementById('screen'),frames={ki:document.getElementById('pframe')},hs={},cur='ki';
+  var screen=document.getElementById('screen'),frames={fach:document.getElementById('pframe')},hs={},cur='fach';
   function size(){if(hs[cur])screen.style.height=Math.max(320,Math.min(1100,hs[cur]+8))+'px'}
   function show(k,focusTab){
     tabs.forEach(function(t){var on=t.dataset.p===k;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&focusTab)t.focus()});
