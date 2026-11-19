@@ -283,6 +283,14 @@ footer p{max-width:none;margin:0}
 #prototypen .stage-foot p{min-height:0}
 @media (max-width:900px){#prototypen .tabs{display:grid}#prototypen .tab{min-width:0}}
 
+.glance{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 40px}
+.glance div{background:var(--white);border-radius:var(--r-m);padding:18px 20px;box-shadow:0 1px 2px rgba(21,40,58,.05)}
+.glance h3{font-family:var(--body);font-size:17px;font-weight:700;margin:0 0 8px;letter-spacing:0;color:var(--ink)}
+.glance ul{font-size:16px;line-height:1.4;color:var(--ink-2);padding-left:18px}
+.glance li+li{margin-top:4px}
+@media (max-width:1000px){.glance{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.glance{grid-template-columns:1fr}}
+.pair-row .was ul{color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -303,18 +311,24 @@ footer p{max-width:none;margin:0}
     <div class="r-intro">
       <div>
         <h1>Was ich gemacht habe und wie es bei der Post aussehen könnte</h1>
-        <p class="lead">Ich bewerbe mich als Spezialist für Learning Tools &amp; Development. Auf meiner <a href="../">Portfolio-Seite</a> zeige ich, was ich in der Schule und in Weiterbildungen entwickelt habe. Hier übertrage ich vier dieser Projekte auf das Lernen in einem grossen Unternehmen, am Beispiel KI im Arbeitsalltag. Es sind Ideen von aussen, ohne Einblick in eure Tools und Abläufe. Eine davon könnt ihr als Prototyp ausprobieren.</p>
+        <p class="lead">Ich bewerbe mich als Spezialist für Learning Tools &amp; Development. Ihr wollt das Lernen der Post digitaler, vernetzter und wirkungsvoller machen. Hier zeige ich, was ich dafür mitbringe, und übertrage vier meiner Projekte auf die Post, am Beispiel KI im Arbeitsalltag. Es sind Ideen von aussen, ohne Einblick in eure Tools. Eine davon könnt ihr als Prototyp ausprobieren.</p>
       </div>
       <aside>
         <img src="../img/portrait-sq.jpg" alt="Porträt Nico Andreani" width="64" height="64">
-        <p><b>Nico Andreani</b>Sekundarlehrer (MA, PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich), Kursleiter in der Weiterbildung seit 2022. Nebenbei Zauberkünstler, an der Weltmeisterschaft 2025 für die Schweiz auf Platz 10.</p>
+        <p><b>Nico Andreani</b>Lehrer und Trainer in der Erwachsenenbildung, Basel. Master PH FHNW, CAS Pädagogischer ICT-Support (PH Zürich).</p>
       </aside>
     </div>
 
+    <section class="glance" aria-label="Auf einen Blick">
+      <div><h3>Erwachsenenbildung</h3><ul><li>Über 40 Weiterbildungen seit 2022</li><li>U. a. für das Amt für Volksschulen BL</li></ul></div>
+      <div><h3>Digital Learning und KI</h3><ul><li>Eigene Lernplattform und Apps, mit KI entwickelt</li><li>CAS Pädagogischer ICT-Support</li></ul></div>
+      <div><h3>Change und Upskilling</h3><ul><li>Digitalisierung einer Schule begleitet</li><li>Kompetenzen festgelegt, geschult, überprüft</li></ul></div>
+      <div><h3>Führung und Auftritt</h3><ul><li>Geschäftsleitung einer Tanzschule, 14 Lehrpersonen</li><li>Zauber-WM 2025: Platz 10 für die Schweiz</li></ul></div>
+    </section>
     <nav class="focus" aria-label="Die vier Ideen">
-      <a href="#idee-ki"><b>KI-Upskilling mit Badge</b><span>Situationen einschätzen statt Regeln lesen</span></a>
+      <a href="#idee-ki"><b>KI-Upskilling mit Open Badge</b><span>Situationen einschätzen statt Regeln lesen</span></a>
       <a href="#idee-pfad"><b>Lernpfade in fünf Minuten</b><span>Kurze Einheiten in der bestehenden Plattform</span></a>
-      <a href="#idee-circle"><b>Learning Circles</b><span>Kleine Gruppen lernen an eigenen Beispielen</span></a>
+      <a href="#idee-circle"><b>Learning Circles und Barcamps</b><span>Kleine Gruppen lernen an eigenen Beispielen</span></a>
       <a href="#idee-wirkung"><b>Wirkung sichtbar machen</b><span>Learning Analytics, die zu Anpassungen führen</span></a>
     </nav>
 
@@ -324,7 +338,7 @@ footer p{max-width:none;margin:0}
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Pädagogischer ICT-Support</h3>
-          <p>An der Sekundarschule Frenkendorf habe ich im Zweierteam das Digitalisierungskonzept erarbeitet. Wir haben festgelegt, was alle Lehrpersonen digital können sollen, das Kollegium geschult und am Schluss überprüft, ob es sitzt.</p>
+          <ul><li>Digitalisierungskonzept einer Schule im Zweierteam erarbeitet</li><li>Digitale Grundkompetenzen für alle Lehrpersonen festgelegt</li><li>Kollegium geschult und den Kompetenzstand überprüft</li></ul>
           <dl class="facts">
             <div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div>
             <div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div>
@@ -332,8 +346,8 @@ footer p{max-width:none;margin:0}
         </div>
         <div class="wie">
           <p class="lab">Für die Post, als Prototyp spielbar</p>
-          <h2>KI-Upskilling mit Badge</h2>
-          <p>Viele wissen nicht genau, was sie mit KI dürfen. Statt eines Merkblatts schätzen die Mitarbeitenden acht Situationen aus dem Büroalltag ein und lesen gleich die Begründung. Wer genug richtig hat, bekommt einen Badge. Die Regeln dafür kämen aus euren Richtlinien.</p>
+          <h2>KI-Upskilling mit Open Badge</h2>
+          <p>Viele wissen nicht genau, was sie mit KI dürfen. Statt eines Merkblatts schätzen die Mitarbeitenden acht Situationen aus dem Büroalltag ein und lesen gleich die Begründung. Wer genug richtig hat, bekommt einen Open Badge. Die Regeln dafür kämen aus euren Richtlinien. Ein nächster Schritt wäre ein Learning Agent, der Fragen zu diesen Regeln beantwortet.</p>
           <figure><img class="shot" src="../img/post-ki.jpg" alt="Prototyp KI im Arbeitsalltag: erste Situation mit Rückmeldung" loading="lazy"><figcaption><b>Prototyp.</b> Situation eingeschätzt, die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#proto-stage">Prototyp ausprobieren</a>
         </div>
@@ -343,13 +357,13 @@ footer p{max-width:none;margin:0}
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Lernplattform unsereklasse.ch</h3>
-          <p>Für meine Klassen habe ich eine eigene Lernplattform gebaut. Wörter üben sie in sechs Stufen, von der Karte bis zum Schreiben ohne Hilfe. Am Schluss steht ein Selbsttest mit Nachweis-Code.</p>
+          <ul><li>Eigene Lernplattform für meine Klassen gebaut</li><li>Lernpfade in sechs Stufen, von der Karte bis zum freien Schreiben</li><li>Selbsttest mit Nachweis-Code am Schluss</li></ul>
           <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch" loading="lazy">
         </div>
         <div class="wie">
           <p class="lab">Für die Post</p>
           <h2>Lernpfade in fünf Minuten</h2>
-          <p>Ein Thema wird zu einem kurzen Pfad mit vier Einheiten, die man auf dem Handy zwischen zwei Terminen schafft. Umsetzen würde ich ihn in euren bestehenden Tools, etwa SuccessFactors Learning oder Viva Learning. Wie genau, möchte ich mit euch klären. Die letzte Einheit findet im Team statt, und wer fertig ist, bekommt einen Badge.</p>
+          <p>Ein Thema wird zu einem kurzen Pfad mit vier Einheiten, die man auf dem Handy zwischen zwei Terminen schafft. Umsetzen würde ich ihn in euren bestehenden Tools, etwa SuccessFactors Learning oder Viva Learning, mit Viva Learning direkt in Teams. Wie genau, möchte ich mit euch klären. Die letzte Einheit findet im Team statt, und wer fertig ist, bekommt einen Badge.</p>
           <figure><img class="shot" src="../img/post-pfad.jpg" alt="Skizze: Lernpfad KI im Arbeitsalltag mit vier Einheiten auf dem Handy" loading="lazy"><figcaption><b>Skizze.</b> Zwei Einheiten geschafft, die dritte ist der Prototyp oben.</figcaption></figure>
         </div>
       </article>
@@ -358,13 +372,13 @@ footer p{max-width:none;margin:0}
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Weiterbildungen für Lehrpersonen</h3>
-          <p>Seit 2022 habe ich über 40 Weiterbildungen konzipiert und geleitet, etwa zu digitalem Prüfen, Gamification und Auftreten vor Gruppen. Die Tafel-Werkzeuge aus meiner App Lektoplan habe ich an einem Teamanlass mit dem Kollegium eingesetzt.</p>
+          <ul><li>Über 40 Weiterbildungen konzipiert und geleitet</li><li>Themen: digitales Prüfen, Gamification, Auftreten vor Gruppen</li><li>Tafel-Werkzeuge aus der eigenen App Lektoplan im Einsatz</li></ul>
           <img class="shot" src="../img/lk-tafel.jpg" alt="Digitale Tafel aus Lektoplan" loading="lazy">
         </div>
         <div class="wie">
           <p class="lab">Für die Post</p>
-          <h2>Learning Circles</h2>
-          <p>Sechs Leute treffen sich viermal und bringen jedes Mal ein eigenes Beispiel mit. Ich würde die ersten Circles moderieren und dann eine Anleitung schreiben, damit die Teams sie selbst weiterführen. Was im Circle unklar bleibt, fliesst zurück in den Lernpfad.</p>
+          <h2>Learning Circles und Barcamps</h2>
+          <p>Sechs Leute treffen sich viermal und bringen jedes Mal ein eigenes Beispiel mit. Ich würde die ersten Circles moderieren und dann eine Anleitung schreiben, damit die Teams sie selbst weiterführen. Was im Circle unklar bleibt, fliesst zurück in den Lernpfad. Die besten Beispiele zeigen die Teams einmal im Jahr an einem Barcamp.</p>
           <figure><img class="shot" src="../img/post-circle.jpg" alt="Skizze: Board eines Learning Circle mit drei Spalten" loading="lazy"><figcaption><b>Skizze.</b> Das Board nach dem zweiten Treffen.</figcaption></figure>
         </div>
       </article>
@@ -373,7 +387,7 @@ footer p{max-width:none;margin:0}
         <div class="was">
           <p class="lab">Bisher</p>
           <h3>Lernziele und Nachweis-Code</h3>
-          <p>Auf unsereklasse.ch schätzen die Jugendlichen ihre Lernziele mit einer Ampel ein. Nach dem Selbsttest zeigen sie mir einen Code, und ich sehe, wer welche Stufe geschafft hat. Konten und Tracking gibt es keine, weil der Datenschutz an der Schule Vorrang hat.</p>
+          <ul><li>Selbsteinschätzung der Lernziele mit einer Ampel</li><li>Nachweis-Code nach dem Selbsttest: Ich sehe, wer welche Stufe geschafft hat</li><li>Ohne Konten und Tracking, weil Datenschutz an der Schule Vorrang hat</li></ul>
           <dl class="facts">
             <div><dt>Ziel</dt><dd>Sehen, was sitzt, und den Unterricht anpassen</dd></div>
           </dl>
@@ -405,7 +419,7 @@ footer p{max-width:none;margin:0}
     <div class="contact-box">
       <div>
         <h2>Gerne bespreche ich das mit euch</h2>
-        <p>Ob das zu euren Tools und eurer Lernkultur passt, möchte ich mit euch herausfinden. Den Prototyp zeige ich euch gerne in zwanzig Minuten, in Bern oder online.</p>
+        <p>Ob das zu euren Tools und eurer Lernkultur passt, möchte ich mit euch herausfinden. Den Prototyp zeige ich euch gerne in zwanzig Minuten, in Bern Wankdorf oder online.</p>
       </div>
       <div>
         <dl>
