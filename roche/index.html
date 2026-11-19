@@ -291,6 +291,26 @@ footer p{max-width:none;margin:0}
 @media (max-width:1000px){.glance{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.glance{grid-template-columns:1fr}}
 .pair-row .was ul{color:var(--ink-2)}
+
+/* Überarbeitung Nov 2026: alle Ideen als Karten, Highlights oben, nummerierte Sprungmarken */
+.r-intro{align-items:start}
+.r-intro aside img{width:112px;height:112px}
+@media (max-width:900px){.r-intro aside img{width:88px;height:88px}}
+.r-intro .points{margin:20px 0 0;padding-left:22px;font-size:clamp(18px,1.7vw,20px);max-width:56ch}
+.r-intro .points li+li{margin-top:6px}
+.pair-row:not(.proto) .wie{background:var(--white);border-radius:var(--r-l);border-top:3px solid var(--signal);padding:28px 32px}
+@media (max-width:600px){.pair-row:not(.proto) .wie{padding:22px 20px}}
+@media (min-width:901px){.pair-row+.pair-row .lab{display:block}}
+.pair-row .wie ul{color:var(--ink)}
+.pair-row .wie li b{color:var(--ink-2)}
+.focus a b{text-decoration:underline;text-decoration-color:var(--signal);text-decoration-thickness:2px;text-underline-offset:4px}
+.focus a b i{font-style:normal;color:var(--muted);margin-right:8px;font-variant-numeric:tabular-nums}
+.focus a{min-height:44px}
+@media (max-width:520px){.focus span{display:block;font-size:14px}}
+.embed-proto{position:relative;margin-top:8px;border-radius:var(--r-m);overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
+.embed-proto iframe{display:block;width:100%;height:520px;border:0}
+.small-link{font-size:15px}
+@media (max-width:420px){.top nav{gap:14px}.top nav a{font-size:15px}}
 </style>
 </head>
 <body>
@@ -300,7 +320,7 @@ footer p{max-width:none;margin:0}
     <a class="brand" href="../"><b>Nico Andreani</b><span>Lerndesign und Weiterbildung</span></a>
     <nav aria-label="Seitennavigation">
       <a class="keep" href="#prototypen">Prototypen</a>
-      <a href="../">Ganzes Portfolio</a>
+      <a class="keep" href="../">Portfolio</a>
       <a class="keep" href="#kontakt">Kontakt</a>
     </nav>
   </div>
@@ -310,97 +330,102 @@ footer p{max-width:none;margin:0}
   <div class="wrap">
     <div class="r-intro">
       <div>
-        <h1>Was ich gemacht habe und wie es bei Roche aussehen könnte</h1>
-        <p class="lead">Ich suche eine Stelle im Learning &amp; Development, am liebsten im QA Training bei Basel Drug Substance oder in der Berufsbildung. Hier übertrage ich Projekte aus Schule und Weiterbildung auf Schulungen in der Produktion und auf die Lehre. Es sind Ideen von aussen, ohne Einblick in eure Abläufe. Zwei davon könnt ihr als Prototyp ausprobieren.</p>
+        <h1>Erfahrung aus der Erwachsenenbildung, Ideen für Roche</h1>
+        <ul class="points">
+          <li>Ziel: Senior Learning Specialist im QA Training (Basel Drug Substance) oder eine Stelle in der Berufsbildung</li>
+          <li>Ich bringe mit: Schulungen konzipieren, digitale Lernlösungen bauen, Wirkung überprüfen</li>
+          <li>Vier Ideen für Roche, zwei davon als Prototyp zum Ausprobieren</li>
+        </ul>
       </div>
       <aside>
-        <img src="../img/portrait-sq.jpg" alt="Porträt Nico Andreani" width="64" height="64">
-        <p><b>Nico Andreani</b>Lehrer und Trainer in der Erwachsenenbildung, Basel. Master PH FHNW, CAS Pädagogischer ICT-Support (PH Zürich).</p>
+        <img src="../img/portrait-sq.jpg" alt="Porträt Nico Andreani" width="112" height="112">
+        <p><b>Nico Andreani</b>Sekundarlehrer und Erwachsenenbildner, Basel. MA Sekundarstufe I (PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich). Deutsch, Englisch (C2), Französisch.</p>
       </aside>
     </div>
 
     <section class="glance" aria-label="Auf einen Blick">
-      <div><h3>Erwachsenenbildung</h3><ul><li>Über 40 Weiterbildungen seit 2022</li><li>U. a. für das Amt für Volksschulen BL</li></ul></div>
-      <div><h3>Digital Learning und KI</h3><ul><li>Eigene Lernplattform und Apps, mit KI entwickelt</li><li>CAS Pädagogischer ICT-Support</li></ul></div>
-      <div><h3>Change und Upskilling</h3><ul><li>Digitalisierung einer Schule begleitet</li><li>Kompetenzen festgelegt, geschult, überprüft</li></ul></div>
-      <div><h3>Führung und Auftritt</h3><ul><li>Geschäftsleitung einer Tanzschule, 14 Lehrpersonen</li><li>Zauber-WM 2025: Platz 10 für die Schweiz</li></ul></div>
+      <div><h3>Erwachsenenbildung</h3><ul><li>Über 40 Weiterbildungen konzipiert und geleitet</li><li>Auftraggeber u. a. Amt für Volksschulen BL</li></ul></div>
+      <div><h3>Digital Learning und KI</h3><ul><li>Lernplattform und Apps selbst entwickelt, mit GenAI</li><li>CAS Pädagogischer ICT-Support (PH Zürich)</li></ul></div>
+      <div><h3>Change und Upskilling</h3><ul><li>Digitalisierungskonzept einer Schule im Zweierteam</li><li>Kompetenzprofil definiert, geschult, Kompetenzstand überprüft</li></ul></div>
+      <div><h3>Führung und Auftritt</h3><ul><li>Geschäftsleitung Tanzschule: 14 Lehrpersonen, Budget, IT</li><li>Bühne: Zauber-WM 2025, Rang 10 für die Schweiz</li></ul></div>
     </section>
+
     <nav class="focus" aria-label="Die vier Ideen">
-      <a href="#idee-qa"><b>Schulungen, die wirken</b><span>Verständnis prüfen statt nur unterschreiben</span></a>
-      <a href="#idee-fach"><b>Fachbegriff-Trainer</b><span>Fachsprache und Englisch auf dem Handy</span></a>
-      <a href="#idee-ki"><b>Was man mit KI darf</b><span>Fälle aus dem Alltag, vom Code bis zum Laborjournal</span></a>
-      <a href="#idee-fachleute"><b>Fachleute stärken</b><span>Kurze Workshops: gut zeigen, gut prüfen</span></a>
+      <a href="#idee-qa"><b><i>01</i>Wirksame Schulungen</b><span>Verständnis nach der Schulung prüfen</span></a>
+      <a href="#idee-fach"><b><i>02</i>Fachbegriff-Trainer</b><span>Fachsprache und Englisch auf dem Handy</span></a>
+      <a href="#idee-ki"><b><i>03</i>KI-Check</b><span>Was man mit KI darf, an Fällen geübt</span></a>
+      <a href="#idee-fachleute"><b><i>04</i>Train-the-Trainer</b><span>Fachleute geben Wissen gezielt weiter</span></a>
     </nav>
 
     <div class="pairs">
 
       <article class="pair-row" id="idee-qa">
         <div class="was">
-          <p class="lab">Bisher</p>
-          <h3>Digitales Prüfen in Weiterbildungen</h3>
-          <ul><li>Digitale Prüfungstools getestet und verglichen</li><li>Weiterbildungen dazu für Lehrpersonen geleitet</li><li>Eigene Selbsttests mit sofortiger Rückmeldung gebaut</li></ul>
-          <dl class="facts">
-            <div><dt>Seit</dt><dd>2022, über 40 Weiterbildungen</dd></div>
-          </dl>
+          <p class="lab">01 · Bisher</p>
+          <h3>Digitales Prüfen</h3>
+          <ul><li>Digitale Prüfungstools getestet und verglichen</li><li>Weiterbildungen zum digitalen Prüfen geleitet</li><li>Eigene Selbsttests mit sofortiger Rückmeldung gebaut</li></ul>
+          
+          
         </div>
         <div class="wie">
-          <p class="lab">Für das QA Training</p>
-          <h2>Schulungen, die wirken</h2>
-          <p>Ob eine Schulung sitzt, zeigt sich im Alltag. Nach einer Schulung beantworten die Mitarbeitenden drei kurze Fragen zu typischen Situationen. Wo viele danebenliegen, wird die Schulung angepasst. Die Inhalte kämen von euren Fachleuten, die Methode und die digitale Umsetzung von mir.</p>
-          <figure><img class="shot" src="../img/roche-qa.jpg" alt="Skizze: Verständnisfrage nach einer Schulung mit Auswertung pro Frage" loading="lazy"><figcaption><b>Skizze mit Beispielinhalt.</b> Eine Frage fällt ab, also wird dieser Teil verbessert.</figcaption></figure>
+          <p class="lab">01 · Idee für das QA Training</p>
+          <h2>Wirksame Schulungen</h2>
+          <ul><li><b>Ausgangslage:</b> Eine Lesebestätigung zeigt nicht, ob eine Schulung verstanden wurde.</li><li><b>Vorgehen:</b> Nach jeder Schulung drei kurze Fragen zu typischen Situationen, ausgewertet pro Frage. Wo viele danebenliegen, wird die Schulung angepasst.</li><li><b>Mein Beitrag:</b> Methode und digitale Umsetzung. Die Inhalte kommen von euren Fachleuten.</li></ul>
+          <figure><img class="shot" src="../img/roche-qa.jpg" alt="Skizze: Verständnisfrage nach einer Schulung mit Auswertung pro Frage"><figcaption><b>Skizze mit Beispielinhalt.</b> Frage 2 fällt ab, also wird dieser Teil verbessert.</figcaption></figure>
+          
         </div>
       </article>
 
       <article class="pair-row proto" id="idee-fach">
         <div class="was">
-          <p class="lab">Bisher</p>
-          <h3>Wörter-Trainer auf unsereklasse.ch</h3>
-          <ul><li>Wörter üben in sechs Stufen, von der Karte bis zum freien Schreiben</li><li>Was sitzt, kommt seltener, Fehler kommen öfter</li></ul>
-          <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch" loading="lazy">
+          <p class="lab">02 · Bisher</p>
+          <h3>Lernplattform unsereklasse.ch</h3>
+          <ul><li>Konzipiert, entwickelt und betrieben (eigene Web-App)</li><li>Wörter üben in sechs Stufen, Fehler kommen öfter</li><li>Privacy by Design: keine Konten, kein Tracking</li></ul>
+          
+          <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch">
         </div>
         <div class="wie">
-          <p class="lab">Für Roche, als Prototyp spielbar</p>
+          <p class="lab">02 · Idee für Produktion und Lehre, als Prototyp</p>
           <h2>Fachbegriff-Trainer</h2>
-          <p>Fachbegriffe und Englisch, die man im Betrieb täglich braucht, in fünf Minuten auf dem Handy. Für Lernende genauso wie für neue Mitarbeitende in der Produktion. Welche Begriffe hineinkommen, entscheiden eure Fachleute.</p>
-          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz" loading="lazy"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt.</figcaption></figure>
+          <ul><li><b>Ausgangslage:</b> Fachsprache und Englisch sind für Neue eine Hürde.</li><li><b>Vorgehen:</b> Fünf Minuten am Tag auf dem Handy, eine Liste pro Bereich.</li><li><b>Mein Beitrag:</b> Prototyp gebaut. Welche Begriffe hineinkommen, entscheiden eure Fachleute.</li></ul>
+          <figure><img class="shot" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="fach">Prototyp ausprobieren</a>
         </div>
       </article>
 
       <article class="pair-row proto" id="idee-ki">
         <div class="was">
-          <p class="lab">Bisher</p>
-          <h3>Pädagogischer ICT-Support</h3>
-          <ul><li>Digitalisierungskonzept einer Schule im Zweierteam erarbeitet</li><li>Digitale Grundkompetenzen für alle Lehrpersonen festgelegt</li><li>Kollegium geschult und den Kompetenzstand überprüft</li></ul>
-          <dl class="facts">
-            <div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div>
-            <div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div>
-          </dl>
+          <p class="lab">03 · Bisher</p>
+          <h3>Digitalisierung einer Schule (PICTS)</h3>
+          <ul><li>Digitalisierungskonzept im Zweierteam erarbeitet</li><li>Kompetenzprofil für alle Lehrpersonen definiert</li><li>Upskilling des Kollegiums mit Kursen und Tutorials</li><li>Kompetenzstand am Schluss überprüft</li></ul>
+          <dl class="facts"><div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div><div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div></dl>
+          
         </div>
         <div class="wie">
-          <p class="lab">Für Roche, als Prototyp spielbar</p>
-          <h2>Ein KI-Führerschein</h2>
-          <p>Zuerst würde ich mit den Verantwortlichen klären, was man mit KI darf. Daraus wird eine kurze Einheit mit Fällen aus dem Alltag, vom Code bis zum Laborjournal. Der Prototyp zeigt die Version für Lernende.</p>
-          <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe" loading="lazy"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, und die Begründung steht gleich darunter.</figcaption></figure>
+          <p class="lab">03 · Idee für Lehre und Mitarbeitende, als Prototyp</p>
+          <h2>KI-Check</h2>
+          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, vom Code bis zum Laborjournal.</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp für Lernende gebaut, eine Version für Mitarbeitende ist möglich.</li></ul>
+          <figure><img class="shot" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="ki">Prototyp ausprobieren</a>
         </div>
       </article>
 
       <article class="pair-row" id="idee-fachleute">
         <div class="was">
-          <p class="lab">Bisher</p>
-          <h3>Weiterbildungen für Lehrpersonen</h3>
-          <ul><li>Über 40 Weiterbildungen konzipiert und geleitet</li><li>Themen: digitales Prüfen, Gamification, Auftreten vor Gruppen</li><li>Tafel-Werkzeuge aus der eigenen App Lektoplan im Einsatz</li></ul>
-          <img class="shot" src="../img/lk-tafel.jpg" alt="Digitale Tafel aus Lektoplan" loading="lazy">
+          <p class="lab">04 · Bisher</p>
+          <h3>Workshops für Erwachsene</h3>
+          <ul><li>Weiterbildungen seit 2022, extern und an der eigenen Schule</li><li>Themen: digitales Prüfen, Gamification, Auftreten vor Gruppen</li><li>Interaktive Inhalte mit Autorentools, BookWidgets Ambassador</li></ul>
+          
+          
         </div>
         <div class="wie">
-          <p class="lab">Für Roche</p>
-          <h2>Fachleute stärken</h2>
-          <p>In den Abteilungen geben viele Fachleute ihr Wissen an neue Kolleginnen, Kollegen und Lernende weiter. Ich würde mit kurzen Workshops anfangen: wie man eine Arbeit vorzeigt und danach merkt, ob sie sitzt. Für Umfragen und Wortwolken nehme ich, was bei Roche schon freigegeben ist.</p>
-          <figure><img class="shot" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage" loading="lazy"><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
+          <p class="lab">04 · Idee für Fachleute</p>
+          <h2>Train-the-Trainer</h2>
+          <ul><li><b>Ausgangslage:</b> Viele Fachleute geben ihr Wissen weiter, ohne dafür ausgebildet zu sein.</li><li><b>Vorgehen:</b> Kurze Workshops: eine Arbeit gut vorzeigen und danach prüfen, ob sie sitzt.</li><li><b>Mein Beitrag:</b> Konzept und Moderation, mit den Werkzeugen, die bei Roche freigegeben sind.</li></ul>
+          <figure><img class="shot" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage"><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
+          
         </div>
       </article>
-
     </div>
   </div>
 
@@ -424,8 +449,8 @@ footer p{max-width:none;margin:0}
   <div class="wrap contact" id="kontakt">
     <div class="contact-box">
       <div>
-        <h2>Gerne bespreche ich das mit euch</h2>
-        <p>Ob das zu euren Schulungen und Lehrgängen passt, möchte ich mit euch herausfinden. Die Prototypen zeige ich euch gerne in zwanzig Minuten, in Basel oder online.</p>
+        <h2>Zwanzig Minuten für die Prototypen</h2>
+        <p>Gerne zeige ich euch die Ideen und Prototypen in Basel oder online und höre, was davon zu euren Schulungen und Lehrgängen passt.</p>
       </div>
       <div>
         <dl>
