@@ -39,8 +39,8 @@ button{font:inherit}
 </head>
 <body>
 <div class="wrap">
-  <h1>KI-Check für Lernende</h1>
-  <p class="sub">Prototyp: Darf ich hier KI nutzen? Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.</p>
+  <h1>KI-Check</h1>
+  <p class="sub">Prototyp: Darf ich hier KI nutzen? Acht Situationen aus dem Arbeitsalltag in Labor und Büro, jeweils mit kurzer Begründung.</p>
   <div class="card" id="card" aria-live="polite"></div>
   <p class="note">Unabhängiger Prototyp mit Beispielinhalt, nicht von Roche. Die verbindlichen Regeln würden aus den Richtlinien des Betriebs übernommen.</p>
 </div>
@@ -48,20 +48,20 @@ button{font:inherit}
 (function(){
   if(location.search.indexOf('embed')>-1)document.documentElement.classList.add('embed');
   var C=[
-    ["Du lässt dir von der KI erklären, was eine Fehlermeldung allgemein bedeutet. Deinen Code kopierst du nicht hinein.","ja","Gute Nutzung. Du verstehst die Meldung und behebst den Fehler danach selbst. So lernst du dabei."],
-    ["Du kopierst eine Liste mit Namen und Personalnummern von Mitarbeitenden in einen öffentlichen KI-Chat, um sie sortieren zu lassen.","nein","Personaldaten bearbeitest du nur mit Berechtigung, und in einen öffentlichen KI-Chat gehören sie nie. Zum Sortieren reicht eine Tabelle."],
-    ["Du willst dir einen Abschnitt aus dem Code deines Teams erklären lassen. Der Betrieb hat dafür ein KI-Werkzeug freigegeben.","teil","Das freigegebene Werkzeug ist der richtige Ort. Kläre aber zuerst, ob dieser Code dort verwendet werden darf. Im Zweifel fragst du nach."],
     ["Du lässt dir von der KI eine Verdünnungsreihe berechnen und willst die Werte ins Laborjournal eintragen.","nein","Im Laborjournal steht nur, was du nach SOP selbst gerechnet und gemessen hast. Die KI darf dir vorher erklären, wie eine Verdünnungsreihe funktioniert."],
-    ["Du übst für eine Prüfung in der Berufsfachschule und lässt dir von der KI zehn Übungsfragen stellen.","ja","Sehr gut. Die KI als Übungspartnerin hilft beim Lernen. Prüf aber die Antworten, auch KI macht Fehler."],
-    ["Für die Lerndokumentation schreibt die KI deinen ganzen Wochenbericht.","nein","Die Lerndokumentation zeigt, was du gelernt hast. Wenn die KI sie schreibt, zeigt sie das nicht mehr. Ideen sammeln oder die Rechtschreibung prüfen lassen ist in Ordnung."],
+    ["Du lässt dir von der KI erklären, was eine Fehlermeldung allgemein bedeutet. Deinen Code oder deine Daten kopierst du nicht hinein.","ja","Gute Nutzung. Du verstehst die Meldung und behebst den Fehler danach selbst."],
+    ["Du kopierst eine Liste mit Namen und Personalnummern von Mitarbeitenden in einen öffentlichen KI-Chat, um sie sortieren zu lassen.","nein","Personaldaten bearbeitest du nur mit Berechtigung, und in einen öffentlichen KI-Chat gehören sie nie. Zum Sortieren reicht eine Tabelle."],
+    ["Du willst dir einen internen Ablauf erklären lassen. Der Betrieb hat dafür ein KI-Werkzeug freigegeben.","teil","Das freigegebene Werkzeug ist der richtige Ort. Kläre aber zuerst, ob das Dokument dort verwendet werden darf. Im Zweifel fragst du nach."],
+    ["Du bereitest dich auf eine interne Schulung vor und lässt dir von der KI zehn Übungsfragen stellen.","ja","Sehr gut. Die KI als Übungspartnerin hilft beim Lernen. Prüf aber die Antworten, auch KI macht Fehler."],
+    ["Für deinen Wochenbericht schreibt die KI den ganzen Text.","nein","Der Bericht soll zeigen, was du gemacht und gelernt hast. Ideen sammeln oder die Rechtschreibung prüfen lassen ist in Ordnung."],
     ["Du schreibst eine E-Mail an ein Projektteam im Ausland. Mit dem KI-Werkzeug, das der Betrieb freigegeben hat, übersetzt du sie ins Englische und liest sie vor dem Senden durch.","ja","In Ordnung. Du nutzt ein freigegebenes Werkzeug und bleibst für den Inhalt verantwortlich. Darum ist das Durchlesen vor dem Senden wichtig."],
-    ["Die KI schlägt eine Lösung vor, die du nicht verstehst. Du gibst sie trotzdem ab, weil sie funktioniert.","nein","Funktionieren reicht nicht. Lass dir die Lösung Schritt für Schritt erklären, bis du sie selbst erklären kannst. Erst dann gibst du sie ab."]
+    ["Die KI schlägt eine Lösung vor, die du nicht verstehst. Du übernimmst sie trotzdem, weil sie funktioniert.","nein","Funktionieren reicht nicht. Lass dir die Lösung Schritt für Schritt erklären, bis du sie selbst erklären kannst."]
   ];
   var L={ja:["Ja","passt so"],teil:["Mit Vorsicht","nur unter Bedingungen"],nein:["Nein","so nicht"]};
   var i=0,score=0,card=document.getElementById('card');
   function later(id){setTimeout(function(){var el=document.getElementById(id);if(el)el.focus()},0)}
   function show(focus){
-    if(i>=C.length){card.innerHTML='<div class="count">Auswertung</div><p class="case" id="cs" tabindex="-1">'+score+' von '+C.length+' Situationen richtig eingeschätzt.</p><p>In einer echten Einheit würden die Lernenden danach eigene Regeln für den Umgang mit KI formulieren und mit den Richtlinien des Betriebs vergleichen.</p><button class="btn" id="re">Nochmals</button>';document.getElementById('re').onclick=function(){i=0;score=0;show(true)};later('cs');post();return}
+    if(i>=C.length){card.innerHTML='<div class="count">Auswertung</div><p class="case" id="cs" tabindex="-1">'+score+' von '+C.length+' Situationen richtig eingeschätzt.</p><p>In einer echten Einheit würden die Teilnehmenden danach eigene Regeln für den Umgang mit KI formulieren und mit den Richtlinien des Betriebs vergleichen.</p><button class="btn" id="re">Nochmals</button>';document.getElementById('re').onclick=function(){i=0;score=0;show(true)};later('cs');post();return}
     var c=C[i];
     card.innerHTML='<div class="count">Situation '+(i+1)+' von '+C.length+'</div><p class="case" id="cs" tabindex="-1">'+c[0]+'</p><div class="opts">'+['ja','teil','nein'].map(function(k){return '<button class="opt" data-k="'+k+'">'+L[k][0]+'<small>'+L[k][1]+'</small></button>'}).join('')+'</div><div class="fb" id="fb"></div>';
     [].forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){

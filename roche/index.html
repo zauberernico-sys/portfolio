@@ -340,7 +340,7 @@ footer p{max-width:none;margin:0}
     <div class="r-intro">
       <div>
         <p class="kicker">Bewerbung: Senior Learning Specialist im QA Training, Basel Drug Substance</p>
-        <h1>Vier Ideen für das Lernen bei Roche, aus meiner Praxis in der Erwachsenenbildung</h1>
+        <h1>Vier Ideen für das QA Training, aus meiner Praxis in der Erwachsenenbildung</h1>
         <ul class="points">
                     <li>Über 40 Weiterbildungen konzipiert, eine Lernplattform selbst gebaut, den Kompetenzstand eines Kollegiums überprüft</li>
                     <li>Alle vier Ideen setzen bei Schulungen im Arbeitsalltag an. Zwei davon könnt ihr als Prototyp ausprobieren</li>
@@ -413,7 +413,7 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">03 · Idee für Mitarbeitende im Labor, als Prototyp</p>
           <h2>KI-Check</h2>
-          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, gerade bei Werten fürs Laborjournal (Datenintegrität).</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp mit Beispielen aus dem Labor gebaut. Die Fälle kämen aus euren Regeln.</li></ul>
+          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, gerade bei Werten fürs Laborjournal (Datenintegrität).</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp mit Beispielen aus Labor und Büro gebaut. Die Fälle kämen aus euren Regeln.</li></ul>
           <figure><picture><source media="(max-width:600px)" srcset="../img/roche-ki-m.jpg"><img class="shot m-auto fade" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe"></picture><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="ki">Prototyp ausprobieren</a>
         </div>
@@ -447,10 +447,10 @@ footer p{max-width:none;margin:0}
       <div class="stage" id="proto-stage">
         <div class="tabs" role="tablist" aria-label="Prototypen">
           <button class="tab" role="tab" id="tab-ki" aria-selected="true" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
-          <button class="tab" role="tab" id="tab-fach" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Labor, Informatik, KV</small></button>
+          <button class="tab" role="tab" id="tab-fach" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Labor, weitere Bereiche möglich</small></button>
         </div>
         <div class="screen" id="screen" role="tabpanel" aria-labelledby="tab-ki" tabindex="-1"><iframe id="pframe" src="ki-check.html?embed" title="Prototyp KI-Check"></iframe></div>
-        <div class="stage-foot"><p id="phint">Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.</p><a id="popen" href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
+        <div class="stage-foot"><p id="phint">Acht Situationen aus dem Arbeitsalltag in Labor und Büro, jeweils mit kurzer Begründung.</p><a id="popen" href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
       </div>
     </div>
   </section>
@@ -478,7 +478,7 @@ footer p{max-width:none;margin:0}
 
 <script>
 (function(){
-  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Bereich. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.'}};
+  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Bereich. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Arbeitsalltag in Labor und Büro, jeweils mit kurzer Begründung.'}};
   var tabs=[].slice.call(document.querySelectorAll('#prototypen .tab'));
   var screen=document.getElementById('screen'),frames={ki:document.getElementById('pframe')},hs={},cur='ki';
   function size(){if(hs[cur])screen.style.height=Math.max(320,Math.min(1100,hs[cur]+8))+'px'}
