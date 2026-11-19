@@ -318,6 +318,8 @@ footer p{max-width:none;margin:0}
 .r-intro aside p span+span{margin-top:6px;color:var(--muted)}
 .fade{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
 @media (max-width:420px){.brand span{display:none}}
+
+@media (max-width:600px){.pair-row figure img.m-auto{aspect-ratio:auto;object-fit:contain}.focus{grid-template-columns:1fr!important}.focus a,.focus a+a,.focus.five a{padding-left:0!important;border-left:0!important}.focus a+a{border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -340,7 +342,7 @@ footer p{max-width:none;margin:0}
         <p class="kicker">Bewerbung: Spezialist Learning Tools &amp; Development</p>
         <h1>Vier Projekte aus meiner Praxis, übertragen auf die Post</h1>
         <ul class="points">
-                    <li>Lernen digitaler, vernetzter und wirkungsvoller machen: Hier zeige ich am Beispiel KI im Arbeitsalltag, wie ich das angehen würde</li>
+                    <li>Alle vier Ideen am selben Beispiel: KI im Arbeitsalltag</li>
           <li>Eine Idee könnt ihr gleich hier als Prototyp ausprobieren</li>
         </ul>
       </div>
@@ -358,8 +360,8 @@ footer p{max-width:none;margin:0}
     </section>
 
     <nav class="focus" aria-label="Die vier Ideen">
-      <a href="#idee-ki"><b><i>01</i>KI-Upskilling</b><span>Mit Open Badge, als Prototyp</span></a>
-      <a href="#idee-pfad"><b><i>02</i>Microlearning-Lernpfade</b><span>Vier Einheiten à fünf Minuten</span></a>
+      <a href="#idee-ki"><b><i>01</i>KI-Upskilling</b><span>Mit Badge, als Prototyp</span></a>
+      <a href="#idee-pfad"><b><i>02</i>Microlearning-Lernpfade</b><span>Drei Einheiten à fünf Minuten, dann im Team</span></a>
       <a href="#idee-circle"><b><i>03</i>Learning Circles</b><span>Eine Community, die sich selbst trägt</span></a>
       <a href="#idee-wirkung"><b><i>04</i>Learning Analytics</b><span>Wirkung messen und nachbessern</span></a>
     </nav>
@@ -376,8 +378,8 @@ footer p{max-width:none;margin:0}
         </div>
         <div class="wie">
           <p class="lab">01 · Idee für die Post, als Prototyp</p>
-          <h2>KI-Upskilling mit Open Badge</h2>
-          <ul><li>Viele wissen nicht genau, was sie mit KI dürfen</li><li>Acht Situationen aus dem Büroalltag einschätzen, mit Begründung, danach ein Open Badge</li><li>Die Regeln kämen aus euren Richtlinien. Nächster Schritt: ein Learning Agent, der Fragen dazu beantwortet</li></ul>
+          <h2>KI-Upskilling mit Badge</h2>
+          <ul><li><b>Ausgangslage:</b> Viele wissen nicht genau, was sie mit KI dürfen.</li><li><b>Vorgehen:</b> Acht Situationen aus dem Büroalltag einschätzen, mit Begründung. Danach gibt es einen Badge, später als Open Badge.</li><li><b>Mein Beitrag:</b> Prototyp gebaut. Die Regeln kämen aus euren Richtlinien. Nächster Schritt wäre ein Learning Agent, der Fragen dazu beantwortet.</li></ul>
           <div class="embed-proto" id="proto-stage"><iframe id="pframe" src="ki-check.html?embed" title="Prototyp KI im Arbeitsalltag"></iframe></div><p class="small-link">Ab sechs richtigen Antworten gibt es den Badge. <a href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></p>
           
         </div>
@@ -394,8 +396,8 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">02 · Idee für die Post</p>
           <h2>Microlearning-Lernpfade</h2>
-          <ul><li>Vier Einheiten à fünf Minuten, mobil zwischen zwei Terminen</li><li>Umsetzung in euren Tools, z. B. SuccessFactors Learning oder Viva Learning in Teams. Wie genau, kläre ich gern mit euch</li><li>Letzte Einheit im Team, danach ein Open Badge</li></ul>
-          <figure><img class="shot" src="../img/post-pfad.jpg" alt="Skizze: Lernpfad KI im Arbeitsalltag mit vier Einheiten auf dem Handy"><figcaption><b>Skizze.</b> Zwei Einheiten geschafft, die dritte ist der Prototyp oben.</figcaption></figure>
+          <ul><li><b>Ausgangslage:</b> Für lange Kurse fehlt im Alltag die Zeit.</li><li><b>Vorgehen:</b> Drei Einheiten à fünf Minuten auf dem Handy, dann 30 Minuten im Team. Umsetzung in euren Tools, z. B. SuccessFactors Learning oder Viva Learning in Teams.</li><li><b>Mein Beitrag:</b> Lernpfad konzipieren und Inhalte bauen. Wie genau in euren Tools, kläre ich gern mit euch.</li></ul>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/post-pfad-m.jpg"><img class="shot m-auto" src="../img/post-pfad.jpg" alt="Skizze: Lernpfad KI im Arbeitsalltag mit vier Einheiten auf dem Handy"></picture><figcaption><b>Skizze.</b> Zwei Einheiten geschafft, die dritte ist der Prototyp oben, die vierte findet im Team statt.</figcaption></figure>
           
         </div>
       </article>
@@ -412,8 +414,8 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">03 · Idee für die Post</p>
           <h2>Learning Circles und Barcamps</h2>
-          <ul><li>Sechs Leute, vier Treffen, jedes Mal ein eigenes Beispiel</li><li>Ich moderiere die ersten Circles und schreibe eine Anleitung, damit eine Learning Community entsteht, die sich selbst trägt</li><li>Die besten Beispiele zeigen die Teams an einem Barcamp</li></ul>
-          <figure><img class="shot" src="../img/post-circle.jpg" alt="Skizze: Board eines Learning Circle mit drei Spalten"><figcaption><b>Skizze.</b> Das Board nach dem zweiten Treffen.</figcaption></figure>
+          <ul><li><b>Ausgangslage:</b> Gelernt wird am meisten an eigenen Beispielen und im Austausch.</li><li><b>Vorgehen:</b> Sechs Leute, vier Treffen, jedes Mal ein eigenes Beispiel. Die besten Beispiele zeigen die Teams an einem Barcamp.</li><li><b>Mein Beitrag:</b> Die ersten Circles moderieren und eine Anleitung schreiben, damit eine Learning Community entsteht, die sich selbst trägt.</li></ul>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/post-circle-m.jpg"><img class="shot m-auto" src="../img/post-circle.jpg" alt="Skizze: Board eines Learning Circle mit drei Spalten"></picture><figcaption><b>Skizze.</b> Das Board nach dem zweiten Treffen.</figcaption></figure>
           
         </div>
       </article>
@@ -429,8 +431,8 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">04 · Idee für die Post</p>
           <h2>Learning Analytics, die etwas ändern</h2>
-          <ul><li>Vorher und nachher fragen: Fühlen sich die Leute sicher?</li><li>Nach sechs Wochen nachfassen: Nutzen sie es im Alltag?</li><li>Daraus jedes Mal eine kurze Liste mit Anpassungen am Lernpfad</li></ul>
-          <figure><img class="shot" src="../img/post-analytics.jpg" alt="Skizze: Auswertung eines Lernpfads mit Beispieldaten"><figcaption><b>Skizze mit erfundenen Beispieldaten.</b> So könnte eine Auswertung aussehen.</figcaption></figure>
+          <ul><li><b>Ausgangslage:</b> Abschlussquoten allein sagen wenig über die Wirkung.</li><li><b>Vorgehen:</b> Vorher und nachher fragen, ob sich die Leute sicher fühlen. Nach sechs Wochen nachfassen, ob sie es im Alltag nutzen.</li><li><b>Mein Beitrag:</b> Fragen und Auswertung aufbauen, daraus Anpassungen am Lernpfad ableiten.</li></ul>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/post-analytics-m.jpg"><img class="shot m-auto" src="../img/post-analytics.jpg" alt="Skizze: Auswertung eines Lernpfads mit Beispieldaten"></picture><figcaption><b>Skizze mit erfundenen Beispieldaten.</b> So könnte eine Auswertung aussehen.</figcaption></figure>
           
         </div>
       </article>
@@ -440,7 +442,7 @@ footer p{max-width:none;margin:0}
   <div class="wrap contact" id="kontakt">
     <div class="contact-box">
       <div>
-        <h2>Lasst uns zwanzig Minuten darüber sprechen</h2>
+        <h2>Zwanzig Minuten für den Prototyp</h2>
         <p>Ich zeige euch den Prototyp gern vor Ort in Bern oder online und höre, was davon zu euren Tools und eurer Lernkultur passt.</p>
       </div>
       <div>

@@ -318,6 +318,8 @@ footer p{max-width:none;margin:0}
 .r-intro aside p span+span{margin-top:6px;color:var(--muted)}
 .fade{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
 @media (max-width:420px){.brand span{display:none}}
+
+@media (max-width:600px){.pair-row figure img.m-auto{aspect-ratio:auto;object-fit:contain}.focus{grid-template-columns:1fr!important}.focus a,.focus a+a,.focus.five a{padding-left:0!important;border-left:0!important}.focus a+a{border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -338,11 +340,10 @@ footer p{max-width:none;margin:0}
     <div class="r-intro">
       <div>
         <p class="kicker">Bewerbung: Senior Learning Specialist im QA Training, Basel Drug Substance</p>
-        <h1>Erfahrung aus der Erwachsenenbildung, Ideen für Roche</h1>
+        <h1>Vier Ideen für das Lernen bei Roche, aus meiner Praxis in der Erwachsenenbildung</h1>
         <ul class="points">
-                    <li>Ich bringe mit: Trainingskonzepte entwickeln, digitale Lernlösungen umsetzen, Trainingswirksamkeit prüfen, mit Stakeholdern abstimmen</li>
-          <li>Offen auch für die Berufsbildung, etwa in den chemischen Berufen</li>
-          <li>Vier Ideen für Roche, zwei davon als Prototyp zum Ausprobieren</li>
+                    <li>Über 40 Weiterbildungen konzipiert, eine Lernplattform selbst gebaut, den Kompetenzstand eines Kollegiums überprüft</li>
+                    <li>Die erste Idee ist für das QA Training, die anderen passen auch zur Berufsbildung. Zwei davon könnt ihr als Prototyp ausprobieren</li>
         </ul>
       </div>
       <aside>
@@ -379,7 +380,7 @@ footer p{max-width:none;margin:0}
           <p class="lab">01 · Idee für das QA Training</p>
           <h2>Wirksame Schulungen</h2>
           <ul><li><b>Ausgangslage:</b> Eine Lesebestätigung (Read &amp; Understand) zeigt nicht, ob eine Schulung verstanden wurde.</li><li><b>Vorgehen:</b> Nach jeder Schulung drei kurze Fragen zu typischen Situationen, ausgewertet pro Frage. Wo viele danebenliegen, wird die Schulung angepasst.</li><li><b>Mein Beitrag:</b> Methode und digitale Umsetzung. Die Inhalte kommen von euren Fachleuten.</li></ul>
-          <figure><img class="shot" src="../img/roche-qa.jpg" alt="Skizze: Verständnisfrage nach einer Schulung mit Auswertung pro Frage"><figcaption><b>Skizze mit Beispielinhalt.</b> Frage 2 fällt ab, also wird dieser Teil verbessert.</figcaption></figure>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/roche-qa-m.jpg"><img class="shot m-auto" src="../img/roche-qa.jpg" alt="Skizze: Verständnisfrage nach einer Schulung mit Auswertung pro Frage"></picture><figcaption><b>Skizze mit Beispielinhalt.</b> Frage 2 fällt ab, also wird dieser Teil verbessert.</figcaption></figure>
           
         </div>
       </article>
@@ -393,10 +394,10 @@ footer p{max-width:none;margin:0}
           <img class="shot" src="../img/wt-crop.jpg" alt="Wörter-Trainer auf unsereklasse.ch">
         </div>
         <div class="wie">
-          <p class="lab">02 · Idee für Produktion und Lehre, als Prototyp</p>
+          <p class="lab">02 · Idee für neue Mitarbeitende, als Prototyp</p>
           <h2>Fachbegriff-Trainer</h2>
           <ul><li><b>Ausgangslage:</b> Fachsprache und Englisch sind für Neue eine Hürde.</li><li><b>Vorgehen:</b> Fünf Minuten am Tag auf dem Handy, eine Liste pro Bereich.</li><li><b>Mein Beitrag:</b> Prototyp gebaut. Welche Begriffe hineinkommen, entscheiden eure Fachleute.</li></ul>
-          <figure><img class="shot fade" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt.</figcaption></figure>
+          <figure><img class="shot fade" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt. Der Prototyp startet im Bereich Labor.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="fach">Prototyp ausprobieren</a>
         </div>
       </article>
@@ -410,9 +411,9 @@ footer p{max-width:none;margin:0}
           
         </div>
         <div class="wie">
-          <p class="lab">03 · Idee für Lehre und Mitarbeitende, als Prototyp</p>
+          <p class="lab">03 · Idee für Mitarbeitende im Labor, als Prototyp</p>
           <h2>KI-Check</h2>
-          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, vom Code bis zum Laborjournal.</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp für Lernende gebaut, eine Version für Mitarbeitende ist möglich.</li></ul>
+          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, vom Code bis zum Laborjournal.</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp mit Beispielen für Lernende gebaut. Für Mitarbeitende funktioniert er gleich, mit anderen Fällen.</li></ul>
           <figure><img class="shot fade" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="ki">Prototyp ausprobieren</a>
         </div>
@@ -430,7 +431,7 @@ footer p{max-width:none;margin:0}
           <p class="lab">04 · Idee für Fachleute</p>
           <h2>Train-the-Trainer</h2>
           <ul><li><b>Ausgangslage:</b> Viele Fachleute geben ihr Wissen weiter, ohne dafür ausgebildet zu sein.</li><li><b>Vorgehen:</b> Kurze Workshops: eine Arbeit gut vorzeigen und danach prüfen, ob sie sitzt.</li><li><b>Mein Beitrag:</b> Konzept und Moderation, mit den Werkzeugen, die bei Roche freigegeben sind.</li></ul>
-          <figure><img class="shot" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage"><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/tafel-workshop-m.jpg"><img class="shot m-auto" src="../img/tafel-workshop.jpg" alt="Skizze einer Workshop-Tafel mit Wortwolke und Umfrage"></picture><figcaption><b>Skizze.</b> So würde ich einsteigen: Was hat dir am Anfang geholfen?</figcaption></figure>
           
         </div>
       </article>

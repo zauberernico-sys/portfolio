@@ -55,8 +55,8 @@ input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
   <h1>Fachbegriff-Trainer</h1>
   <p class="sub">Prototyp: Englische Fachbegriffe für Lernende. Acht Begriffe pro Runde, in drei Stufen. Was noch nicht sitzt, kommt nochmals.</p>
   <div class="jobs" role="group" aria-label="Beruf wählen">
-    <button class="job" data-job="it" aria-pressed="true">Informatik</button>
-    <button class="job" data-job="lab" aria-pressed="false">Labor</button>
+    <button class="job" data-job="lab" aria-pressed="true">Labor</button>
+    <button class="job" data-job="it" aria-pressed="false">Informatik</button>
     <button class="job" data-job="kv" aria-pressed="false">KV</button>
   </div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
@@ -160,7 +160,7 @@ input[type=text]:focus{outline:3px solid var(--signal);border-color:var(--ink)}
   [].forEach.call(document.querySelectorAll('.job'),function(b){b.onclick=function(){[].forEach.call(document.querySelectorAll('.job'),function(x){x.setAttribute('aria-pressed',String(x===b))});start(b.dataset.job)}});
   function post(){try{parent.postMessage({protoH:Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height)},'*')}catch(e){}}
   if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
-  start('it',true);
+  start('lab',true);
 })();
 </script>
 </body>
