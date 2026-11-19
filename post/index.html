@@ -311,6 +311,13 @@ footer p{max-width:none;margin:0}
 .embed-proto iframe{display:block;width:100%;height:520px;border:0}
 .small-link{font-size:15px}
 @media (max-width:420px){.top nav{gap:14px}.top nav a{font-size:15px}}
+
+@media (min-width:901px){.pair-row .was{position:sticky;top:96px;align-self:start}}
+.r-intro .kicker{margin:0 0 12px;font-size:17px;font-weight:700;color:var(--ink-2)}
+.r-intro aside p span{display:block}
+.r-intro aside p span+span{margin-top:6px;color:var(--muted)}
+.fade{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+@media (max-width:420px){.brand span{display:none}}
 </style>
 </head>
 <body>
@@ -330,24 +337,24 @@ footer p{max-width:none;margin:0}
   <div class="wrap">
     <div class="r-intro">
       <div>
+        <p class="kicker">Bewerbung: Spezialist Learning Tools &amp; Development</p>
         <h1>Vier Projekte aus meiner Praxis, übertragen auf die Post</h1>
         <ul class="points">
-          <li>Ich bewerbe mich als Spezialist Learning Tools &amp; Development</li>
-          <li>Ihr wollt das Lernen digitaler, vernetzter und wirkungsvoller machen. Hier zeige ich, wie ich das am Beispiel KI im Arbeitsalltag angehen würde</li>
+                    <li>Lernen digitaler, vernetzter und wirkungsvoller machen: Hier zeige ich am Beispiel KI im Arbeitsalltag, wie ich das angehen würde</li>
           <li>Eine Idee könnt ihr gleich hier als Prototyp ausprobieren</li>
         </ul>
       </div>
       <aside>
         <img src="../img/portrait-sq.jpg" alt="Porträt Nico Andreani" width="112" height="112">
-        <p><b>Nico Andreani</b>Sekundarlehrer und Erwachsenenbildner, Basel. MA Sekundarstufe I (PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich). Deutsch, Englisch (C2), Französisch.</p>
+        <p><b>Nico Andreani</b><span>Sekundarlehrer und Erwachsenenbildner, Basel</span><span>MA Sekundarstufe I (PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich)</span><span>Deutsch, Englisch (C2 Proficiency), Französisch</span></p>
       </aside>
     </div>
 
     <section class="glance" aria-label="Auf einen Blick">
+      <div><h3>Führung und Auftritt</h3><ul><li>Mitglied der Geschäftsleitung einer Tanzschule mit 14 Lehrpersonen, zuständig für Budget und IT</li><li>Auftrittskompetenz: 10. Rang an der Zauber-WM 2025 (für die Schweiz)</li></ul></div>
+      <div><h3>Digital Learning und KI</h3><ul><li>Lernplattform und Apps selbst entwickelt, mit GenAI</li><li>Lernplattformen: Google Classroom und die eigene; Autorentool BookWidgets (Ambassador)</li></ul></div>
       <div><h3>Erwachsenenbildung</h3><ul><li>Über 40 Weiterbildungen konzipiert und geleitet</li><li>Auftraggeber u. a. Amt für Volksschulen BL</li></ul></div>
-      <div><h3>Digital Learning und KI</h3><ul><li>Lernplattform und Apps selbst entwickelt, mit GenAI</li><li>CAS Pädagogischer ICT-Support (PH Zürich)</li></ul></div>
       <div><h3>Change und Upskilling</h3><ul><li>Digitalisierungskonzept einer Schule im Zweierteam</li><li>Kompetenzprofil definiert, geschult, Kompetenzstand überprüft</li></ul></div>
-      <div><h3>Führung und Auftritt</h3><ul><li>Geschäftsleitung Tanzschule: 14 Lehrpersonen, Budget, IT</li><li>Bühne: Zauber-WM 2025, Rang 10 für die Schweiz</li></ul></div>
     </section>
 
     <nav class="focus" aria-label="Die vier Ideen">
@@ -362,9 +369,9 @@ footer p{max-width:none;margin:0}
       <article class="pair-row proto" id="idee-ki">
         <div class="was">
           <p class="lab">01 · Bisher</p>
-          <h3>Digitalisierung einer Schule (PICTS)</h3>
+          <h3>Digitalisierung einer Schule</h3>
           <ul><li>Digitalisierungskonzept im Zweierteam erarbeitet</li><li>Kompetenzprofil für alle Lehrpersonen definiert</li><li>Upskilling des Kollegiums mit Kursen und Tutorials</li><li>Kompetenzstand am Schluss überprüft</li></ul>
-          <dl class="facts"><div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div><div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div></dl>
+          <dl class="facts"><div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div><div><dt>Rolle</dt><dd>Pädagogischer ICT-Support, Sekundarschule Frenkendorf</dd></div></dl>
           
         </div>
         <div class="wie">
@@ -381,8 +388,8 @@ footer p{max-width:none;margin:0}
           <p class="lab">02 · Bisher</p>
           <h3>Lernplattform unsereklasse.ch</h3>
           <ul><li>Konzipiert, entwickelt und betrieben (eigene Web-App)</li><li>Lernpfade in sechs Stufen mit Selbsttest</li><li>Lernstand sichtbar ohne Login: Nachweis-Code nach dem Test</li></ul>
-          
-          <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch">
+          <dl class="facts"><div><dt>Einsatz</dt><dd>Eigene Klassen, Englisch und weitere Fächer</dd></div><div><dt>Rolle</dt><dd>Konzept, Entwicklung, Betrieb</dd></div></dl>
+          <img class="shot" src="../img/wt-crop.jpg" alt="Wörter-Trainer auf unsereklasse.ch">
         </div>
         <div class="wie">
           <p class="lab">02 · Idee für die Post</p>
@@ -396,8 +403,9 @@ footer p{max-width:none;margin:0}
       <article class="pair-row" id="idee-circle">
         <div class="was">
           <p class="lab">03 · Bisher</p>
-          <h3>Workshops für Erwachsene</h3>
-          <ul><li>Weiterbildungen seit 2022, extern und an der eigenen Schule</li><li>Themen: digitales Prüfen, Gamification, Auftreten vor Gruppen</li><li>Interaktive Inhalte mit Autorentools, BookWidgets Ambassador</li><li>Didaktische Beratung von Lehrpersonen bei digitalen Einheiten</li></ul>
+          <h3>Trainings und Workshops für Erwachsene</h3>
+          <ul><li>Weiterbildungen u. a. im Auftrag des Amts für Volksschulen BL</li><li>Themen: digitales Prüfen, Gamification, Auftreten vor Gruppen</li><li>Interaktive Inhalte mit Autorentools, BookWidgets Ambassador</li><li>Didaktische Beratung von Fachpersonen beim Aufbau digitaler Lerneinheiten</li></ul>
+          <dl class="facts"><div><dt>Zeitraum</dt><dd>seit 2022</dd></div><div><dt>Rolle</dt><dd>Konzeption und Leitung</dd></div></dl>
           
           
         </div>
@@ -415,14 +423,14 @@ footer p{max-width:none;margin:0}
           <p class="lab">04 · Bisher</p>
           <h3>Lernstand sichtbar machen</h3>
           <ul><li>Selbsteinschätzung der Lernziele mit einer Ampel</li><li>Selbsttests mit sofortiger Rückmeldung</li><li>Privacy by Design: keine Personendaten, kein Tracking</li></ul>
-          <dl class="facts"><div><dt>Ziel</dt><dd>Lernstand erkennen und das Angebot gezielt anpassen</dd></div></dl>
+          <dl class="facts"><div><dt>Einsatz</dt><dd>Eigene Klassen, auf unsereklasse.ch</dd></div><div><dt>Ziel</dt><dd>Lernstand erkennen und das Angebot gezielt anpassen</dd></div></dl>
           
         </div>
         <div class="wie">
           <p class="lab">04 · Idee für die Post</p>
           <h2>Learning Analytics, die etwas ändern</h2>
           <ul><li>Vorher und nachher fragen: Fühlen sich die Leute sicher?</li><li>Nach sechs Wochen nachfassen: Nutzen sie es im Alltag?</li><li>Daraus jedes Mal eine kurze Liste mit Anpassungen am Lernpfad</li></ul>
-          <figure><img class="shot" src="../img/post-analytics.jpg" alt="Skizze: Auswertung eines Lernpfads mit Beispieldaten"><figcaption><b>Skizze mit Beispieldaten.</b> Kennzahlen und was wir daraus ändern.</figcaption></figure>
+          <figure><img class="shot" src="../img/post-analytics.jpg" alt="Skizze: Auswertung eines Lernpfads mit Beispieldaten"><figcaption><b>Skizze mit erfundenen Beispieldaten.</b> So könnte eine Auswertung aussehen.</figcaption></figure>
           
         </div>
       </article>
