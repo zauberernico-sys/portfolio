@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ideen für das Lernen bei der Post – Nico Andreani</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: ruhige, linksbündige Seite. Laut ist nur die dunkle Demo-Bühne; Material (Dossiers, Handbücher) wird gezeigt statt aufgezählt. */
+:root{
+  --ink:#15283A;
+  --ink-2:#2E4A62;
+  --muted:#566778;
+  --paper:#F3F5F7;
+  --white:#FFFFFF;
+  --line:#D6DDE4;
+  --tint:#E8EDF2;
+  --signal:#F4C542;
+  --live-bg:#DDEFE2; --live-fg:#1D6234;
+  --soon-bg:#E8EDF2; --soon-fg:#3C556C;
+  --stage:#0F1C2A;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-s:6px; --r-m:12px; --r-l:20px;
+  --shadow:0 1px 2px rgba(21,40,58,.06),0 8px 24px rgba(21,40,58,.09);
+  --paper-shadow:0 1px 2px rgba(21,40,58,.10),0 12px 32px rgba(21,40,58,.16);
+  --maxw:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink-2);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--signal);border-radius:4px}
+.stage :focus-visible{outline-color:var(--signal);box-shadow:none}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h4{font-family:var(--body);font-weight:700;margin:0;font-size:17px}
+p{margin:0 0 1em;max-width:66ch}
+ul{margin:0;padding-left:20px}
+li+li{margin-top:5px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}body{font-size:18px}}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(243,245,247,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+.brand{text-decoration:none;color:var(--ink);line-height:1.15}
+.brand b{display:block;font-family:var(--display);font-size:19px}
+.brand span{font-size:14px;color:var(--muted)}
+.top nav{display:flex;gap:24px}
+.top nav a{color:var(--ink);text-decoration:none;font-size:16px;font-weight:600;padding:6px 0}
+.top nav a:hover{box-shadow:inset 0 -3px var(--signal)}
+@media (max-width:860px){.top nav a:not(.keep){display:none}}
+
+.intro{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;padding:64px 0 48px;align-items:center}
+@media (max-width:900px){.intro{grid-template-columns:1fr;gap:28px;padding:40px 0 32px}}
+.intro h1{font-size:clamp(36px,4.6vw,60px);max-width:16ch}
+.hero-actions{margin-top:26px}
+.lead{font-size:clamp(19px,1.8vw,21px);margin:24px 0 0;max-width:52ch}
+.who{margin:24px 0 0;font-size:16px;color:var(--muted);display:flex;gap:16px;align-items:center}
+.who img{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:0 0 auto;background:#fff;box-shadow:var(--shadow)}
+.who p{margin:0;max-width:52ch}
+.who b{color:var(--ink)}
+.covers{position:relative;height:440px}
+.covers img{position:absolute;width:40%;border-radius:4px;box-shadow:var(--paper-shadow);background:#fff}
+.covers img:nth-child(1){left:0;top:70px;transform:rotate(-6deg)}
+.covers img:nth-child(2){left:19%;top:22px;transform:rotate(-2deg);z-index:2}
+.covers img:nth-child(3){left:38%;top:42px;transform:rotate(2deg);z-index:3}
+.covers img:nth-child(4){left:57%;top:82px;transform:rotate(6deg);z-index:4}
+@media (max-width:900px){.covers{height:380px;max-width:560px;margin-left:14px}}
+@media (max-width:600px){.covers{height:280px;margin-bottom:12px}}
+
+.focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);margin-bottom:56px}
+.focus a{display:block;padding:16px 20px 18px 0;text-decoration:none;color:var(--ink)}
+.focus a+a{padding-left:20px;border-left:1px solid var(--line)}
+.focus b{display:block;font-size:18px;margin-bottom:4px}
+.focus span{display:block;font-size:15px;color:var(--muted);line-height:1.4}
+.focus a:hover b{text-decoration:underline;text-decoration-color:var(--signal);text-decoration-thickness:3px}
+@media (max-width:900px){.focus{grid-template-columns:1fr 1fr}.focus a:nth-child(3){padding-left:0;border-left:0}.focus a:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.focus span{display:none}.focus a{padding:12px 12px 12px 0}.focus a+a{padding-left:12px}}
+
+#ausprobieren{scroll-margin-top:76px}
+.stage{background:var(--stage);color:#E7EDF3;border-radius:var(--r-l);overflow:hidden}
+.stage-head{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;padding:28px 32px 0}
+.stage-head h2{font-size:28px;color:#fff}
+.stage-head p{margin:0;font-size:16px;color:#A3B5C6}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:18px 32px}
+.tab{font:inherit;font-size:16px;font-weight:600;color:#E7EDF3;background:#16283A;border:1.5px solid #2B4258;border-radius:var(--r-m);padding:11px 14px;cursor:pointer;text-align:left;line-height:1.25}
+.tab small{display:block;font-size:13px;font-weight:400;color:#9FB2C4;margin-top:2px}
+.tab:hover{border-color:#5D7891}
+.tab[aria-selected="true"]{background:var(--signal);border-color:var(--signal);color:var(--ink)}
+.tab[aria-selected="true"] small{color:#4A4020}
+.screen{position:relative;aspect-ratio:16/10;max-width:100%;background:#08121C;margin:0 32px;border-radius:var(--r-m);overflow:hidden}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(8,18,28,.15),rgba(8,18,28,.6));border:0;cursor:pointer;padding:0}
+.play span{font:700 19px var(--body);background:var(--signal);color:var(--ink);padding:14px 28px;border-radius:var(--r-s);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.play:hover span{background:#FFD866}
+.stage-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:start;padding:18px 32px 28px;font-size:16px;color:#C3D0DC}
+.stage-foot p{margin:0;max-width:74ch;min-height:3lh}
+.stage-foot a{color:#fff;white-space:nowrap;font-weight:600}
+kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:#1E3044;color:#fff;padding:2px 6px;border-radius:4px}
+@media (max-width:900px){.tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px}.tab{flex:0 0 auto;min-width:150px;scroll-snap-align:start}}
+@media (max-width:720px){.stage-foot{grid-template-columns:1fr}}
+@media (max-width:600px){.screen img{object-fit:contain;object-position:center;background:#08121C}.stage-head{padding:22px 16px 0}.tabs{padding:14px 16px}.screen{margin:0 12px;aspect-ratio:auto;height:min(78svh,620px)}.screen img{object-position:left top}.stage-foot{padding:14px 16px 22px}}
+
+.sec{padding-top:112px}
+.sec-head{margin-bottom:40px}
+.sec-head::before{content:"";display:block;width:48px;height:4px;background:var(--signal);margin-bottom:18px}
+.sec-head h2{font-size:clamp(34px,4.4vw,56px)}
+.sec-head p{color:var(--muted);font-size:20px;margin:14px 0 0;max-width:60ch}
+
+.status{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;padding:3px 11px;border-radius:999px;white-space:nowrap;background:var(--tint);color:var(--ink-2);align-self:flex-start}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.status.live{background:var(--live-bg);color:var(--live-fg)}
+.status.soon{background:var(--soon-bg);color:var(--soon-fg)}
+.meta-line{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+
+.shot{border-radius:var(--r-m);box-shadow:var(--shadow);background:#fff;width:100%}
+.page{border-radius:4px;box-shadow:var(--paper-shadow);background:#fff;width:100%}
+
+.adult{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media (max-width:900px){.adult{grid-template-columns:1fr}}
+.card{background:var(--white);border-radius:var(--r-l);padding:30px;display:flex;flex-direction:column;gap:12px;min-width:0;box-shadow:0 1px 2px rgba(21,40,58,.05)}
+@media (max-width:600px){.card{padding:22px}}
+.card h3{font-size:27px}
+.card .subject{color:var(--muted);font-size:16px;margin:0}
+.card p{margin:0}
+.card ul{font-size:17px}
+.card.feature{grid-column:1/-1;border-left:5px solid var(--signal);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:16px 48px}
+.card.feature h3{font-size:32px;margin-top:12px}
+.card.feature .subject{margin-top:8px}
+.card.feature .more-text{margin-top:12px}
+@media (max-width:900px){.card.feature{grid-template-columns:1fr}}
+.card.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px 48px;align-items:center}
+.card.wide .text{display:flex;flex-direction:column;gap:12px}
+@media (max-width:900px){.card.wide{grid-template-columns:1fr}}
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.phones img{aspect-ratio:1/1;object-fit:cover;object-position:top}
+.small{font-size:15px;color:var(--muted)}
+.card .split{border-top:1px solid var(--line);padding-top:14px;margin-top:8px}
+.card .split h4{margin-bottom:6px}
+
+.case{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:"media head" "media body" "mat mat";gap:0 48px;padding:56px 0;border-top:2px solid var(--ink);align-items:start}
+.case.flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"head media" "body media" "mat mat"}
+.case .head{grid-area:head}
+.case .body{grid-area:body}
+.case .media{grid-area:media}
+.case .materials{grid-area:mat}
+.case h3{font-size:clamp(30px,3vw,40px);margin-top:14px}
+.case .subject{color:var(--muted);margin:6px 0 20px;font-size:17px}
+.case .body ul{font-size:17px;margin-bottom:22px}
+.case .body .small{margin-bottom:20px}
+.case figure{margin:0}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.4}
+.materials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.materials img{aspect-ratio:4/3;object-fit:cover;object-position:top}
+.materials figcaption b{color:var(--ink);font-weight:700}
+@media (max-width:900px){
+  .case,.case.flip{grid-template-columns:1fr;grid-template-areas:"head" "media" "body" "mat";gap:0}
+  .case .media{margin:4px 0 24px}
+  .materials{margin-top:28px}
+}
+@media (max-width:600px){.materials{grid-template-columns:1fr 1fr;gap:14px}.materials figure:nth-child(3){grid-column:1/-1}}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:700 16px var(--body);text-decoration:none;padding:11px 18px;border-radius:var(--r-s);border:2px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.primary{background:var(--ink);color:#fff}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--ink-2);border-color:var(--ink-2)}
+@media (max-width:600px){.actions .btn{flex:1 1 100%}}
+
+.units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+@media (max-width:900px){.units{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.units{grid-template-columns:1fr}}
+.unit{display:flex;flex-direction:column;gap:10px}
+.unit img{aspect-ratio:4/5;object-fit:cover;object-position:top;margin-bottom:8px}
+.unit h3{font-size:24px}
+.unit .subject{color:var(--muted);font-size:16px;margin:0}
+.unit p{font-size:17px;margin:0}
+.unit .meta{font-size:15px;color:var(--muted)}
+
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+@media (max-width:1100px) and (min-width:901px){.tools{grid-template-columns:1fr 1fr}.tools .card:last-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:12px 32px;align-items:start}.tools .card:last-child img{grid-row:1/span 5}}
+@media (max-width:900px){.tools{grid-template-columns:1fr}}
+.tools .card img{aspect-ratio:16/10;object-fit:cover;object-position:top}
+
+.process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;position:relative}
+.process::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--ink)}
+.process li{position:relative;padding-top:36px;margin:0}
+.process{counter-reset:s}.process li{counter-increment:s}
+.process li::before{content:counter(s);position:absolute;left:0;top:-4px;width:28px;height:28px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:grid;place-items:center;font:700 13px var(--body);color:var(--ink)}
+.process b{display:block;font-size:18px;margin-bottom:4px}
+.process span{display:block;font-size:15px;color:var(--muted);line-height:1.4}
+@media (max-width:900px){.process{grid-template-columns:1fr;row-gap:18px;margin-left:14px;border-left:2px solid var(--ink);padding-left:30px}.process::before{display:none}.process li{padding-top:0}.process li::before{left:-46px;top:-2px}}
+.example{margin-top:40px;background:var(--white);border-radius:var(--r-l);padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:baseline;box-shadow:0 1px 2px rgba(21,40,58,.05)}
+.example b{font-family:var(--display);font-size:20px}
+.example p{margin:0;font-size:17px}
+@media (max-width:600px){.example{grid-template-columns:1fr}}
+.principles{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px;border-top:2px solid var(--ink);padding-top:28px}
+@media (max-width:900px){.principles{grid-template-columns:1fr;gap:28px}}
+.principles h3{font-size:26px;margin-bottom:12px}
+.principles h3::before{content:"";display:inline-block;width:12px;height:12px;background:var(--signal);margin-right:12px;vertical-align:middle}
+.principles p{font-size:18px;margin:0 0 .8em}
+.toolline{margin-top:28px;font-size:17px;color:var(--muted);max-width:none}
+.toolline b{color:var(--ink)}
+
+.magic{background:var(--stage);color:#E7EDF3;border-radius:var(--r-l);padding:56px 64px;display:grid;gap:18px}
+.magic-label{margin:0;font-size:15px;font-weight:700;color:var(--signal)}
+.magic blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(26px,3.2vw,40px);line-height:1.18;color:#fff;max-width:28ch;letter-spacing:-.015em}
+.magic p:last-child{margin:0;font-size:18px;color:#C3D0DC;max-width:62ch}
+@media (max-width:600px){.magic{padding:32px 22px}}
+.contact{padding-top:112px;padding-bottom:72px}
+.contact-box{background:var(--white);border-radius:var(--r-l);padding:48px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+@media (max-width:900px){.contact-box{grid-template-columns:1fr;padding:28px 22px}}
+.contact h2{font-size:clamp(34px,4.4vw,52px)}
+.contact h2+p{margin-top:16px}
+.contact dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 22px;font-size:19px}
+.contact dt{color:var(--muted)}
+.contact dd{margin:0}
+footer{font-size:14px;color:var(--muted);padding:24px 0 40px;border-top:1px solid var(--line)}
+footer p{max-width:none;margin:0}
+
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;z-index:50}.skip:focus{top:12px}
+/* Post-Unterseite (gleiches Layout wie Roche): Bisher tritt zurück, die Idee für Roche führt. Dunkel bleibt nur die Prototyp-Bühne. */
+.r-intro{padding:56px 0 36px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end}
+.r-intro h1{font-size:clamp(34px,4.6vw,58px)}
+.r-intro .lead{margin-top:20px}
+.r-intro aside{background:var(--white);border-radius:var(--r-l);padding:22px 24px;box-shadow:var(--shadow);font-size:16px;line-height:1.45}
+.r-intro aside img{width:64px;height:64px;border-radius:50%;object-fit:cover;display:block;margin-bottom:12px}
+.r-intro aside p{margin:0}
+.r-intro aside b{display:block;font-size:18px}
+@media (max-width:900px){.r-intro{grid-template-columns:1fr;gap:24px}.r-intro aside{display:flex;gap:16px;align-items:center}.r-intro aside img{margin:0;flex:none}}
+.focus.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:900px){.focus.five{grid-template-columns:1fr 1fr}.focus.five a:nth-child(odd){padding-left:0;border-left:0}.focus.five a:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}.focus.five a:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:520px){.focus.five a:nth-child(even){padding-left:12px}}
+.legend{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 56px;font-size:15px;font-weight:700;color:var(--muted);margin:0 0 12px}
+.legend span+span{color:var(--ink)}
+@media (max-width:900px){.legend{display:none}}
+.pairs{display:grid;gap:56px;margin-bottom:24px}
+.pair-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 56px;position:relative;padding-top:32px;border-top:2px solid var(--ink);scroll-margin-top:96px}
+.pair-row .was{display:flex;flex-direction:column;gap:10px;padding-right:8px}
+.pair-row .wie{background:var(--white);border-radius:var(--r-l);border-top:3px solid var(--signal);padding:28px 32px;align-self:start;display:flex;flex-direction:column;gap:12px}
+.pair-row .lab{margin:0;font-size:14px;font-weight:700;color:var(--muted)}
+.pair-row .wie .lab{color:var(--ink-2)}
+.pair-row .was h3{font-size:22px;color:var(--ink-2)}
+.pair-row .wie h2{font-size:clamp(26px,2.4vw,32px)}
+.pair-row p{margin:0;font-size:17px}
+.pair-row .was p{color:var(--ink-2)}
+.pair-row ul{font-size:17px;margin:0;padding-left:20px}
+.pair-row li+li{margin-top:6px}
+.pair-row .was img{margin-top:8px;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.pair-row figure{margin:8px 0 0}
+.pair-row figure img{aspect-ratio:16/10;object-fit:cover;object-position:top left;width:100%}
+.pair-row figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.pair-row figcaption b{color:var(--ink)}
+.facts{display:grid;gap:12px;margin:8px 0 0;border-top:1px solid var(--line);padding-top:16px}
+.facts div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:16px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;color:var(--ink);font-weight:600}
+.wie .btn{align-self:flex-start;margin-top:4px}
+.pair-row:not(.proto) .wie{background:none;box-shadow:none;border-top:0;border-radius:0;padding:0}
+@media (min-width:901px){.pair-row+.pair-row .lab{display:none}}
+#prototypen .sec-head::before{display:none}
+@media (max-width:900px){.pair-row .wie{margin-top:20px}}
+.wie .status{align-self:flex-start}
+@media (max-width:900px){
+  .pairs{gap:44px}
+  .pair-row{grid-template-columns:1fr;padding-top:24px}
+  .pair-row .was{padding:0 0 4px}
+    .pair-row .was img{margin-top:8px}
+}
+@media (max-width:600px){.pair-row .wie{padding:22px 20px}}
+#prototypen .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+#proto-stage{scroll-margin-top:84px}
+#prototypen .screen iframe[hidden]{display:none}
+#prototypen .screen{aspect-ratio:auto;height:560px;margin-top:24px;background:#F3F5F7;transition:height .2s}
+#prototypen .stage-foot p{min-height:0}
+@media (max-width:900px){#prototypen .tabs{display:grid}#prototypen .tab{min-width:0}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><b>Nico Andreani</b><span>Lerndesign und Weiterbildung</span></a>
+    <nav aria-label="Seitennavigation">
+      <a class="keep" href="#prototypen">Prototyp</a>
+      <a href="../">Ganzes Portfolio</a>
+      <a class="keep" href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+  <div class="wrap">
+    <div class="r-intro">
+      <div>
+        <h1>Was ich gemacht habe und wie es bei der Post aussehen könnte</h1>
+        <p class="lead">Ich bewerbe mich als Spezialist für Learning Tools &amp; Development. Auf meiner <a href="../">Portfolio-Seite</a> zeige ich, was ich in der Schule und in Weiterbildungen entwickelt habe. Hier übertrage ich vier dieser Projekte auf das Lernen in einem grossen Unternehmen, am Beispiel KI im Arbeitsalltag. Es sind Ideen von aussen, ohne Einblick in eure Tools und Abläufe. Eine davon könnt ihr als Prototyp ausprobieren.</p>
+      </div>
+      <aside>
+        <img src="../img/portrait-sq.jpg" alt="Porträt Nico Andreani" width="64" height="64">
+        <p><b>Nico Andreani</b>Sekundarlehrer (MA, PH FHNW), CAS Pädagogischer ICT-Support (PH Zürich), Kursleiter in der Weiterbildung seit 2022. Nebenbei Zauberkünstler, an der Weltmeisterschaft 2025 für die Schweiz auf Platz 10.</p>
+      </aside>
+    </div>
+
+    <nav class="focus" aria-label="Die vier Ideen">
+      <a href="#idee-ki"><b>KI-Upskilling mit Badge</b><span>Situationen einschätzen statt Regeln lesen</span></a>
+      <a href="#idee-pfad"><b>Lernpfade in fünf Minuten</b><span>Kurze Einheiten in der bestehenden Plattform</span></a>
+      <a href="#idee-circle"><b>Learning Circles</b><span>Kleine Gruppen lernen an eigenen Beispielen</span></a>
+      <a href="#idee-wirkung"><b>Wirkung sichtbar machen</b><span>Learning Analytics, die zu Anpassungen führen</span></a>
+    </nav>
+
+    <div class="pairs">
+
+      <article class="pair-row proto" id="idee-ki">
+        <div class="was">
+          <p class="lab">Bisher</p>
+          <h3>Pädagogischer ICT-Support</h3>
+          <p>An der Sekundarschule Frenkendorf habe ich im Zweierteam das Digitalisierungskonzept erarbeitet. Wir haben festgelegt, was alle Lehrpersonen digital können sollen, das Kollegium geschult und am Schluss überprüft, ob es sitzt.</p>
+          <dl class="facts">
+            <div><dt>Zeitraum</dt><dd>2022 bis 2026</dd></div>
+            <div><dt>Ausbildung</dt><dd>CAS Pädagogischer ICT-Support, PH Zürich</dd></div>
+          </dl>
+        </div>
+        <div class="wie">
+          <p class="lab">Für die Post, als Prototyp spielbar</p>
+          <h2>KI-Upskilling mit Badge</h2>
+          <p>Viele wissen nicht genau, was sie mit KI dürfen. Statt eines Merkblatts schätzen die Mitarbeitenden acht Situationen aus dem Büroalltag ein und lesen gleich die Begründung. Wer genug richtig hat, bekommt einen Badge. Die Regeln dafür kämen aus euren Richtlinien.</p>
+          <figure><img class="shot" src="../img/post-ki.jpg" alt="Prototyp KI im Arbeitsalltag: erste Situation mit Rückmeldung" loading="lazy"><figcaption><b>Prototyp.</b> Situation eingeschätzt, die Begründung steht gleich darunter.</figcaption></figure>
+          <a class="btn primary" href="#proto-stage">Prototyp ausprobieren</a>
+        </div>
+      </article>
+
+      <article class="pair-row" id="idee-pfad">
+        <div class="was">
+          <p class="lab">Bisher</p>
+          <h3>Lernplattform unsereklasse.ch</h3>
+          <p>Für meine Klassen habe ich eine eigene Lernplattform gebaut. Wörter üben sie in sechs Stufen, von der Karte bis zum Schreiben ohne Hilfe. Am Schluss steht ein Selbsttest mit Nachweis-Code.</p>
+          <img class="shot" src="../img/wt.jpg" alt="Wörter-Trainer auf unsereklasse.ch" loading="lazy">
+        </div>
+        <div class="wie">
+          <p class="lab">Für die Post</p>
+          <h2>Lernpfade in fünf Minuten</h2>
+          <p>Ein Thema wird zu einem kurzen Pfad mit vier Einheiten, die man auf dem Handy zwischen zwei Terminen schafft. Er läuft in den Tools, die ihr schon habt, etwa SuccessFactors Learning oder Viva Learning. Die letzte Einheit findet im Team statt, und wer fertig ist, bekommt einen Badge.</p>
+          <figure><img class="shot" src="../img/post-pfad.jpg" alt="Skizze: Lernpfad KI im Arbeitsalltag mit vier Einheiten auf dem Handy" loading="lazy"><figcaption><b>Skizze.</b> Zwei Einheiten geschafft, die dritte ist der Prototyp oben.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="pair-row" id="idee-circle">
+        <div class="was">
+          <p class="lab">Bisher</p>
+          <h3>Weiterbildungen für Lehrpersonen</h3>
+          <p>Seit 2022 habe ich über 40 Weiterbildungen konzipiert und geleitet, etwa zu digitalem Prüfen, Gamification und Auftreten vor Gruppen. Die Tafel-Werkzeuge aus meiner App Lektoplan habe ich an einem Teamanlass mit dem Kollegium eingesetzt.</p>
+          <img class="shot" src="../img/lk-tafel.jpg" alt="Digitale Tafel aus Lektoplan" loading="lazy">
+        </div>
+        <div class="wie">
+          <p class="lab">Für die Post</p>
+          <h2>Learning Circles</h2>
+          <p>Sechs Leute treffen sich viermal und bringen jedes Mal ein eigenes Beispiel mit. Ich würde die ersten Circles moderieren und dann eine Anleitung schreiben, damit die Teams sie selbst weiterführen. Was im Circle unklar bleibt, fliesst zurück in den Lernpfad.</p>
+          <figure><img class="shot" src="../img/post-circle.jpg" alt="Skizze: Board eines Learning Circle mit drei Spalten" loading="lazy"><figcaption><b>Skizze.</b> Das Board nach dem zweiten Treffen.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="pair-row" id="idee-wirkung">
+        <div class="was">
+          <p class="lab">Bisher</p>
+          <h3>Lernziele und Nachweis-Code</h3>
+          <p>Auf unsereklasse.ch schätzen die Jugendlichen ihre Lernziele mit einer Ampel ein. Nach dem Selbsttest zeigen sie mir einen Code, und ich sehe, wer welche Stufe geschafft hat. Konten und Tracking gibt es keine, weil der Datenschutz an der Schule Vorrang hat.</p>
+          <dl class="facts">
+            <div><dt>Ziel</dt><dd>Sehen, was sitzt, und den Unterricht anpassen</dd></div>
+          </dl>
+        </div>
+        <div class="wie">
+          <p class="lab">Für die Post</p>
+          <h2>Wirkung sichtbar machen</h2>
+          <p>Abschlussquoten allein sagen wenig. Ich würde vorher und nachher fragen, ob sich die Leute sicher fühlen, und nach sechs Wochen nachfassen, ob sie es im Alltag nutzen. Daraus wird jedes Mal eine kurze Liste mit Anpassungen am Lernpfad.</p>
+          <figure><img class="shot" src="../img/post-analytics.jpg" alt="Skizze: Auswertung eines Lernpfads mit Beispieldaten" loading="lazy"><figcaption><b>Skizze mit Beispieldaten.</b> Kennzahlen und was wir daraus ändern.</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <section class="sec" id="prototypen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selbst ausprobieren</h2>
+        <p>Ein unabhängiger Prototyp mit Beispielinhalten, nicht von der Post. Acht Situationen, etwa fünf Minuten.</p>
+      </div>
+      <div class="stage" id="proto-stage">
+        <div class="screen" id="screen"><iframe id="pframe" src="ki-check.html?embed" title="Prototyp KI im Arbeitsalltag"></iframe></div>
+        <div class="stage-foot"><p>Ab sechs richtigen Antworten gibt es den Badge.</p><a href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap contact" id="kontakt">
+    <div class="contact-box">
+      <div>
+        <h2>Gerne bespreche ich das mit euch</h2>
+        <p>Ob das zu euren Tools und eurer Lernkultur passt, möchte ich mit euch herausfinden. Den Prototyp zeige ich euch gerne in zwanzig Minuten, in Bern oder online.</p>
+      </div>
+      <div>
+        <dl>
+          <dt>E-Mail</dt><dd><a href="mailto:nicoandreani92@gmail.com">nicoandreani92@gmail.com</a></dd>
+          <dt>Telefon</dt><dd><a href="tel:+41795948820">079 594 88 20</a></dd>
+          <dt>Portfolio</dt><dd><a href="../">portfolio.unsereklasse.ch</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><p>Nico Andreani, Basel, 2026. Unabhängige Ideenskizze, nicht im Auftrag der Post erstellt. Prototyp und Skizzen enthalten Beispielinhalte.</p></div>
+</footer>
+
+<script>
+(function(){
+  var screen=document.getElementById('screen'),f=document.getElementById('pframe');
+  window.addEventListener('message',function(e){if(!e.data||!e.data.protoH||e.source!==f.contentWindow)return;screen.style.height=Math.max(320,Math.min(1100,e.data.protoH+8))+'px'});
+})();
+</script>
+</body>
+
+</html>
