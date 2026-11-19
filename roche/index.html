@@ -343,7 +343,7 @@ footer p{max-width:none;margin:0}
         <h1>Vier Ideen für das Lernen bei Roche, aus meiner Praxis in der Erwachsenenbildung</h1>
         <ul class="points">
                     <li>Über 40 Weiterbildungen konzipiert, eine Lernplattform selbst gebaut, den Kompetenzstand eines Kollegiums überprüft</li>
-                    <li>Die erste Idee ist für das QA Training, die anderen passen auch zur Berufsbildung. Zwei davon könnt ihr als Prototyp ausprobieren</li>
+                    <li>Alle vier Ideen setzen bei Schulungen im Arbeitsalltag an. Zwei davon könnt ihr als Prototyp ausprobieren</li>
         </ul>
       </div>
       <aside>
@@ -391,13 +391,13 @@ footer p{max-width:none;margin:0}
           <h3>Lernplattform unsereklasse.ch</h3>
           <ul><li>Konzipiert, entwickelt und betrieben (eigene Web-App)</li><li>Wörter üben in sechs Stufen, Fehler kommen öfter</li><li>Privacy by Design: keine Konten, kein Tracking</li></ul>
           <dl class="facts"><div><dt>Einsatz</dt><dd>Eigene Klassen, Englisch und weitere Fächer</dd></div><div><dt>Rolle</dt><dd>Konzept, Entwicklung, Betrieb</dd></div></dl>
-          <img class="shot" src="../img/wt-crop.jpg" alt="Wörter-Trainer auf unsereklasse.ch">
+          <picture><source media="(max-width:600px)" srcset="../img/wt-crop-m.jpg"><img class="shot m-auto" src="../img/wt-crop.jpg" alt="Wörter-Trainer auf unsereklasse.ch"></picture>
         </div>
         <div class="wie">
           <p class="lab">02 · Idee für neue Mitarbeitende, als Prototyp</p>
           <h2>Fachbegriff-Trainer</h2>
           <ul><li><b>Ausgangslage:</b> Fachsprache und Englisch sind für Neue eine Hürde.</li><li><b>Vorgehen:</b> Fünf Minuten am Tag auf dem Handy, eine Liste pro Bereich.</li><li><b>Mein Beitrag:</b> Prototyp gebaut. Welche Begriffe hineinkommen, entscheiden eure Fachleute.</li></ul>
-          <figure><img class="shot fade" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz"><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt. Der Prototyp startet im Bereich Labor.</figcaption></figure>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/roche-fach-m.jpg"><img class="shot m-auto fade" src="../img/roche-fach.jpg" alt="Prototyp Fachbegriff-Trainer: Auswahlfrage im Labor-Wortschatz"></picture><figcaption><b>Prototyp.</b> Labor, zweite Stufe: Begriff gelesen, Bedeutung gewählt. Der Prototyp startet im Bereich Labor.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="fach">Prototyp ausprobieren</a>
         </div>
       </article>
@@ -413,8 +413,8 @@ footer p{max-width:none;margin:0}
         <div class="wie">
           <p class="lab">03 · Idee für Mitarbeitende im Labor, als Prototyp</p>
           <h2>KI-Check</h2>
-          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, vom Code bis zum Laborjournal.</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp mit Beispielen für Lernende gebaut. Für Mitarbeitende funktioniert er gleich, mit anderen Fällen.</li></ul>
-          <figure><img class="shot fade" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe"><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, die Begründung steht gleich darunter.</figcaption></figure>
+          <ul><li><b>Ausgangslage:</b> Oft ist unklar, was man mit KI darf, gerade bei Werten fürs Laborjournal (Datenintegrität).</li><li><b>Vorgehen:</b> Regeln mit den Verantwortlichen klären, daraus acht Fälle mit kurzer Begründung.</li><li><b>Mein Beitrag:</b> Prototyp mit Beispielen aus dem Labor gebaut. Die Fälle kämen aus euren Regeln.</li></ul>
+          <figure><picture><source media="(max-width:600px)" srcset="../img/roche-ki-m.jpg"><img class="shot m-auto fade" src="../img/roche-ki.jpg" alt="Prototyp KI-Check: Situation mit einer Verdünnungsreihe"></picture><figcaption><b>Prototyp.</b> Darf ein Wert aus der KI ins Laborjournal? Nein, die Begründung steht gleich darunter.</figcaption></figure>
           <a class="btn primary" href="#proto-stage" data-proto="ki">Prototyp ausprobieren</a>
         </div>
       </article>
@@ -446,11 +446,11 @@ footer p{max-width:none;margin:0}
       </div>
       <div class="stage" id="proto-stage">
         <div class="tabs" role="tablist" aria-label="Prototypen">
-          <button class="tab" role="tab" id="tab-fach" aria-selected="true" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Informatik, Labor, KV</small></button>
-          <button class="tab" role="tab" id="tab-ki" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
+          <button class="tab" role="tab" id="tab-ki" aria-selected="true" aria-controls="screen" data-p="ki">KI-Check<small>Darf ich hier KI nutzen?</small></button>
+          <button class="tab" role="tab" id="tab-fach" aria-selected="false" tabindex="-1" aria-controls="screen" data-p="fach">Fachbegriff-Trainer<small>Labor, Informatik, KV</small></button>
         </div>
-        <div class="screen" id="screen" role="tabpanel" aria-labelledby="tab-fach" tabindex="-1"><iframe id="pframe" src="fachbegriffe.html?embed" title="Prototyp Fachbegriff-Trainer"></iframe></div>
-        <div class="stage-foot"><p id="phint">Acht Begriffe in drei Stufen, wählbar nach Beruf. Am besten mit Ton.</p><a id="popen" href="fachbegriffe.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
+        <div class="screen" id="screen" role="tabpanel" aria-labelledby="tab-ki" tabindex="-1"><iframe id="pframe" src="ki-check.html?embed" title="Prototyp KI-Check"></iframe></div>
+        <div class="stage-foot"><p id="phint">Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.</p><a id="popen" href="ki-check.html" target="_blank" rel="noopener">In neuem Fenster öffnen</a></div>
       </div>
     </div>
   </section>
@@ -459,7 +459,7 @@ footer p{max-width:none;margin:0}
     <div class="contact-box">
       <div>
         <h2>Zwanzig Minuten für die Prototypen</h2>
-        <p>Gerne zeige ich euch die Ideen und Prototypen in Basel oder online und höre, was davon zu euren Schulungen und Lehrgängen passt.</p>
+        <p>Gerne zeige ich euch die Ideen und Prototypen in Basel oder online und höre, was davon zu euren Schulungen im QA Training passt.</p>
       </div>
       <div>
         <dl>
@@ -478,9 +478,9 @@ footer p{max-width:none;margin:0}
 
 <script>
 (function(){
-  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Beruf. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.'}};
+  var P={fach:{src:'fachbegriffe.html',title:'Prototyp Fachbegriff-Trainer',hint:'Acht Begriffe in drei Stufen, wählbar nach Bereich. Am besten mit Ton.'},ki:{src:'ki-check.html',title:'Prototyp KI-Check',hint:'Acht Situationen aus dem Alltag in der Lehre, jeweils mit kurzer Begründung.'}};
   var tabs=[].slice.call(document.querySelectorAll('#prototypen .tab'));
-  var screen=document.getElementById('screen'),frames={fach:document.getElementById('pframe')},hs={},cur='fach';
+  var screen=document.getElementById('screen'),frames={ki:document.getElementById('pframe')},hs={},cur='ki';
   function size(){if(hs[cur])screen.style.height=Math.max(320,Math.min(1100,hs[cur]+8))+'px'}
   function show(k,focusTab){
     tabs.forEach(function(t){var on=t.dataset.p===k;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&focusTab)t.focus()});
